@@ -1,0 +1,27 @@
+variables:
+  npm_config_unsafe_perm: "true"
+  npm_config_cache: /cache/npm-cache
+
+before_script:
+  - sleep ${DEBUG_SLEEP-0}
+  - mkdir -p build
+  - source gitlab/configure.inc
+
+stages:
+  - build
+  - publish
+
+schema:build:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+
+schema:publish:
+  stage: publish
+  when: manual
+  only:
+    - prod
+  script:
+    - ${CI_PROJECT_DIR}/gitlab/slack-notify-eng.sh
+    - make npm-publish
