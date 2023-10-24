@@ -1,20 +1,27 @@
 {
   "name": "@controlplane/schema",
   "version": "1.0.0",
+  "description": "Control Plane Corporation Schema",
   "private": true,
   "scripts": {
     "build": "tsc",
     "build:turbo": "turbo run build --no-daemon",
-    "start": "pnpm build:turbo && node --inspect=19025 build/src/main.js",
-    "test": "        jest --verbose --testPathIgnorePatterns test/",
     "clean": "rm -fr build/",
-
     "prettier:check": "prettier --parser typescript --list-different 'src/**/*.{ts,}'",
     "prettier:write": "prettier --parser typescript --write 'src/**/*.{ts,}'"
   },
-  "dependencies": {
-    
-  },
+  "keywords": [
+    "Control Plane",
+    "Control Plane Corporation",
+    "Serverless",
+    "Cloud",
+    "Kubernetes",
+    "AWS",
+    "Azure",
+    "GCP",
+    "schema"
+  ],
+  "dependencies": {},
   "devDependencies": {
     "typescript": "4.9.4"
   },
