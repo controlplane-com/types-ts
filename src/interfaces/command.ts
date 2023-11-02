@@ -1,6 +1,9 @@
 /* auto-generated */
 
 import { Kind, Links } from './base';
+import { EnvVar } from './env';
+
+export type CommandLifecycleStage = 'pending' | 'running' | 'cancelled' | 'completed' | 'failed';
 
 export interface Command {
   id?: string;
@@ -17,7 +20,7 @@ export interface Command {
 
   type: string;
 
-  lifecycleStage?: 'pending' | 'running' | 'cancelled' | 'completed' | 'failed';
+  lifecycleStage?: CommandLifecycleStage;
 
   spec?: {
   [x: string]: any;
@@ -28,6 +31,24 @@ export interface Command {
   [x: string]: any;
 
 };
+
+}
+
+export interface CronWorkloadContainerOverrides {
+  name: string;
+
+  env?: EnvVar[];
+
+  command?: string;
+
+  args?: string[];
+
+}
+
+export interface RunCronWorkloadSpec {
+  location: string;
+
+  containerOverrides?: CronWorkloadContainerOverrides[];
 
 }
 
