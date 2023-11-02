@@ -6,13 +6,13 @@ git fetch origin
 target="${1}"
 
 if [ "${target}" == '' ]; then
-    target="$(git rev-parse master)"
+    target="$(git rev-parse main)"
 fi
 
 echo "About to sync from ${target} to origin/prod"
 
-if ! git merge-base --is-ancestor "${target}" origin/master; then
-    echo "Target commit ${target} must be pushed to master first!"
+if ! git merge-base --is-ancestor "${target}" origin/main; then
+    echo "Target commit ${target} must be pushed to main first!"
     exit 1
 fi
 
