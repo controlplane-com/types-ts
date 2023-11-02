@@ -11,7 +11,7 @@ import { NonCustomizableAddonConfig, AzureAddonConfig, MetricsAddonConfig, LogsA
 import { Name, Kind, Tags, Links } from './base';
 
 export interface Mk8sSpec {
-  version: '1.26.0' | '1.26.4' | '1.27.3';
+  version: '1.26.0' | '1.26.4' | '1.27.3' | '1.28.2';
 
   provider: {
   generic?: GenericProvider;
@@ -89,7 +89,7 @@ export interface Mk8sCluster {
   links?: Links;
 
   spec: {
-  version: '1.26.0' | '1.26.4' | '1.27.3';
+  version: '1.26.0' | '1.26.4' | '1.27.3' | '1.28.2';
 
   provider: {
   generic?: GenericProvider;
