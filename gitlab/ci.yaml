@@ -1,3 +1,5 @@
+image: gcr.io/controlplane/toolchain:1447-e9339cbf0
+
 variables:
   npm_config_unsafe_perm: "true"
   npm_config_cache: /cache/npm-cache
