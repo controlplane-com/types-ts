@@ -10,7 +10,7 @@
     "noImplicitReturns": true,
     "strictNullChecks": true,
     "strictBindCallApply": true,
-    "declaration": false,
+    "declaration": true,
     "experimentalDecorators": true,
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
