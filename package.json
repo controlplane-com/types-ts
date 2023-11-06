@@ -2,7 +2,6 @@
   "name": "@controlplane/schema",
   "version": "1.0.1",
   "description": "Control Plane Corporation Schema",
-  "private": true,
   "scripts": {
     "build": "tsc",
     "build:turbo": "turbo run build --no-daemon",
@@ -13,13 +12,7 @@
   "keywords": [
     "Control Plane",
     "Control Plane Corporation",
-    "Serverless",
-    "Cloud",
-    "Kubernetes",
-    "AWS",
-    "Azure",
-    "GCP",
-    "schema"
+    "cpln"
   ],
   "dependencies": {},
   "devDependencies": {
@@ -28,6 +21,16 @@
   "files": [
     "build/src"
   ],
+  "typesVersions": {
+    "*": {
+      "*": [
+        "build/src/*"
+      ]
+    }
+  },
+  "exports": {
+    "./*": "./build/src/interfaces/*.js"
+  },
   "engines": {
     "node": ">= 16"
   }
