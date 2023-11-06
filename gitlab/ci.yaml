@@ -25,5 +25,5 @@ schema:publish:
   only:
     - prod
   script:
-    - ${CI_PROJECT_DIR}/gitlab/slack-notify-eng.sh
     - make npm-publish
+    - ${CI_PROJECT_DIR}/gitlab/slack-notify-eng.sh
