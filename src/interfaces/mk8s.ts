@@ -7,11 +7,18 @@ import { LinodeProvider } from './mk8sLinode';
 import { OblivusProvider } from './mk8sOblivus';
 import { LambdalabsProvider } from './mk8sLambdalabs';
 import { PaperspaceProvider } from './mk8sPaperspace';
-import { NonCustomizableAddonConfig, AzureAddonConfig, MetricsAddonConfig, LogsAddonConfig, NvidiaAddonConfig, DashboardAddonStatus, AwsWorkloadIdentityAddonStatus, MetricsAddonStatus, LogsAddonStatus } from './mk8sAddons';
+import { NonCustomizableAddonConfig, AzureAddonConfig, MetricsAddonConfig, LogsAddonConfig, NvidiaAddonConfig, AwsEFSAddonConfig, AwsECRAddonConfig, AzureACRAddonConfig, DashboardAddonStatus, AwsWorkloadIdentityAddonStatus, MetricsAddonStatus, LogsAddonStatus, AwsTrustPolicyConfig } from './mk8sAddons';
 import { Name, Kind, Tags, Links } from './base';
 
 export interface Mk8sSpec {
   version: '1.26.0' | '1.26.4' | '1.27.3' | '1.28.2';
+
+  firewall?: {
+  sourceCIDR: string;
+
+  description?: string;
+
+}[];
 
   provider: {
   generic?: GenericProvider;
@@ -45,6 +52,12 @@ export interface Mk8sSpec {
 
   nvidia?: NvidiaAddonConfig;
 
+  awsEFS?: AwsEFSAddonConfig;
+
+  awsECR?: AwsECRAddonConfig;
+
+  azureACR?: AzureACRAddonConfig;
+
 };
 
 }
@@ -64,6 +77,10 @@ export interface Mk8sStatus {
   metrics?: MetricsAddonStatus;
 
   logs?: LogsAddonStatus;
+
+  awsECR?: AwsTrustPolicyConfig;
+
+  awsEFS?: AwsTrustPolicyConfig;
 
 };
 
@@ -91,6 +108,13 @@ export interface Mk8sCluster {
   spec: {
   version: '1.26.0' | '1.26.4' | '1.27.3' | '1.28.2';
 
+  firewall?: {
+  sourceCIDR: string;
+
+  description?: string;
+
+}[];
+
   provider: {
   generic?: GenericProvider;
 
@@ -122,6 +146,12 @@ export interface Mk8sCluster {
   logs?: LogsAddonConfig;
 
   nvidia?: NvidiaAddonConfig;
+
+  awsEFS?: AwsEFSAddonConfig;
+
+  awsECR?: AwsECRAddonConfig;
+
+  azureACR?: AzureACRAddonConfig;
 
 };
 

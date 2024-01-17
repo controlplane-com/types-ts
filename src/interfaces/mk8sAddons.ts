@@ -16,6 +16,11 @@ export interface AzureAddonConfig {
 
 }
 
+export interface AwsEFSAddonConfig {
+  roleArn: string;
+
+}
+
 export interface MetricsAddonConfig {
   retentionDays?: number;
 
@@ -84,8 +89,26 @@ export interface AwsWorkloadIdentityAddonStatus {
 
 }
 
+export interface AwsTrustPolicyConfig {
+  trustPolicy?: {
+  [x: string]: any;
+
+};
+
+}
+
 export interface NvidiaAddonConfig {
   taintGPUNodes?: boolean;
+
+}
+
+export interface AwsECRAddonConfig {
+  roleArn?: string;
+
+}
+
+export interface AzureACRAddonConfig {
+  clientId: string;
 
 }
 

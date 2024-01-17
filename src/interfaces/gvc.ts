@@ -39,6 +39,8 @@ export interface GvcSpec {
   loadBalancer?: {
   dedicated?: boolean;
 
+  trustedProxies?: number;
+
 };
 
 }
@@ -86,6 +88,11 @@ export interface GvcConfig {
   clusterId?: string;
 
 };
+
+};
+
+  loadBalancer?: {
+  minScale?: number;
 
 };
 

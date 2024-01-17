@@ -19,6 +19,8 @@ export interface Discovery {
 
   metrics?: string;
 
+  tracing?: string;
+
   metering?: string;
 
   "billing-ng"?: string;

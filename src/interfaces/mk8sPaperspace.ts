@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints, UnmanagedPool } from './mk8sCommon';
+import { Labels, Taints, AutoscalerConfig, UnmanagedPool } from './mk8sCommon';
 
 export interface PaperspacePool {
   name: string;
@@ -25,6 +25,8 @@ export interface PaperspaceProvider {
   sharedDrives?: string[];
 
   nodePools?: PaperspacePool[];
+
+  autoscaler?: AutoscalerConfig;
 
   unmanagedNodePools?: UnmanagedPool[];
 
