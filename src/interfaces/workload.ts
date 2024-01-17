@@ -1,9 +1,10 @@
 /* auto-generated */
 
+import { Port } from './port';
 import { EnvVar } from './env';
+import { VolumeSpec } from './volumeSpec';
+import { EnvoyFilters } from './envoy';
 import { Kind, Tags, Links } from './base';
-
-export type Port = number;
 
 export interface HealthCheckSpec {
   exec?: {
@@ -46,15 +47,6 @@ export interface HealthCheckSpec {
   successThreshold?: number;
 
   failureThreshold?: number;
-
-}
-
-export interface VolumeSpec {
-  uri: string;
-
-  recoveryPolicy?: 'retain' | 'recycle';
-
-  path: string;
 
 }
 
@@ -360,8 +352,10 @@ export interface FirewallSpec {
 
 }
 
+export type ScheduleType = string;
+
 export interface JobSpec {
-  schedule: string;
+  schedule: ScheduleType;
 
   concurrencyPolicy?: 'Forbid' | 'Replace';
 
@@ -469,7 +463,7 @@ export interface WorkloadSpec {
 })[];
 
   job?: {
-  schedule: string;
+  schedule: ScheduleType;
 
   concurrencyPolicy?: 'Forbid' | 'Replace';
 
@@ -482,10 +476,7 @@ export interface WorkloadSpec {
 };
 
   sidecar?: {
-  envoy?: {
-  [x: string]: any;
-
-};
+  envoy?: EnvoyFilters;
 
 };
 

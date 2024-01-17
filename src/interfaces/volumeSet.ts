@@ -48,6 +48,11 @@ export interface PersistentVolumeStatus {
 
   volumeSnapshots?: VolumeSnapshot[];
 
+  attributes?: {
+  [x: string]: string;
+
+};
+
 }
 
 export interface VolumeSetStatusLocation {
@@ -56,6 +61,8 @@ export interface VolumeSetStatusLocation {
   volumes?: PersistentVolumeStatus[];
 
   desiredVolumeCount?: number;
+
+  clusterId?: string;
 
 }
 
@@ -79,6 +86,8 @@ export interface VolumeSetSpec {
   createFinalSnapshot?: boolean;
 
   retentionDuration?: string;
+
+  schedule?: string;
 
 };
 
@@ -123,6 +132,8 @@ export interface VolumeSet {
   createFinalSnapshot?: boolean;
 
   retentionDuration?: string;
+
+  schedule?: string;
 
 };
 

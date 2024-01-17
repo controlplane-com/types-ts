@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints } from './mk8sCommon';
+import { Labels, Taints, AutoscalerConfig } from './mk8sCommon';
 
 export interface LinodePool {
   name: string;
@@ -33,6 +33,8 @@ export interface LinodeProvider {
   image: string;
 
   authorizedUsers?: string[];
+
+  autoscaler?: AutoscalerConfig;
 
 }
 

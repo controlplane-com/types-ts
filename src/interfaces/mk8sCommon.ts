@@ -24,7 +24,13 @@ export type NodePoolName = string;
 export type SshPublicKey = string;
 
 export interface AutoscalerConfig {
-  expander?: ('random' | 'most-pods' | 'least-waste' | 'price' | 'priority')[];
+  expander: ('random' | 'most-pods' | 'least-waste' | 'price' | 'priority')[];
+
+  unneededTime: string;
+
+  unreadyTime: string;
+
+  utilizationThreshold: number;
 
 }
 
@@ -36,4 +42,6 @@ export interface UnmanagedPool {
   taints?: Taints;
 
 }
+
+export type PreInstallScript = string;
 

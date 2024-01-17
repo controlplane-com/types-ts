@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints } from './mk8sCommon';
+import { Labels, Taints, PreInstallScript, AutoscalerConfig } from './mk8sCommon';
 
 export interface DedicatedServerHetznerPool {
   name: string;
@@ -31,6 +31,15 @@ export interface HetznerPool {
 export interface HetznerProvider {
   region: 'fsn1' | 'nbg1' | 'hel1' | 'ash' | 'hil';
 
+  networking?: {
+  serviceNetwork?: '10.43.0.0/16' | '192.168.0.0/16';
+
+  podNetwork?: '10.42.0.0/16' | '172.16.0.0/15' | '172.18.0.0/15' | '172.20.0.0/15' | '172.22.0.0/15' | '172.24.0.0/15' | '172.26.0.0/15' | '172.28.0.0/15' | '172.30.0.0/15';
+
+};
+
+  preInstallScript?: PreInstallScript;
+
   tokenSecretLink: string;
 
   networkId: string;
@@ -44,6 +53,8 @@ export interface HetznerProvider {
   image: string;
 
   sshKey?: string;
+
+  autoscaler?: AutoscalerConfig;
 
 }
 
