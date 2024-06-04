@@ -12,3 +12,12 @@ export interface ExcExtAuth {
 
 }
 
+export interface ExcludedRateLimit {
+  match?: RouteMatch;
+
+  port?: Port;
+
+  svcPort?: Port;
+
+}
+

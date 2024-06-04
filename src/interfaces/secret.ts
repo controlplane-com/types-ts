@@ -27,6 +27,8 @@ export interface EcrPull {
 
   roleArn?: string;
 
+  externalId?: string;
+
   repos?: string[];
 
 }

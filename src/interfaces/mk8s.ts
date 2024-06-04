@@ -7,11 +7,12 @@ import { LinodeProvider } from './mk8sLinode';
 import { OblivusProvider } from './mk8sOblivus';
 import { LambdalabsProvider } from './mk8sLambdalabs';
 import { PaperspaceProvider } from './mk8sPaperspace';
-import { NonCustomizableAddonConfig, AzureAddonConfig, MetricsAddonConfig, LogsAddonConfig, NvidiaAddonConfig, AwsEFSAddonConfig, AwsECRAddonConfig, AzureACRAddonConfig, DashboardAddonStatus, AwsWorkloadIdentityAddonStatus, MetricsAddonStatus, LogsAddonStatus, AwsTrustPolicyConfig } from './mk8sAddons';
+import { EphemeralProvider } from './mk8sEphemeral';
+import { NonCustomizableAddonConfig, AzureAddonConfig, MetricsAddonConfig, LogsAddonConfig, NvidiaAddonConfig, AwsEFSAddonConfig, AwsECRAddonConfig, AwsELBAddonConfig, AzureACRAddonConfig, DashboardAddonStatus, AwsWorkloadIdentityAddonStatus, MetricsAddonStatus, LogsAddonStatus, AwsTrustPolicyConfig } from './mk8sAddons';
 import { Name, Kind, Tags, Links } from './base';
 
 export interface Mk8sSpec {
-  version: '1.26.0' | '1.26.4' | '1.27.3' | '1.28.2';
+  version: '1.26.0' | '1.26.4' | '1.27.3' | '1.28.2' | '1.28.4';
 
   firewall?: {
   sourceCIDR: string;
@@ -35,6 +36,8 @@ export interface Mk8sSpec {
 
   paperspace?: PaperspaceProvider;
 
+  ephemeral?: EphemeralProvider;
+
 };
 
   addOns?: {
@@ -56,7 +59,11 @@ export interface Mk8sSpec {
 
   awsECR?: AwsECRAddonConfig;
 
+  awsELB?: AwsELBAddonConfig;
+
   azureACR?: AzureACRAddonConfig;
+
+  sysbox?: NonCustomizableAddonConfig;
 
 };
 
@@ -82,6 +89,8 @@ export interface Mk8sStatus {
 
   awsEFS?: AwsTrustPolicyConfig;
 
+  awsELB?: AwsTrustPolicyConfig;
+
 };
 
 }
@@ -106,7 +115,7 @@ export interface Mk8sCluster {
   links?: Links;
 
   spec: {
-  version: '1.26.0' | '1.26.4' | '1.27.3' | '1.28.2';
+  version: '1.26.0' | '1.26.4' | '1.27.3' | '1.28.2' | '1.28.4';
 
   firewall?: {
   sourceCIDR: string;
@@ -130,6 +139,8 @@ export interface Mk8sCluster {
 
   paperspace?: PaperspaceProvider;
 
+  ephemeral?: EphemeralProvider;
+
 };
 
   addOns?: {
@@ -151,7 +162,11 @@ export interface Mk8sCluster {
 
   awsECR?: AwsECRAddonConfig;
 
+  awsELB?: AwsELBAddonConfig;
+
   azureACR?: AzureACRAddonConfig;
+
+  sysbox?: NonCustomizableAddonConfig;
 
 };
 

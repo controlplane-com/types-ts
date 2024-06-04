@@ -3,9 +3,11 @@
 import { LocalLink, Kind, Tags, Links } from './base';
 
 export interface Route {
-  prefix?: string;
-
   replacePrefix?: string;
+
+  regex?: string;
+
+  prefix?: string;
 
   workloadLink: string;
 

@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { S3Logging, CoralogixLogging, DatadogLogging, LogzioLogging, ElasticLogging } from './orgLogging';
+import { S3Logging, CoralogixLogging, DatadogLogging, LogzioLogging, ElasticLogging, CloudWatchLogging, FluentdLogging, StackdriverLogging, SyslogLogging } from './orgLogging';
 import { Tracing } from './tracing';
 import { Name, Kind, Tags, Links } from './base';
 
@@ -27,6 +27,22 @@ export interface ObservabilityConfig {
 
 }
 
+export interface ThreatDetection {
+  enabled: boolean;
+
+  minimumSeverity?: 'warning' | 'error' | 'critical';
+
+  syslog?: {
+  transport?: 'tcp' | 'udp';
+
+  host: string;
+
+  port: number;
+
+};
+
+}
+
 export interface OrgSpec {
   logging?: {
   s3?: S3Logging;
@@ -38,6 +54,14 @@ export interface OrgSpec {
   logzio?: LogzioLogging;
 
   elastic?: ElasticLogging;
+
+  cloudWatch?: CloudWatchLogging;
+
+  fluentd?: FluentdLogging;
+
+  stackdriver?: StackdriverLogging;
+
+  syslog?: SyslogLogging;
 
 };
 
@@ -52,6 +76,14 @@ export interface OrgSpec {
 
   elastic?: ElasticLogging;
 
+  cloudWatch?: CloudWatchLogging;
+
+  fluentd?: FluentdLogging;
+
+  stackdriver?: StackdriverLogging;
+
+  syslog?: SyslogLogging;
+
 }[];
 
   tracing?: Tracing;
@@ -61,6 +93,11 @@ export interface OrgSpec {
   authConfig?: AuthConfig;
 
   observability?: ObservabilityConfig;
+
+  security?: {
+  threatDetection?: ThreatDetection;
+
+};
 
 }
 

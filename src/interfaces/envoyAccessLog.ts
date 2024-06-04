@@ -7,6 +7,8 @@ export interface AccessLog {
 
   name?: 'envoy.http_grpc_access_log';
 
+  excludedWorkloads?: string[];
+
   typed_config?: {
   "@type"?: any;
 

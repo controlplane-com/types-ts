@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints, PreInstallScript, AutoscalerConfig } from './mk8sCommon';
+import { Labels, Taints, AutoscalerConfig } from './mk8sCommon';
 
 export interface Ami {
   recommended?: 'ubuntu/jammy-22.04' | 'ubuntu/jammy-22.04+nvidia' | 'ubuntu/focal-20.04' | 'ubuntu/focal-20.04+nvidia' | 'ubuntu/bionic-18.04' | 'amazon/amzn2' | 'amazon/al2023';
@@ -41,6 +41,11 @@ export interface AwsPool {
 export interface AwsProvider {
   region: 'af-south-1' | 'ap-east-1' | 'ap-northeast-1' | 'ap-northeast-2' | 'ap-northeast-3' | 'ap-south-1' | 'ap-south-2' | 'ap-southeast-1' | 'ap-southeast-2' | 'ap-southeast-3' | 'ap-southeast-4' | 'ca-central-1' | 'eu-central-1' | 'eu-central-2' | 'eu-north-1' | 'eu-south-1' | 'eu-south-2' | 'eu-west-1' | 'eu-west-2' | 'eu-west-3' | 'me-central-1' | 'me-south-1' | 'sa-east-1' | 'us-east-1' | 'us-east-2' | 'us-west-1' | 'us-west-2';
 
+  awsTags?: {
+  [x: string]: string;
+
+};
+
   skipCreateRoles?: boolean;
 
   networking?: {
@@ -50,7 +55,7 @@ export interface AwsProvider {
 
 };
 
-  preInstallScript?: PreInstallScript;
+  preInstallScript?: string;
 
   image: {
   recommended?: 'ubuntu/jammy-22.04' | 'ubuntu/jammy-22.04+nvidia' | 'ubuntu/focal-20.04' | 'ubuntu/focal-20.04+nvidia' | 'ubuntu/bionic-18.04' | 'amazon/amzn2' | 'amazon/al2023';

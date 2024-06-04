@@ -22,9 +22,13 @@ export interface AwsEFSAddonConfig {
 }
 
 export interface MetricsAddonConfig {
-  retentionDays?: number;
-
   kubeState?: boolean;
+
+  coreDns?: boolean;
+
+  kubelet?: boolean;
+
+  apiserver?: boolean;
 
   nodeExporter?: boolean;
 
@@ -54,8 +58,6 @@ export interface MetricsAddonStatus {
 }
 
 export interface LogsAddonConfig {
-  retentionDays?: number;
-
   auditEnabled?: boolean;
 
   includeNamespaces?: RegularExpression;
@@ -103,6 +105,11 @@ export interface NvidiaAddonConfig {
 }
 
 export interface AwsECRAddonConfig {
+  roleArn?: string;
+
+}
+
+export interface AwsELBAddonConfig {
   roleArn?: string;
 
 }

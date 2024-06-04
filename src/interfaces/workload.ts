@@ -3,8 +3,13 @@
 import { Port } from './port';
 import { EnvVar } from './env';
 import { VolumeSpec } from './volumeSpec';
+import { DefaultOptions, LocalOptions } from './workloadOptions';
 import { EnvoyFilters } from './envoy';
 import { Kind, Tags, Links } from './base';
+
+export type Memory = string;
+
+export type Cpu = string;
 
 export interface HealthCheckSpec {
   exec?: {
@@ -191,6 +196,10 @@ export interface ContainerSpec {
 
   cpu?: string;
 
+  minCpu?: string;
+
+  minMemory?: string;
+
   env?: EnvVar[];
 
   gpu?: {
@@ -273,6 +282,8 @@ export interface ResolvedImages {
 
   resolvedAt?: Date;
 
+  errorMessages?: string[];
+
   images?: ResolvedImage[];
 
 }
@@ -293,36 +304,6 @@ export interface WorkloadStatus {
   resolvedImages?: ResolvedImages;
 
   [x: string]: any;
-
-}
-
-export interface Options {
-  autoscaling?: {
-  metric?: 'concurrency' | 'cpu' | 'rps' | 'latency' | 'disabled';
-
-  metricPercentile?: 'p50' | 'p75' | 'p99';
-
-  target?: number;
-
-  maxScale?: number;
-
-  minScale?: number;
-
-  scaleToZeroDelay?: number;
-
-  maxConcurrency?: number;
-
-};
-
-  timeoutSeconds?: number;
-
-  capacityAI?: boolean;
-
-  spot?: boolean;
-
-  debug?: boolean;
-
-  suspend?: boolean;
 
 }
 
@@ -400,67 +381,9 @@ export interface WorkloadSpec {
 
 };
 
-  defaultOptions?: {
-  autoscaling?: {
-  metric?: 'concurrency' | 'cpu' | 'rps' | 'latency' | 'disabled';
+  defaultOptions?: DefaultOptions;
 
-  metricPercentile?: 'p50' | 'p75' | 'p99';
-
-  target?: number;
-
-  maxScale?: number;
-
-  minScale?: number;
-
-  scaleToZeroDelay?: number;
-
-  maxConcurrency?: number;
-
-};
-
-  timeoutSeconds?: number;
-
-  capacityAI?: boolean;
-
-  spot?: boolean;
-
-  debug?: boolean;
-
-  suspend?: boolean;
-
-};
-
-  localOptions?: ({
-  autoscaling?: {
-  metric?: 'concurrency' | 'cpu' | 'rps' | 'latency' | 'disabled';
-
-  metricPercentile?: 'p50' | 'p75' | 'p99';
-
-  target?: number;
-
-  maxScale?: number;
-
-  minScale?: number;
-
-  scaleToZeroDelay?: number;
-
-  maxConcurrency?: number;
-
-};
-
-  timeoutSeconds?: number;
-
-  capacityAI?: boolean;
-
-  spot?: boolean;
-
-  debug?: boolean;
-
-  suspend?: boolean;
-
-  location: string;
-
-})[];
+  localOptions?: LocalOptions;
 
   job?: {
   schedule: ScheduleType;

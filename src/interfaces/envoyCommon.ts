@@ -87,6 +87,8 @@ export type Duration = string | {
 
 };
 
+export type DurationRestricted = string;
+
 export interface DataSource {
   filename?: string;
 
@@ -238,6 +240,11 @@ export interface RouteMatch {
 
 }
 
+export interface RouteMatchRestricted {
+  prefix?: string;
+
+}
+
 export interface ListStringMatcher {
   patterns?: StringMatcher[];
 
@@ -259,6 +266,28 @@ export interface RetryPolicy {
   retry_back_off?: TimeInterval;
 
   num_retries?: number;
+
+}
+
+export type HeaderAppendAction = 'APPEND_IF_EXISTS_OR_ADD' | 'ADD_IF_ABSENT' | 'OVERWRITE_IF_EXISTS_OR_ADD' | 'OVERWRITE_IF_EXISTS';
+
+export interface HeaderValue {
+  key: string;
+
+  value?: string;
+
+  raw_value?: any /* TODO: binary*/;
+
+}
+
+export interface HeaderValueOption {
+  header?: HeaderValue;
+
+  append?: boolean;
+
+  append_action?: HeaderAppendAction;
+
+  keep_empty_value?: boolean;
 
 }
 
@@ -356,6 +385,8 @@ export interface GrpcService {
   nanos?: number;
 
 };
+
+  initial_metadata?: HeaderValue[];
 
 }
 
@@ -474,6 +505,11 @@ export interface TransportSocket {
 
 }
 
+export interface TransportSocketRestricted {
+  name: string;
+
+}
+
 export interface WatchedDirectory {
   path: string;
 
@@ -524,28 +560,6 @@ export interface ConfigSource {
   initial_fetch_timeout?: Duration;
 
   resource_api_version?: ApiVersion;
-
-}
-
-export type HeaderAppendAction = 'APPEND_IF_EXISTS_OR_ADD' | 'ADD_IF_ABSENT' | 'OVERWRITE_IF_EXISTS_OR_ADD' | 'OVERWRITE_IF_EXISTS';
-
-export interface HeaderValue {
-  key: string;
-
-  value?: string;
-
-  raw_value?: any /* TODO: binary*/;
-
-}
-
-export interface HeaderValueOption {
-  header?: HeaderValue;
-
-  append?: boolean;
-
-  append_action?: HeaderAppendAction;
-
-  keep_empty_value?: boolean;
 
 }
 
