@@ -31,6 +31,11 @@ export interface HetznerPool {
 export interface HetznerProvider {
   region: 'fsn1' | 'nbg1' | 'hel1' | 'ash' | 'hil';
 
+  hetznerLabels?: {
+  [x: string]: string;
+
+};
+
   networking?: {
   serviceNetwork?: '10.43.0.0/16' | '192.168.0.0/16';
 

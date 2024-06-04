@@ -2,17 +2,6 @@
 
 import { Name, Kind, Tags, Links } from './base';
 
-export interface PerformanceClass {
-  name: string;
-
-  minCapacity?: number;
-
-  maxCapacity: number;
-
-  featuresSupported?: ('automatic-expansion' | 'snapshots')[];
-
-}
-
 export interface VolumeSnapshot {
   name: string;
 
@@ -39,6 +28,8 @@ export interface PersistentVolumeStatus {
   index: number;
 
   currentSize: number;
+
+  currentBytesUsed?: number;
 
   iops?: number;
 
@@ -71,7 +62,18 @@ export interface VolumeSetStatus {
 
   usedByWorkload?: string;
 
+  bindingId?: string;
+
   locations?: VolumeSetStatusLocation[];
+
+}
+
+export interface SnapshotSpec {
+  createFinalSnapshot?: boolean;
+
+  retentionDuration?: string;
+
+  schedule?: string;
 
 }
 
@@ -80,16 +82,11 @@ export interface VolumeSetSpec {
 
   performanceClass: 'general-purpose-ssd' | 'high-throughput-ssd';
 
+  storageClassSuffix?: string;
+
   fileSystemType?: 'xfs' | 'ext4';
 
-  snapshots?: {
-  createFinalSnapshot?: boolean;
-
-  retentionDuration?: string;
-
-  schedule?: string;
-
-};
+  snapshots?: SnapshotSpec;
 
   autoscaling?: {
   maxCapacity?: number;
@@ -126,16 +123,11 @@ export interface VolumeSet {
 
   performanceClass: 'general-purpose-ssd' | 'high-throughput-ssd';
 
+  storageClassSuffix?: string;
+
   fileSystemType?: 'xfs' | 'ext4';
 
-  snapshots?: {
-  createFinalSnapshot?: boolean;
-
-  retentionDuration?: string;
-
-  schedule?: string;
-
-};
+  snapshots?: SnapshotSpec;
 
   autoscaling?: {
   maxCapacity?: number;

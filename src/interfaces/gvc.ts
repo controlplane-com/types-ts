@@ -2,6 +2,7 @@
 
 import { Query } from './query';
 import { Tracing } from './tracing';
+import { EnvoyFilters } from './envoy';
 import { EnvVar } from './env';
 import { Name, Kind, Tags, Links } from './base';
 
@@ -27,10 +28,7 @@ export interface GvcSpec {
   tracing?: Tracing;
 
   sidecar?: {
-  envoy?: {
-  [x: string]: any;
-
-};
+  envoy?: EnvoyFilters;
 
 };
 
@@ -95,6 +93,8 @@ export interface GvcConfig {
   minScale?: number;
 
 };
+
+  thinProvision?: number;
 
 }
 

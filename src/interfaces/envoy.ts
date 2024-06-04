@@ -2,7 +2,7 @@
 
 import { AccessLog } from './envoyAccessLog';
 import { Cluster } from './envoyCluster';
-import { ExcExtAuth } from './envoyExcExtAuth';
+import { ExcExtAuth, ExcludedRateLimit } from './envoyExcExtAuth';
 import { HttpFilter } from './envoyHttp';
 import { VolumeSpec } from './volumeSpec';
 
@@ -13,7 +13,11 @@ export interface EnvoyFilters {
 
   excludedExternalAuth?: ExcExtAuth[];
 
+  excludedRateLimit?: ExcludedRateLimit[];
+
   http?: HttpFilter[];
+
+  network?: any[];
 
   volumes?: VolumeSpec[];
 

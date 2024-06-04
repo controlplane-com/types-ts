@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Struct, TransportSocket, ConfigSource, Duration, UInt32, Locality, Address, AdditionalAddress, HealthStatus, FractionalPercent, HealthCheck, RoutingPriority, Percent, UpstreamHttpProtocolOptions, HttpProtocolOptions, Http1ProtocolOptions, Http2ProtocolOptions, TimeInterval, DnsResolutionConfig, TypedExtensionConfig, BindConfig, UInt64, RuntimeDouble, HealthStatusSet, TcpKeepalive, ExtensionConfigSource } from './envoyCommon';
+import { Struct } from './envoyCommon';
 
 export interface Metadata {
   filter_metadata?: {
@@ -18,364 +18,108 @@ export interface Metadata {
 export interface Cluster {
   name: string;
 
-  transport_socket_matches?: {
-  name: string;
+  excludedWorkloads?: string[];
 
-  match?: Struct;
+  transport_socket_matches?: any;
 
-  transport_socket?: TransportSocket;
-
-}[];
-
-  alt_stat_name?: string;
+  alt_stat_name?: any;
 
   type?: 'STATIC' | 'STRICT_DNS' | 'LOGICAL_DNS' | 'EDS' | 'ORIGINAL_DST';
 
-  cluster_type?: {
-  name: string;
+  cluster_type?: any;
 
-  typed_config?: any;
+  eds_cluster_config?: any;
 
-};
+  connect_timeout?: any;
 
-  eds_cluster_config?: {
-  eds_config?: ConfigSource;
+  per_connection_buffer_limit_bytes?: any;
 
-  service_name?: string;
-
-};
-
-  connect_timeout?: Duration;
-
-  per_connection_buffer_limit_bytes?: UInt32;
-
-  lb_policy?: 'ROUND_ROBIN' | 'LEAST_REQUEST' | 'RING_HASH' | 'RANDOM' | 'MAGLEV' | 'CLUSTER_PROVIDED' | 'LOAD_BALANCING_POLICY_CONFIG';
+  lb_policy?: any;
 
   load_assignment?: {
   cluster_name: string;
 
-  endpoints?: {
-  locality?: Locality;
+  endpoints?: any;
 
-  lb_endpoints?: {
-  endpoint?: {
-  address?: Address;
-
-  health_check_config?: {
-  port_value?: number;
-
-  hostname?: string;
-
-  address?: Address;
-
-  disable_active_health_check?: boolean;
+  policy?: any;
 
 };
 
-  hostname?: string;
+  health_checks?: any;
 
-  additional_addresses?: AdditionalAddress[];
+  max_requests_per_connection?: any;
 
-};
+  circuit_breakers?: any;
 
-  health_status?: HealthStatus;
+  upstream_http_protocol_options?: any;
 
-  metadata?: Metadata;
+  common_http_protocol_options?: any;
 
-  load_balancing_weight?: number;
+  http_protocol_options?: any;
 
-}[];
+  http2_protocol_options?: any;
 
-  load_balancing_weight?: number;
+  typed_extension_protocol_options?: any;
 
-  priority?: UInt32;
+  dns_refresh_rate?: any;
 
-}[];
+  dns_failure_refresh_rate?: any;
 
-  policy?: {
-  drop_overloads?: {
-  category: string;
+  respect_dns_ttl?: any;
 
-  drop_percentage?: FractionalPercent;
+  dns_lookup_family?: any;
 
-}[];
+  dns_resolvers?: any;
 
-  overprovisioning_factor?: UInt32;
+  use_tcp_for_dns_lookups?: any;
 
-  endpoint_stale_after?: Duration;
+  dns_resolution_config?: any;
 
-  weighted_priority_health?: boolean;
+  typed_dns_resolver_config?: any;
 
-};
+  wait_for_warm_on_init?: any;
 
-};
+  outlier_detection?: any;
 
-  health_checks?: HealthCheck[];
+  cleanup_interval?: any;
 
-  max_requests_per_connection?: UInt32;
+  upstream_bind_config?: any;
 
-  circuit_breakers?: {
-  thresholds?: {
-  priority?: RoutingPriority;
+  lb_subset_config?: any;
 
-  max_connections?: UInt32;
+  ring_hash_lb_config?: any;
 
-  max_pending_requests?: UInt32;
+  maglev_lb_config?: any;
 
-  max_requests?: UInt32;
+  least_request_lb_config?: any;
 
-  retry_budget?: {
-  budget_percent?: Percent;
+  common_lb_config?: any;
 
-  min_retry_concurrency?: UInt32;
+  transport_socket?: any;
 
-};
+  metadata?: any;
 
-  track_remaining?: boolean;
+  protocol_selection?: any;
 
-  max_connection_pools?: UInt32;
+  upstream_connection_options?: any;
 
-}[];
+  close_connections_on_host_health_failure?: any;
 
-  per_host_thresholds?: {
-  priority?: RoutingPriority;
+  ignore_health_on_host_removal?: any;
 
-  max_connections?: UInt32;
+  filters?: any;
 
-  max_pending_requests?: UInt32;
+  load_balancing_policy?: any;
 
-  max_requests?: UInt32;
+  track_timeout_budgets?: any;
 
-  retry_budget?: {
-  budget_percent?: Percent;
+  upstream_config?: any;
 
-  min_retry_concurrency?: UInt32;
+  track_cluster_stats?: any;
 
-};
+  preconnect_policy?: any;
 
-  track_remaining?: boolean;
-
-  max_connection_pools?: UInt32;
-
-}[];
-
-};
-
-  upstream_http_protocol_options?: UpstreamHttpProtocolOptions;
-
-  common_http_protocol_options?: HttpProtocolOptions;
-
-  http_protocol_options?: Http1ProtocolOptions;
-
-  http2_protocol_options?: Http2ProtocolOptions;
-
-  typed_extension_protocol_options?: {
-  [x: string]: any;
-
-}[];
-
-  dns_refresh_rate?: Duration;
-
-  dns_failure_refresh_rate?: TimeInterval;
-
-  respect_dns_ttl?: boolean;
-
-  dns_lookup_family?: 'AUTO' | 'V4_ONLY' | 'V6_ONLY' | 'V4_PREFERRED' | 'ALL';
-
-  dns_resolvers?: Address[];
-
-  use_tcp_for_dns_lookups?: boolean;
-
-  dns_resolution_config?: DnsResolutionConfig;
-
-  typed_dns_resolver_config?: TypedExtensionConfig;
-
-  wait_for_warm_on_init?: boolean;
-
-  outlier_detection?: {
-  consecutive_5xx?: UInt32;
-
-  interval?: Duration;
-
-  base_ejection_time?: Duration;
-
-  max_ejection_percent?: UInt32;
-
-  enforcing_consecutive5xx?: UInt32;
-
-  enforcing_success_rate?: UInt32;
-
-  success_rate_minimum_hosts?: UInt32;
-
-  success_rate_request_volume?: UInt32;
-
-  success_rate_stdev_factor?: UInt32;
-
-  consecutive_gateway_failure?: UInt32;
-
-  enforcing_consecutive_gateway_failure?: UInt32;
-
-  split_external_local_origin_errors?: boolean;
-
-  consecutive_local_origin_failure?: UInt32;
-
-  enforcing_consecutive_local_origin_failure?: UInt32;
-
-  enforcing_local_origin_success_rate?: UInt32;
-
-  failure_percentage_threshold?: UInt32;
-
-  enforcing_failure_percentage?: UInt32;
-
-  enforcing_failure_percentage_local_origin?: UInt32;
-
-  failure_percentage_minimum_hosts?: UInt32;
-
-  failure_percentage_request_volume?: UInt32;
-
-  max_ejection_time?: Duration;
-
-  max_ejection_time_jitter?: Duration;
-
-  successful_active_health_check_uneject_host?: boolean;
-
-};
-
-  cleanup_interval?: Duration;
-
-  upstream_bind_config?: BindConfig;
-
-  lb_subset_config?: {
-  fallback_policy?: 'NO_FALLBACK' | 'ANY_ENDPOINT' | 'DEFAULT_SUBSET';
-
-  default_subset?: Struct;
-
-  locality_weight_aware?: boolean;
-
-  scale_locality_weight?: boolean;
-
-  panic_mode_any?: boolean;
-
-  list_as_any?: boolean;
-
-  metadata_fallback_policy?: 'METADATA_NO_FALLBACK' | 'FALLBACK_LIST';
-
-};
-
-  ring_hash_lb_config?: {
-  minimum_ring_size?: UInt64;
-
-  hash_function?: 'XX_HASH' | 'MURMUR_HASH_2';
-
-  maximum_ring_size?: UInt64;
-
-};
-
-  maglev_lb_config?: {
-  table_size?: UInt64;
-
-};
-
-  least_request_lb_config?: {
-  choice_count?: UInt64;
-
-  active_request_bias?: RuntimeDouble;
-
-  slow_start_config?: {
-  slow_start_window?: Duration;
-
-  aggression?: RuntimeDouble;
-
-  min_weight_percent?: Percent;
-
-};
-
-};
-
-  common_lb_config?: {
-  healthy_panic_threshold?: Percent;
-
-  zone_aware_lb_config?: {
-  routing_enabled?: Percent;
-
-  min_cluster_size?: UInt64;
-
-  fail_traffic_on_panic?: boolean;
-
-};
-
-  update_merge_window?: Duration;
-
-  ignore_new_hosts_until_first_hc?: boolean;
-
-  close_connections_on_host_set_change?: boolean;
-
-  consistent_hashing_lb_config?: {
-  use_hostname_for_hashing?: boolean;
-
-  hash_balance_factor?: UInt32;
-
-};
-
-  override_host_status?: HealthStatusSet;
-
-};
-
-  transport_socket?: TransportSocket;
-
-  metadata?: Metadata;
-
-  protocol_selection?: 'USE_CONFIGURED_PROTOCOL' | 'USE_DOWNSTREAM_PROTOCOL';
-
-  upstream_connection_options?: {
-  tcp_keepalive?: TcpKeepalive;
-
-  set_local_interface_name_on_upstream_connections?: boolean;
-
-};
-
-  close_connections_on_host_health_failure?: boolean;
-
-  ignore_health_on_host_removal?: boolean;
-
-  filters?: {
-  name: string;
-
-  typed_config?: any;
-
-  config_discovery?: ExtensionConfigSource;
-
-}[];
-
-  load_balancing_policy?: {
-  policies?: {
-  typed_extension_config?: TypedExtensionConfig;
-
-}[];
-
-};
-
-  track_timeout_budgets?: boolean;
-
-  upstream_config?: TypedExtensionConfig;
-
-  track_cluster_stats?: {
-  timeout_budgets?: boolean;
-
-  request_response_sizes?: boolean;
-
-  per_endpoint_stats?: boolean;
-
-};
-
-  preconnect_policy?: {
-  per_upstream_preconnect_ratio?: number;
-
-  predictive_preconnect_ratio?: number;
-
-};
-
-  connection_pool_per_downstream_connection?: boolean;
+  connection_pool_per_downstream_connection?: any;
 
 }
 
