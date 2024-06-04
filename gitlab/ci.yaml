@@ -1,4 +1,4 @@
-image: gcr.io/controlplane/toolchain:1447-e9339cbf0
+image: gcr.io/controlplane/toolchain:1162964078-361b9fed
 
 variables:
   npm_config_unsafe_perm: "true"
