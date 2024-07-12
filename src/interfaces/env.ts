@@ -8,8 +8,6 @@ export interface EnvVar {
 
   value?: string;
 
-  fieldRef?: 'metadata.name' | 'metadata.namespace' | 'spec.nodeName' | 'status.hostIP' | 'status.podIP' | 'status.podIPs';
-
 }
 
 export type EnvCollection = EnvVar[];

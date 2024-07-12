@@ -21,6 +21,8 @@ export interface Discovery {
 
   tracing?: string;
 
+  byok?: string;
+
   metering?: string;
 
   "billing-ng"?: string;

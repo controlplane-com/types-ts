@@ -92,7 +92,14 @@ export interface OrgSpec {
 
   authConfig?: AuthConfig;
 
-  observability?: ObservabilityConfig;
+  observability?: {
+  logsRetentionDays?: number;
+
+  metricsRetentionDays?: number;
+
+  tracesRetentionDays?: number;
+
+};
 
   security?: {
   threatDetection?: ThreatDetection;

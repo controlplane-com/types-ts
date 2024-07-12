@@ -57,6 +57,11 @@ export interface CloudWatchLogging {
 
   streamName: string;
 
+  extractFields?: {
+  [x: string]: string;
+
+};
+
 }
 
 export interface CoralogixLogging {
