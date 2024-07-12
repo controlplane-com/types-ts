@@ -94,6 +94,13 @@ export interface AzureIdentity {
 export interface Status {
   objectName?: string;
 
+  aws?: {
+  lastError?: string;
+
+  usable?: boolean;
+
+};
+
 }
 
 export interface NetworkResource {

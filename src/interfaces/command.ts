@@ -161,7 +161,7 @@ export interface ExpandVolumeStatus {
 
   messages?: string[];
 
-  stage: 'expand-volume' | 'await-replica-termination' | 'update-volume-set' | 'cleanup-k8s' | 'revert';
+  stage: 'expand-volume' | 'await-replica-termination' | 'await-expansion-completed' | 'update-volume-set' | 'recreate-replica' | 'cleanup-k8s' | 'revert';
 
   replicaRestartedAt?: Date;
 
