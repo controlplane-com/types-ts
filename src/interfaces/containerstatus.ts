@@ -23,5 +23,16 @@ export interface ContainerStatus {
 
   message?: string;
 
+  restarts?: {
+  lastRestartTime?: Date;
+
+  exitCode?: number;
+
+  reason?: string;
+
+  count?: number;
+
+};
+
 }
 

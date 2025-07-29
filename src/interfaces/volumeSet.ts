@@ -2,6 +2,26 @@
 
 import { Name, Kind, Tags, Links } from './base';
 
+export interface FileSystem {
+  name: string;
+
+  accessMode: string;
+
+  commandsSupported?: string[];
+
+}
+
+export interface PerformanceClass {
+  name: string;
+
+  minCapacity: number;
+
+  maxCapacity: number;
+
+  featuresSupported?: ('automatic-expansion' | 'snapshots')[];
+
+}
+
 export interface VolumeSnapshot {
   name: string;
 
@@ -25,6 +45,10 @@ export interface PersistentVolumeStatus {
 
   storageDeviceId?: string;
 
+  oldStorageDeviceIds?: string[];
+
+  resourceName?: string;
+
   index: number;
 
   currentSize: number;
@@ -44,6 +68,8 @@ export interface PersistentVolumeStatus {
 
 };
 
+  zone?: string;
+
 }
 
 export interface VolumeSetStatusLocation {
@@ -62,6 +88,8 @@ export interface VolumeSetStatus {
 
   usedByWorkload?: string;
 
+  workloadLinks?: string[];
+
   bindingId?: string;
 
   locations?: VolumeSetStatusLocation[];
@@ -77,14 +105,29 @@ export interface SnapshotSpec {
 
 }
 
+export type PerformanceClassName = 'general-purpose-ssd' | 'high-throughput-ssd' | 'shared';
+
+export type FileSystemType = 'ext4' | 'xfs' | 'shared';
+
+export interface MountResources {
+  maxCpu?: string;
+
+  minCpu?: string;
+
+  minMemory?: string;
+
+  maxMemory?: string;
+
+}
+
 export interface VolumeSetSpec {
   initialCapacity: number;
 
-  performanceClass: 'general-purpose-ssd' | 'high-throughput-ssd';
+  performanceClass?: PerformanceClassName;
 
   storageClassSuffix?: string;
 
-  fileSystemType?: 'xfs' | 'ext4';
+  fileSystemType?: FileSystemType;
 
   snapshots?: SnapshotSpec;
 
@@ -94,6 +137,20 @@ export interface VolumeSetSpec {
   minFreePercentage?: number;
 
   scalingFactor?: number;
+
+};
+
+  mountOptions?: {
+  resources?: {
+  maxCpu?: string;
+
+  minCpu?: string;
+
+  minMemory?: string;
+
+  maxMemory?: string;
+
+};
 
 };
 
@@ -118,27 +175,7 @@ export interface VolumeSet {
 
   links?: Links;
 
-  spec: {
-  initialCapacity: number;
-
-  performanceClass: 'general-purpose-ssd' | 'high-throughput-ssd';
-
-  storageClassSuffix?: string;
-
-  fileSystemType?: 'xfs' | 'ext4';
-
-  snapshots?: SnapshotSpec;
-
-  autoscaling?: {
-  maxCapacity?: number;
-
-  minFreePercentage?: number;
-
-  scalingFactor?: number;
-
-};
-
-};
+  spec: VolumeSetSpec;
 
   status?: VolumeSetStatus;
 

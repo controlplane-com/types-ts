@@ -20,6 +20,13 @@ export interface Spec {
 
   terms?: Term[];
 
+  sort?: {
+  by: string;
+
+  order?: 'asc' | 'desc';
+
+};
+
 }
 
 export interface Query {

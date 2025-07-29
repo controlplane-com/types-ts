@@ -47,6 +47,16 @@ export interface MetricsAddonConfig {
 
 }
 
+export interface RegistryMirrorConfig {
+  mirrors?: ({
+  registry: string | '*';
+
+  mirrors?: string[];
+
+})[];
+
+}
+
 export interface MetricsAddonStatus {
   prometheusEndpoint?: string;
 
@@ -63,6 +73,14 @@ export interface LogsAddonConfig {
   includeNamespaces?: RegularExpression;
 
   excludeNamespaces?: RegularExpression;
+
+  docker?: boolean;
+
+  kubelet?: boolean;
+
+  kernel?: boolean;
+
+  events?: boolean;
 
 }
 

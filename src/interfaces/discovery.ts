@@ -31,6 +31,8 @@ export interface Discovery {
 
   "terraform-exporter"?: string;
 
+  "k8s-crd-exporter"?: string;
+
 };
 
   firebase?: {

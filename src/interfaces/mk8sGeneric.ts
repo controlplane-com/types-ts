@@ -19,6 +19,8 @@ export interface GenericProvider {
 
   podNetwork?: '10.42.0.0/16' | '172.16.0.0/15' | '172.18.0.0/15' | '172.20.0.0/15' | '172.22.0.0/15' | '172.24.0.0/15' | '172.26.0.0/15' | '172.28.0.0/15' | '172.30.0.0/15';
 
+  dnsForwarder?: string;
+
 };
 
   nodePools?: GenericPool[];

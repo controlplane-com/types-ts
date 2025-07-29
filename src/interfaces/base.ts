@@ -5,7 +5,7 @@ export type LocalLink = string;
 
 export type ImageLink = string;
 
-export type Kind = 'org' | 'cloudaccount' | 'policy' | 'user' | 'group' | 'resource' | 'task' | 'permissions' | 'serviceaccount' | 'secret' | 'location' | 'gvc' | 'workload' | 'quota' | 'identity' | 'deployment' | 'event' | 'domain' | 'image' | 'resourcepolicy' | 'agent' | 'accessreport' | 'policymembership' | 'dbcluster' | 'auditctx' | 'memcachecluster' | 'spicedbcluster' | 'tenant' | 'mk8s' | 'command' | 'imagesummary' | 'volumeset';
+export type Kind = 'org' | 'cloudaccount' | 'policy' | 'user' | 'group' | 'resource' | 'task' | 'permissions' | 'serviceaccount' | 'secret' | 'location' | 'gvc' | 'workload' | 'quota' | 'identity' | 'deployment' | 'event' | 'domain' | 'image' | 'ipset' | 'resourcepolicy' | 'agent' | 'accessreport' | 'policymembership' | 'dbcluster' | 'auditctx' | 'memcachecluster' | 'spicedbcluster' | 'tenant' | 'mk8s' | 'command' | 'imagesummary' | 'volumeset';
 
 export type CloudProvider = 'aws' | 'gcp' | 'azure' | 'ngs';
 
@@ -49,13 +49,15 @@ export interface Base {
 export interface List {
   kind?: 'list';
 
-  itemKind?: 'org' | 'cloudaccount' | 'policy' | 'user' | 'group' | 'resource' | 'task' | 'permissions' | 'serviceaccount' | 'secret' | 'location' | 'gvc' | 'workload' | 'quota' | 'identity' | 'deployment' | 'event' | 'account' | 'domain' | 'image' | 'resourcepolicy' | 'accessreport' | 'agent' | 'auditctx' | 'dbcluster' | 'memcachecluster' | 'spicedbcluster' | 'tenant' | 'mk8s' | 'command' | 'policymembership' | 'primitive' | 'foreign' | 'link' | 'imagesummary' | 'volumeset';
+  itemKind?: 'org' | 'cloudaccount' | 'policy' | 'user' | 'group' | 'resource' | 'task' | 'permissions' | 'serviceaccount' | 'secret' | 'location' | 'gvc' | 'workload' | 'quota' | 'identity' | 'deployment' | 'event' | 'account' | 'domain' | 'image' | 'ipset' | 'resourcepolicy' | 'accessreport' | 'agent' | 'auditctx' | 'dbcluster' | 'memcachecluster' | 'spicedbcluster' | 'tenant' | 'mk8s' | 'command' | 'policymembership' | 'primitive' | 'foreign' | 'link' | 'imagesummary' | 'volumeset';
 
   items: any[];
 
   links: Link[];
 
 }
+
+export type Regex = string;
 
 export interface ApiError {
   status?: number;
@@ -67,6 +69,11 @@ export interface ApiError {
   details?: any;
 
   id?: string;
+
+}
+
+export interface MultiZoneOptions {
+  enabled?: boolean;
 
 }
 

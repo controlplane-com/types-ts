@@ -24,7 +24,7 @@ export type NodePoolName = string;
 export type SshPublicKey = string;
 
 export interface AutoscalerConfig {
-  expander: ('random' | 'most-pods' | 'least-waste' | 'price' | 'priority')[];
+  expander: ('random' | 'most-pods' | 'least-waste' | 'price')[];
 
   unneededTime: string;
 
@@ -44,4 +44,48 @@ export interface UnmanagedPool {
 }
 
 export type PreInstallScript = string;
+
+export interface CacertsRes {
+  cacerts?: string;
+
+}
+
+export interface ReadyRes {
+  ready?: boolean;
+
+  message?: string;
+
+}
+
+export interface JoinBody {
+  [x: string]: any;
+
+}
+
+export interface JoinRes {
+  script?: string;
+
+}
+
+export interface InitBody {
+  [x: string]: any;
+
+}
+
+export interface InitRes {
+  script?: string;
+
+}
+
+export interface KubeConfigBody {
+  [x: string]: any;
+
+}
+
+export interface KubeConfigRes {
+  kubeconfig?: string;
+
+  fileName?: string;
+
+}
 

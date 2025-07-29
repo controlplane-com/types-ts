@@ -243,6 +243,8 @@ export interface RouteMatch {
 export interface RouteMatchRestricted {
   prefix?: string;
 
+  headers?: HeaderMatcher[];
+
 }
 
 export interface ListStringMatcher {
@@ -501,12 +503,12 @@ export interface BindConfig {
 export interface TransportSocket {
   name: string;
 
-  typed_config?: any;
+  typed_config?: {
+  "@type"?: 'type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext';
 
-}
+  sni?: string;
 
-export interface TransportSocketRestricted {
-  name: string;
+};
 
 }
 

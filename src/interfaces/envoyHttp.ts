@@ -230,7 +230,7 @@ export interface ExtAuthz {
 
   path_prefix?: string;
 
-  authroization_request?: {
+  authorization_request?: {
   allowed_headers?: ListStringMatcher;
 
   headers_to_add?: HeaderValue[];

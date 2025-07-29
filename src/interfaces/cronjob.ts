@@ -3,9 +3,9 @@
 import { ContainerStatus } from './containerstatus';
 
 export interface JobExecutionCondition {
-  status?: 'True' | 'False' | 'Unknown';
+  status?: string;
 
-  type: 'Complete' | 'Failed' | 'Suspended';
+  type: string;
 
   lastDetectionTime?: Date;
 
@@ -29,6 +29,8 @@ export interface JobExecutionStatus {
   conditions?: JobExecutionCondition[];
 
   name: string;
+
+  replica?: string;
 
   containers?: {
   [x: string]: ContainerStatus;

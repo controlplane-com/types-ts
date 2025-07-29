@@ -28,6 +28,15 @@ export interface HetznerPool {
 
 }
 
+export interface NetworkingConfig {
+  serviceNetwork?: '10.43.0.0/16' | '192.168.0.0/16';
+
+  podNetwork?: '10.42.0.0/16' | '172.16.0.0/15' | '172.18.0.0/15' | '172.20.0.0/15' | '172.22.0.0/15' | '172.24.0.0/15' | '172.26.0.0/15' | '172.28.0.0/15' | '172.30.0.0/15';
+
+  dnsForwarder?: string;
+
+}
+
 export interface HetznerProvider {
   region: 'fsn1' | 'nbg1' | 'hel1' | 'ash' | 'hil';
 
@@ -36,12 +45,7 @@ export interface HetznerProvider {
 
 };
 
-  networking?: {
-  serviceNetwork?: '10.43.0.0/16' | '192.168.0.0/16';
-
-  podNetwork?: '10.42.0.0/16' | '172.16.0.0/15' | '172.18.0.0/15' | '172.20.0.0/15' | '172.22.0.0/15' | '172.24.0.0/15' | '172.26.0.0/15' | '172.28.0.0/15' | '172.30.0.0/15';
-
-};
+  networking?: NetworkingConfig;
 
   preInstallScript?: PreInstallScript;
 
@@ -60,6 +64,11 @@ export interface HetznerProvider {
   sshKey?: string;
 
   autoscaler?: AutoscalerConfig;
+
+  floatingIPSelector?: {
+  [x: string]: string;
+
+};
 
 }
 
