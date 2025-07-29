@@ -25,6 +25,8 @@ export interface GvcSpec {
 
   domain?: string;
 
+  endpointNamingFormat?: 'default' | 'org';
+
   tracing?: Tracing;
 
   sidecar?: {
@@ -37,7 +39,24 @@ export interface GvcSpec {
   loadBalancer?: {
   dedicated?: boolean;
 
+  multiZone?: {
+  enabled?: boolean;
+
+};
+
   trustedProxies?: number;
+
+  redirect?: {
+  class?: {
+  status5xx?: string;
+
+  status401?: string;
+
+};
+
+};
+
+  ipSet?: string;
 
 };
 
@@ -95,6 +114,13 @@ export interface GvcConfig {
 };
 
   thinProvision?: number;
+
+  largeDiskSize?: string;
+
+  capacityAI?: {
+  memToCpuRatio?: number;
+
+};
 
 }
 

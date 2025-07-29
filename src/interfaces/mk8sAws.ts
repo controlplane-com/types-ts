@@ -2,8 +2,19 @@
 
 import { Labels, Taints, AutoscalerConfig } from './mk8sCommon';
 
+export type PolicyArn = string;
+
+export interface AssumeRoleLink {
+  roleArn: string;
+
+  externalId?: string;
+
+  sessionNamePrefix?: string;
+
+}
+
 export interface Ami {
-  recommended?: 'ubuntu/jammy-22.04' | 'ubuntu/jammy-22.04+nvidia' | 'ubuntu/focal-20.04' | 'ubuntu/focal-20.04+nvidia' | 'ubuntu/bionic-18.04' | 'amazon/amzn2' | 'amazon/al2023';
+  recommended?: 'ubuntu/jammy-22.04' | 'ubuntu/jammy-22.04+nvidia' | 'ubuntu/focal-20.04' | 'ubuntu/focal-20.04+nvidia' | 'ubuntu/noble-24.04' | 'ubuntu/noble-24.04+nvidia' | 'ubuntu/bionic-18.04' | 'amazon/amzn2' | 'amazon/al2023';
 
   exact?: string;
 
@@ -53,18 +64,22 @@ export interface AwsProvider {
 
   podNetwork?: 'vpc' | '10.42.0.0/16' | '172.16.0.0/15' | '172.18.0.0/15' | '172.20.0.0/15' | '172.22.0.0/15' | '172.24.0.0/15' | '172.26.0.0/15' | '172.28.0.0/15' | '172.30.0.0/15';
 
+  dnsForwarder?: string;
+
 };
 
   preInstallScript?: string;
 
   image: {
-  recommended?: 'ubuntu/jammy-22.04' | 'ubuntu/jammy-22.04+nvidia' | 'ubuntu/focal-20.04' | 'ubuntu/focal-20.04+nvidia' | 'ubuntu/bionic-18.04' | 'amazon/amzn2' | 'amazon/al2023';
+  recommended?: 'ubuntu/jammy-22.04' | 'ubuntu/jammy-22.04+nvidia' | 'ubuntu/focal-20.04' | 'ubuntu/focal-20.04+nvidia' | 'ubuntu/noble-24.04' | 'ubuntu/noble-24.04+nvidia' | 'ubuntu/bionic-18.04' | 'amazon/amzn2' | 'amazon/al2023';
 
   exact?: string;
 
 };
 
   deployRoleArn: string;
+
+  deployRoleChain?: AssumeRoleLink[];
 
   vpcId: string;
 
@@ -73,6 +88,8 @@ export interface AwsProvider {
   diskEncryptionKeyArn?: string;
 
   securityGroupIds?: string[];
+
+  extraNodePolicies?: PolicyArn[];
 
   nodePools?: AwsPool[];
 

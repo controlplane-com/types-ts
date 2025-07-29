@@ -101,6 +101,20 @@ export interface Status {
 
 };
 
+  gcp?: {
+  lastError?: string;
+
+  usable?: boolean;
+
+};
+
+  azure?: {
+  lastError?: string;
+
+  usable?: boolean;
+
+};
+
 }
 
 export interface NetworkResource {
@@ -188,7 +202,7 @@ export interface Identity {
 
   status?: Status;
 
-  gvc?: any;
+  gvc?: string;
 
 }
 

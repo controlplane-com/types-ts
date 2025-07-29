@@ -3,9 +3,9 @@
 import { Port } from './port';
 import { EnvVar } from './env';
 import { VolumeSpec } from './volumeSpec';
+import { Regex, Kind, Tags, Links } from './base';
 import { DefaultOptions, LocalOptions } from './workloadOptions';
 import { EnvoyFilters } from './envoy';
-import { Kind, Tags, Links } from './base';
 
 export type Memory = string;
 
@@ -64,6 +64,21 @@ export interface RolloutOptions {
 
   scalingPolicy?: 'OrderedReady' | 'Parallel';
 
+  terminationGracePeriodSeconds?: number;
+
+}
+
+export interface RolloutOptionsStateful {
+  minReadySeconds?: number;
+
+  maxSurgeReplicas?: string;
+
+  scalingPolicy?: 'OrderedReady' | 'Parallel';
+
+  terminationGracePeriodSeconds?: number;
+
+  maxUnavailableReplicas?: string;
+
 }
 
 export interface SecurityOptions {
@@ -72,8 +87,17 @@ export interface SecurityOptions {
 }
 
 export interface GpuResource {
-  nvidia: {
+  nvidia?: {
   model?: any;
+
+  quantity?: number;
+
+};
+
+  custom?: {
+  resource: string;
+
+  runtimeClass?: string;
 
   quantity?: number;
 
@@ -203,8 +227,17 @@ export interface ContainerSpec {
   env?: EnvVar[];
 
   gpu?: {
-  nvidia: {
+  nvidia?: {
   model?: any;
+
+  quantity?: number;
+
+};
+
+  custom?: {
+  resource: string;
+
+  runtimeClass?: string;
 
   quantity?: number;
 
@@ -258,6 +291,13 @@ export interface HealthCheckStatus {
 
 }
 
+export interface LoadBalancerStatus {
+  origin?: string;
+
+  url?: string;
+
+}
+
 export interface ResolvedImage {
   digest?: string;
 
@@ -284,6 +324,8 @@ export interface ResolvedImages {
 
   errorMessages?: string[];
 
+  nextRetryAt?: Date;
+
   images?: ResolvedImage[];
 
 }
@@ -303,13 +345,26 @@ export interface WorkloadStatus {
 
   resolvedImages?: ResolvedImages;
 
+  loadBalancer?: LoadBalancerStatus[];
+
   [x: string]: any;
+
+}
+
+export interface HeaderFilter {
+  key: string;
+
+  allowedValues?: Regex[];
+
+  blockedValues?: Regex[];
 
 }
 
 export interface FirewallSpec {
   external?: {
   inboundAllowCIDR?: string[];
+
+  inboundBlockedCIDR?: string[];
 
   outboundAllowHostname?: string[];
 
@@ -321,6 +376,13 @@ export interface FirewallSpec {
 })[];
 
   outboundAllowCIDR?: string[];
+
+  outboundBlockedCIDR?: string[];
+
+  http?: {
+  inboundHeaderFilter?: HeaderFilter[];
+
+};
 
 };
 
@@ -348,16 +410,77 @@ export interface JobSpec {
 
 }
 
+export interface LoadBalancerPort {
+  externalPort: number;
+
+  protocol: 'TCP' | 'UDP';
+
+  scheme?: 'http' | 'tcp' | 'https' | 'ws' | 'wss';
+
+  containerPort?: number;
+
+}
+
+export interface LoadBalancerSpec {
+  direct?: {
+  enabled: boolean;
+
+  ports?: LoadBalancerPort[];
+
+  ipSet?: string;
+
+};
+
+  geoLocation?: {
+  enabled?: boolean;
+
+  headers?: {
+  asn?: string;
+
+  city?: string;
+
+  country?: string;
+
+  region?: string;
+
+};
+
+};
+
+  replicaDirect?: boolean;
+
+}
+
+export interface Extras {
+  affinity?: any;
+
+  tolerations?: any[];
+
+  topologySpreadConstraints?: any[];
+
+}
+
+export interface RequestRetryPolicy {
+  attempts?: number;
+
+  retryOn?: string[];
+
+}
+
+export type WorkloadType = 'serverless' | 'standard' | 'cron' | 'stateful';
+
 export interface WorkloadSpec {
-  type?: 'serverless' | 'standard' | 'cron' | 'stateful';
+  type?: WorkloadType;
 
   identityLink?: string;
 
-  containers?: ContainerSpec[];
+  containers: ContainerSpec[];
 
   firewallConfig?: {
   external?: {
   inboundAllowCIDR?: string[];
+
+  inboundBlockedCIDR?: string[];
 
   outboundAllowHostname?: string[];
 
@@ -369,6 +492,13 @@ export interface WorkloadSpec {
 })[];
 
   outboundAllowCIDR?: string[];
+
+  outboundBlockedCIDR?: string[];
+
+  http?: {
+  inboundHeaderFilter?: HeaderFilter[];
+
+};
 
 };
 
@@ -405,19 +535,56 @@ export interface WorkloadSpec {
 
   supportDynamicTags?: boolean;
 
-  rolloutOptions?: {
-  minReadySeconds?: number;
-
-  maxUnavailableReplicas?: string;
-
-  maxSurgeReplicas?: string;
-
-  scalingPolicy?: 'OrderedReady' | 'Parallel';
-
-};
+  rolloutOptions?: any;
 
   securityOptions?: {
   filesystemGroupId?: number;
+
+};
+
+  loadBalancer?: {
+  direct?: {
+  enabled: boolean;
+
+  ports?: LoadBalancerPort[];
+
+  ipSet?: string;
+
+};
+
+  geoLocation?: {
+  enabled?: boolean;
+
+  headers?: {
+  asn?: string;
+
+  city?: string;
+
+  country?: string;
+
+  region?: string;
+
+};
+
+};
+
+  replicaDirect?: boolean;
+
+};
+
+  extras?: {
+  affinity?: any;
+
+  tolerations?: any[];
+
+  topologySpreadConstraints?: any[];
+
+};
+
+  requestRetryPolicy?: {
+  attempts?: number;
+
+  retryOn?: string[];
 
 };
 
@@ -442,9 +609,128 @@ export interface Workload {
 
   name?: string;
 
-  gvc?: any;
+  gvc?: string;
 
-  spec?: WorkloadSpec;
+  spec: {
+  type?: WorkloadType;
+
+  identityLink?: string;
+
+  containers: ContainerSpec[];
+
+  firewallConfig?: {
+  external?: {
+  inboundAllowCIDR?: string[];
+
+  inboundBlockedCIDR?: string[];
+
+  outboundAllowHostname?: string[];
+
+  outboundAllowPort?: ({
+  protocol: 'http' | 'https' | 'tcp';
+
+  number: number;
+
+})[];
+
+  outboundAllowCIDR?: string[];
+
+  outboundBlockedCIDR?: string[];
+
+  http?: {
+  inboundHeaderFilter?: HeaderFilter[];
+
+};
+
+};
+
+  internal?: {
+  inboundAllowType?: 'none' | 'same-gvc' | 'same-org' | 'workload-list';
+
+  inboundAllowWorkload?: string[];
+
+};
+
+};
+
+  defaultOptions?: DefaultOptions;
+
+  localOptions?: LocalOptions;
+
+  job?: {
+  schedule: ScheduleType;
+
+  concurrencyPolicy?: 'Forbid' | 'Replace';
+
+  historyLimit?: number;
+
+  restartPolicy?: 'OnFailure' | 'Never';
+
+  activeDeadlineSeconds?: number;
+
+};
+
+  sidecar?: {
+  envoy?: EnvoyFilters;
+
+};
+
+  supportDynamicTags?: boolean;
+
+  rolloutOptions?: any;
+
+  securityOptions?: {
+  filesystemGroupId?: number;
+
+};
+
+  loadBalancer?: {
+  direct?: {
+  enabled: boolean;
+
+  ports?: LoadBalancerPort[];
+
+  ipSet?: string;
+
+};
+
+  geoLocation?: {
+  enabled?: boolean;
+
+  headers?: {
+  asn?: string;
+
+  city?: string;
+
+  country?: string;
+
+  region?: string;
+
+};
+
+};
+
+  replicaDirect?: boolean;
+
+};
+
+  extras?: {
+  affinity?: any;
+
+  tolerations?: any[];
+
+  topologySpreadConstraints?: any[];
+
+};
+
+  requestRetryPolicy?: {
+  attempts?: number;
+
+  retryOn?: string[];
+
+};
+
+};
 
   status?: WorkloadStatus;
 

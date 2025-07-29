@@ -4,7 +4,7 @@
 export interface EventContext {
   category?: string;
 
-  component?: 'actuator' | 'dns-updater' | 'scheduler' | 'iam-broker' | 'metadata-proxy';
+  component?: 'actuator' | 'dns-updater' | 'scheduler' | 'iam-broker' | 'metadata-proxy' | 'data-service';
 
   cloudProvider?: 'aws' | 'gcp' | 'azure' | 'linode' | 'byok';
 
@@ -32,7 +32,7 @@ export interface Event {
   context?: {
   category?: string;
 
-  component?: 'actuator' | 'dns-updater' | 'scheduler' | 'iam-broker' | 'metadata-proxy';
+  component?: 'actuator' | 'dns-updater' | 'scheduler' | 'iam-broker' | 'metadata-proxy' | 'data-service';
 
   cloudProvider?: 'aws' | 'gcp' | 'azure' | 'linode' | 'byok';
 

@@ -2,12 +2,14 @@
 
 import { S3Logging, CoralogixLogging, DatadogLogging, LogzioLogging, ElasticLogging, CloudWatchLogging, FluentdLogging, StackdriverLogging, SyslogLogging } from './orgLogging';
 import { Tracing } from './tracing';
-import { Name, Kind, Tags, Links } from './base';
+import { Kind, Tags, Links } from './base';
 
 export interface OrgStatus {
   accountLink?: string;
 
   active?: boolean;
+
+  endpointPrefix?: string;
 
 }
 
@@ -24,6 +26,8 @@ export interface ObservabilityConfig {
   metricsRetentionDays?: number;
 
   tracesRetentionDays?: number;
+
+  defaultAlertEmails?: string[];
 
 }
 
@@ -99,6 +103,8 @@ export interface OrgSpec {
 
   tracesRetentionDays?: number;
 
+  defaultAlertEmails?: string[];
+
 };
 
   security?: {
@@ -110,8 +116,6 @@ export interface OrgSpec {
 
 export interface Org {
   id?: string;
-
-  name?: Name;
 
   kind?: Kind;
 
@@ -126,6 +130,8 @@ export interface Org {
   lastModified?: Date;
 
   links?: Links;
+
+  name?: string;
 
   spec?: OrgSpec;
 

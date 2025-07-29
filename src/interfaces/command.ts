@@ -1,9 +1,9 @@
 /* auto-generated */
 
-import { Kind, Links, ImageLink, Name, Tags } from './base';
+import { Kind, Links, Tags, ImageLink, Name } from './base';
 import { EnvVar } from './env';
 import { Memory, Cpu } from './workload';
-import { VolumeSnapshot, SnapshotSpec, VolumeSetStatus } from './volumeSet';
+import { VolumeSnapshot, VolumeSetSpec, VolumeSetStatus } from './volumeSet';
 
 export type CommandLifecycleStage = 'pending' | 'running' | 'cancelled' | 'completed' | 'failed';
 
@@ -21,6 +21,8 @@ export interface Command {
   lastModified?: Date;
 
   links?: Links;
+
+  tags?: Tags;
 
   type: string;
 
@@ -65,6 +67,8 @@ export interface RunCronWorkloadSpec {
 export interface RunCronWorkloadStatus {
   replica?: string;
 
+  minimumWorkloadVersion?: number;
+
 }
 
 export interface StopReplicaSpec {
@@ -100,7 +104,7 @@ export interface RestoreVolumeSpec {
 }
 
 export interface ReplaceVolumeStatus {
-  stage: 'create-volume' | 'cleanup-after-volume-creation' | 'update-volume-set' | 'shutdown-replica' | 'await-replica-termination' | 'restart-replica' | 'cleanup-k8s' | 'cleanup-old-storage-device' | 'revert';
+  stage: 'create-volume' | 'cleanup-after-volume-creation' | 'update-volume-set' | 'configure-storage-resources' | 'remove-finalizer' | 'shutdown-replica' | 'await-replica-termination' | 'cleanup-k8s' | 'fail' | 'revert' | 'cleanup-old-storage-device' | 'restart-replica';
 
   messages?: string[];
 
@@ -111,6 +115,13 @@ export interface ReplaceVolumeStatus {
   storageDeviceIdToRemove?: string;
 
   newStorageDeviceId?: string;
+
+  newVolumeAttributes?: {
+  [x: string]: string;
+
+};
+
+  newResourceName?: string;
 
   nextVolumeSize?: number;
 
@@ -161,9 +172,11 @@ export interface ExpandVolumeStatus {
 
   messages?: string[];
 
-  stage: 'expand-volume' | 'await-replica-termination' | 'await-expansion-completed' | 'update-volume-set' | 'recreate-replica' | 'cleanup-k8s' | 'revert';
+  stage: 'expand-volume' | 'delete-stateful-set' | 'await-replica-termination' | 'await-expansion-completed' | 'update-volume-set' | 'recreate-replica' | 'cleanup-k8s' | 'revert';
 
   replicaRestartedAt?: Date;
+
+  lockNames?: string[];
 
 }
 
@@ -174,6 +187,19 @@ export interface DeleteVolumeSpec {
 
 }
 
+export interface DeleteVolumeStatus {
+  stage: 'update-volume-set' | 'delete-storage-resources' | 'shutdown-replica' | 'await-replica-termination' | 'fail' | 'cleanup-k8s';
+
+  clusterId?: string;
+
+  messages?: string[];
+
+  inUseByWorkloadId?: string;
+
+  storageDeviceIdToRemove?: string;
+
+}
+
 export interface SnapshotDeletionStatus {
   stage?: 'pending' | 'k8s-resources-created' | 'deleted';
 
@@ -181,13 +207,17 @@ export interface SnapshotDeletionStatus {
 
 }
 
-export interface DeleteVolumeStatus {
+export interface DeleteCloudDevicesStatus {
   clusterId?: string;
 
   volume: {
   lifecycle?: 'creating' | 'unused' | 'unbound' | 'bound' | 'deleted' | 'repairing';
 
   storageDeviceId?: string;
+
+  oldStorageDeviceIds?: string[];
+
+  resourceName?: string;
 
   index: number;
 
@@ -207,6 +237,8 @@ export interface DeleteVolumeStatus {
   [x: string]: string;
 
 };
+
+  zone?: string;
 
 };
 
@@ -296,27 +328,7 @@ export interface DeleteVolumeSetSpec {
 
   links?: Links;
 
-  spec: {
-  initialCapacity: number;
-
-  performanceClass: 'general-purpose-ssd' | 'high-throughput-ssd';
-
-  storageClassSuffix?: string;
-
-  fileSystemType?: 'xfs' | 'ext4';
-
-  snapshots?: SnapshotSpec;
-
-  autoscaling?: {
-  maxCapacity?: number;
-
-  minFreePercentage?: number;
-
-  scalingFactor?: number;
-
-};
-
-};
+  spec: VolumeSetSpec;
 
   status?: VolumeSetStatus;
 
@@ -327,10 +339,10 @@ export interface DeleteVolumeSetSpec {
 }
 
 export interface DeleteVolumeSetLocationStatus {
-  stage: 'delete-volumes' | 'delete-orphaned-volumes' | 'complete';
+  stage: 'delete-volumes' | 'delete-orphaned-volumes' | 'cleanup-filesystem' | 'complete';
 
   volumes?: {
-  [x: string]: DeleteVolumeStatus;
+  [x: string]: DeleteCloudDevicesStatus;
 
 };
 

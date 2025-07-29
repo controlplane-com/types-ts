@@ -22,6 +22,8 @@ export interface DeploymentVersion {
 
   message?: string;
 
+  zone?: string;
+
 }
 
 export interface DeploymentStatus {

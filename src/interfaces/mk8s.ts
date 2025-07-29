@@ -8,11 +8,14 @@ import { OblivusProvider } from './mk8sOblivus';
 import { LambdalabsProvider } from './mk8sLambdalabs';
 import { PaperspaceProvider } from './mk8sPaperspace';
 import { EphemeralProvider } from './mk8sEphemeral';
-import { NonCustomizableAddonConfig, AzureAddonConfig, MetricsAddonConfig, LogsAddonConfig, NvidiaAddonConfig, AwsEFSAddonConfig, AwsECRAddonConfig, AwsELBAddonConfig, AzureACRAddonConfig, DashboardAddonStatus, AwsWorkloadIdentityAddonStatus, MetricsAddonStatus, LogsAddonStatus, AwsTrustPolicyConfig } from './mk8sAddons';
+import { TritonProvider } from './mk8sTriton';
+import { AzureProvider } from './mk8sAzure';
+import { DigitalOceanProvider } from './mk8sDigitalOcean';
+import { NonCustomizableAddonConfig, AzureAddonConfig, MetricsAddonConfig, LogsAddonConfig, RegistryMirrorConfig, NvidiaAddonConfig, AwsEFSAddonConfig, AwsECRAddonConfig, AwsELBAddonConfig, AzureACRAddonConfig, DashboardAddonStatus, AwsWorkloadIdentityAddonStatus, MetricsAddonStatus, LogsAddonStatus, AwsTrustPolicyConfig } from './mk8sAddons';
 import { Name, Kind, Tags, Links } from './base';
 
 export interface Mk8sSpec {
-  version: '1.26.0' | '1.26.4' | '1.27.3' | '1.28.2' | '1.28.4';
+  version: '1.26.0' | '1.26.4' | '1.27.3' | '1.28.2' | '1.28.4' | '1.29.7' | '1.30.3' | '1.31.5' | '1.32.1';
 
   firewall?: {
   sourceCIDR: string;
@@ -38,6 +41,12 @@ export interface Mk8sSpec {
 
   ephemeral?: EphemeralProvider;
 
+  triton?: TritonProvider;
+
+  azure?: AzureProvider;
+
+  digitalocean?: DigitalOceanProvider;
+
 };
 
   addOns?: {
@@ -52,6 +61,8 @@ export interface Mk8sSpec {
   metrics?: MetricsAddonConfig;
 
   logs?: LogsAddonConfig;
+
+  registryMirror?: RegistryMirrorConfig;
 
   nvidia?: NvidiaAddonConfig;
 
@@ -115,7 +126,7 @@ export interface Mk8sCluster {
   links?: Links;
 
   spec: {
-  version: '1.26.0' | '1.26.4' | '1.27.3' | '1.28.2' | '1.28.4';
+  version: '1.26.0' | '1.26.4' | '1.27.3' | '1.28.2' | '1.28.4' | '1.29.7' | '1.30.3' | '1.31.5' | '1.32.1';
 
   firewall?: {
   sourceCIDR: string;
@@ -141,6 +152,12 @@ export interface Mk8sCluster {
 
   ephemeral?: EphemeralProvider;
 
+  triton?: TritonProvider;
+
+  azure?: AzureProvider;
+
+  digitalocean?: DigitalOceanProvider;
+
 };
 
   addOns?: {
@@ -155,6 +172,8 @@ export interface Mk8sCluster {
   metrics?: MetricsAddonConfig;
 
   logs?: LogsAddonConfig;
+
+  registryMirror?: RegistryMirrorConfig;
 
   nvidia?: NvidiaAddonConfig;
 
