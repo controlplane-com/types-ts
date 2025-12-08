@@ -3,29 +3,23 @@ name: Publish to NPM
 on:
   push:
     tags:
-      - 'v*'  # Triggers on version tags like v1.0.0, v2.1.3, etc.
-
+      - "v*" # Triggers on version tags like v1.0.0, v2.1.3, etc.
 jobs:
   build:
     name: Build Package
     runs-on: ubuntu-latest
-    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '16'
-          registry-url: 'https://registry.npmjs.org'
-      
+          node-version: "16"
+          registry-url: "https://registry.npmjs.org"
       - name: Install dependencies
         run: npm install
-      
       - name: Build package
         run: npm run build
-      
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -42,42 +36,28 @@ jobs:
     needs: build
     permissions:
       contents: read
-    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '16'
-          registry-url: 'https://registry.npmjs.org'
-      
+          node-version: "16"
+          registry-url: "https://registry.npmjs.org"
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts
-      
       - name: Verify NPM authentication
         run: npm whoami
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      
       - name: Publish to NPM
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      
       - name: Send Slack notification
         if: success()
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_NOTIFY_URL }}
-        run: |
-          if [[ -n "${SLACK_WEBHOOK_URL}" ]]; then
-            curl -X POST -H 'Content-type: application/json' --data @- "${SLACK_WEBHOOK_URL}" <<EOF
-{"text": "${{ github.actor }} has published *${{ github.ref_name }}* of *${{ github.repository }}*: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"}
-EOF
-          else
-            echo "SLACK_NOTIFY_URL secret not set, skipping Slack notification"
-          fi
-
+          SLACK_NOTIFY_URL: ${{ secrets.SLACK_NOTIFY_URL }}
+        run: .github/scripts/slack-notify.sh
