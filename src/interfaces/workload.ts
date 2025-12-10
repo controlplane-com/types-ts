@@ -1,9 +1,9 @@
 /* auto-generated */
 
 import { Port } from './port';
+import { Regex, Kind, Tags, Links } from './base';
 import { EnvVar } from './env';
 import { VolumeSpec } from './volumeSpec';
-import { Regex, Kind, Tags, Links } from './base';
 import { DefaultOptions, LocalOptions } from './workloadOptions';
 import { EnvoyFilters } from './envoy';
 
@@ -116,6 +116,8 @@ export interface ContainerSpec {
   port: number;
 
   path: string;
+
+  dropMetrics?: Regex[];
 
 };
 
@@ -339,6 +341,8 @@ export interface WorkloadStatus {
 
   internalName?: string;
 
+  replicaInternalNames?: string[];
+
   healthCheck?: HealthCheckStatus;
 
   currentReplicaCount?: number;
@@ -400,7 +404,7 @@ export type ScheduleType = string;
 export interface JobSpec {
   schedule: ScheduleType;
 
-  concurrencyPolicy?: 'Forbid' | 'Replace';
+  concurrencyPolicy?: 'Forbid' | 'Replace' | 'Allow';
 
   historyLimit?: number;
 
@@ -518,7 +522,7 @@ export interface WorkloadSpec {
   job?: {
   schedule: ScheduleType;
 
-  concurrencyPolicy?: 'Forbid' | 'Replace';
+  concurrencyPolicy?: 'Forbid' | 'Replace' | 'Allow';
 
   historyLimit?: number;
 
@@ -660,7 +664,7 @@ export interface Workload {
   job?: {
   schedule: ScheduleType;
 
-  concurrencyPolicy?: 'Forbid' | 'Replace';
+  concurrencyPolicy?: 'Forbid' | 'Replace' | 'Allow';
 
   historyLimit?: number;
 

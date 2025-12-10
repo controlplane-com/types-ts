@@ -65,6 +65,9 @@ export interface Manual {
 export interface LoadBalancerConfig {
   manual?: Manual;
 
+  none?: {
+};
+
   gateway?: {
 };
 

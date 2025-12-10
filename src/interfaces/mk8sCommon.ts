@@ -24,13 +24,13 @@ export type NodePoolName = string;
 export type SshPublicKey = string;
 
 export interface AutoscalerConfig {
-  expander: ('random' | 'most-pods' | 'least-waste' | 'price')[];
+  expander?: ('random' | 'most-pods' | 'least-waste' | 'price')[];
 
-  unneededTime: string;
+  unneededTime?: string;
 
-  unreadyTime: string;
+  unreadyTime?: string;
 
-  utilizationThreshold: number;
+  utilizationThreshold?: number;
 
 }
 

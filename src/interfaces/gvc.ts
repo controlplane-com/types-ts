@@ -5,6 +5,7 @@ import { Tracing } from './tracing';
 import { EnvoyFilters } from './envoy';
 import { EnvVar } from './env';
 import { Name, Kind, Tags, Links } from './base';
+import { Memory } from './workload';
 
 export interface GvcStatus {
   [x: string]: any;
@@ -25,7 +26,7 @@ export interface GvcSpec {
 
   domain?: string;
 
-  endpointNamingFormat?: 'default' | 'org';
+  endpointNamingFormat?: 'default' | 'legacy' | 'org';
 
   tracing?: Tracing;
 
@@ -60,6 +61,15 @@ export interface GvcSpec {
 
 };
 
+  keda?: {
+  enabled?: boolean;
+
+  identityLink?: string;
+
+  secrets?: string[];
+
+};
+
 }
 
 export interface Gvc {
@@ -89,6 +99,35 @@ export interface Gvc {
 
 }
 
+export interface GvcLoadBalancerConfig {
+  minScale?: number;
+
+  maxScale?: number;
+
+  minCpu?: string;
+
+  minMemory?: string;
+
+  readinessProbe?: {
+  timeoutSeconds?: number;
+
+  failureThreshold?: number;
+
+  successThreshold?: number;
+
+};
+
+  livenessProbe?: {
+  timeoutSeconds?: number;
+
+  failureThreshold?: number;
+
+  successThreshold?: number;
+
+};
+
+}
+
 export interface GvcConfig {
   clusters?: {
   [x: string]: {
@@ -108,14 +147,43 @@ export interface GvcConfig {
 
 };
 
+  proxy?: {
+  minCpu?: number;
+
+};
+
   loadBalancer?: {
   minScale?: number;
+
+  maxScale?: number;
+
+  minCpu?: string;
+
+  minMemory?: string;
+
+  readinessProbe?: {
+  timeoutSeconds?: number;
+
+  failureThreshold?: number;
+
+  successThreshold?: number;
+
+};
+
+  livenessProbe?: {
+  timeoutSeconds?: number;
+
+  failureThreshold?: number;
+
+  successThreshold?: number;
+
+};
 
 };
 
   thinProvision?: number;
 
-  largeDiskSize?: string;
+  largeDiskSize?: Memory;
 
   capacityAI?: {
   memToCpuRatio?: number;

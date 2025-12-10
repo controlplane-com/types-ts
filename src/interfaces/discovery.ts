@@ -19,6 +19,8 @@ export interface Discovery {
 
   metrics?: string;
 
+  "metrics-ng"?: string;
+
   tracing?: string;
 
   byok?: string;
@@ -32,6 +34,8 @@ export interface Discovery {
   "terraform-exporter"?: string;
 
   "k8s-crd-exporter"?: string;
+
+  mcp?: string;
 
 };
 

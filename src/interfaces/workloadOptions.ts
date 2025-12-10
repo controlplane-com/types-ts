@@ -5,7 +5,7 @@ export interface KedaTrigger {
   type: string;
 
   metadata?: {
-  [x: string]: string;
+  [x: string]: string | any;
 
 };
 
@@ -14,6 +14,11 @@ export interface KedaTrigger {
   useCachedMetrics?: boolean;
 
   metricType?: 'AverageValue' | 'Value' | 'Utilization';
+
+  authenticationRef?: {
+  name: string;
+
+};
 
 }
 
@@ -57,6 +62,21 @@ export interface DefaultOptions {
 
 };
 
+  fallback?: {
+  failureThreshold: number;
+
+  replicas: number;
+
+  behavior?: 'static' | 'currentReplicas' | 'currentReplicasIfHigher' | 'currentReplicasIfLower';
+
+};
+
+  pollingInterval?: number;
+
+  cooldownPeriod?: number;
+
+  initialCooldownPeriod?: number;
+
 };
 
 };
@@ -64,6 +84,8 @@ export interface DefaultOptions {
   timeoutSeconds?: number;
 
   capacityAI?: boolean;
+
+  capacityAIUpdateMinutes?: number;
 
   spot?: boolean;
 
@@ -118,6 +140,21 @@ export type LocalOptions = ({
 
 };
 
+  fallback?: {
+  failureThreshold: number;
+
+  replicas: number;
+
+  behavior?: 'static' | 'currentReplicas' | 'currentReplicasIfHigher' | 'currentReplicasIfLower';
+
+};
+
+  pollingInterval?: number;
+
+  cooldownPeriod?: number;
+
+  initialCooldownPeriod?: number;
+
 };
 
 };
@@ -125,6 +162,8 @@ export type LocalOptions = ({
   timeoutSeconds?: number;
 
   capacityAI?: boolean;
+
+  capacityAIUpdateMinutes?: number;
 
   spot?: boolean;
 

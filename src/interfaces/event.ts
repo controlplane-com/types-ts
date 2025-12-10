@@ -25,6 +25,10 @@ export interface Event {
 
   kind?: string;
 
+  lastEventTime?: Date;
+
+  eventCount?: number;
+
   status: string;
 
   pinned?: boolean;
