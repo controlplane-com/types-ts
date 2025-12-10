@@ -165,6 +165,8 @@ export interface ExpandVolumeSpec {
 
   newStorageCapacity: number;
 
+  timeoutSeconds?: number;
+
 }
 
 export interface ExpandVolumeStatus {
@@ -187,6 +189,17 @@ export interface DeleteVolumeSpec {
 
 }
 
+export interface DeleteOrphanedVolumeSpec {
+  location: string;
+
+  storageDeviceId: string;
+
+  volumeIndex: number;
+
+  newlyObservedStorageDeviceId?: string;
+
+}
+
 export interface DeleteVolumeStatus {
   stage: 'update-volume-set' | 'delete-storage-resources' | 'shutdown-replica' | 'await-replica-termination' | 'fail' | 'cleanup-k8s';
 
@@ -197,6 +210,33 @@ export interface DeleteVolumeStatus {
   inUseByWorkloadId?: string;
 
   storageDeviceIdToRemove?: string;
+
+}
+
+export interface DeleteOrphanedVolumeStatus {
+  stage: 'delete-storage-resources' | 'cleanup-k8s' | 'update-volume-set' | 'fail';
+
+  clusterId?: string;
+
+  messages?: string[];
+
+}
+
+export interface DeleteOrphanedVolumeSnapshotSpec {
+  location: string;
+
+  snapshotId: string;
+
+  volumeIndex: number;
+
+}
+
+export interface DeleteOrphanedVolumeSnapshotStatus {
+  stage: 'delete-snapshot' | 'update-volume-set' | 'fail';
+
+  clusterId?: string;
+
+  messages?: string[];
 
 }
 
@@ -294,6 +334,8 @@ export interface DeleteVolumeSnapshotStatus {
 
   messages?: string[];
 
+  snapshotId?: string;
+
 }
 
 export interface Cluster {
@@ -350,30 +392,6 @@ export interface DeleteVolumeSetLocationStatus {
 
 export interface DeleteVolumeSetStatus {
   [x: string]: DeleteVolumeSetLocationStatus;
-
-}
-
-export interface DeleteOrphanedVolumeSpec {
-  storageDeviceId: string;
-
-  org: string;
-
-  gvc: string;
-
-  workloadName: string;
-
-  volumeSetUri: string;
-
-  driver: string;
-
-}
-
-export interface DeleteOrphanedVolumeStatus {
-  clusterId?: string;
-
-  stage?: 'create-deletion-records' | 'delete' | 'cleanup-k8s';
-
-  messages?: string[];
 
 }
 

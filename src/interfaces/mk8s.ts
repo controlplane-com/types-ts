@@ -11,11 +11,12 @@ import { EphemeralProvider } from './mk8sEphemeral';
 import { TritonProvider } from './mk8sTriton';
 import { AzureProvider } from './mk8sAzure';
 import { DigitalOceanProvider } from './mk8sDigitalOcean';
-import { NonCustomizableAddonConfig, AzureAddonConfig, MetricsAddonConfig, LogsAddonConfig, RegistryMirrorConfig, NvidiaAddonConfig, AwsEFSAddonConfig, AwsECRAddonConfig, AwsELBAddonConfig, AzureACRAddonConfig, DashboardAddonStatus, AwsWorkloadIdentityAddonStatus, MetricsAddonStatus, LogsAddonStatus, AwsTrustPolicyConfig } from './mk8sAddons';
+import { GcpProvider } from './mk8sGcp';
+import { NonCustomizableAddonConfig, AzureAddonConfig, MetricsAddonConfig, LogsAddonConfig, RegistryMirrorConfig, NvidiaAddonConfig, AwsEFSAddonConfig, AwsECRAddonConfig, AwsELBAddonConfig, AzureACRAddonConfig, ByokAddonConfig, DashboardAddonStatus, AwsWorkloadIdentityAddonStatus, MetricsAddonStatus, LogsAddonStatus, AwsTrustPolicyConfig } from './mk8sAddons';
 import { Name, Kind, Tags, Links } from './base';
 
 export interface Mk8sSpec {
-  version: '1.26.0' | '1.26.4' | '1.27.3' | '1.28.2' | '1.28.4' | '1.29.7' | '1.30.3' | '1.31.5' | '1.32.1';
+  version: '1.26.0' | '1.26.4' | '1.27.3' | '1.28.2' | '1.28.4' | '1.29.7' | '1.30.3' | '1.31.5' | '1.31.13' | '1.32.1' | '1.32.9' | '1.33.5' | '1.34.2';
 
   firewall?: {
   sourceCIDR: string;
@@ -47,10 +48,14 @@ export interface Mk8sSpec {
 
   digitalocean?: DigitalOceanProvider;
 
+  gcp?: GcpProvider;
+
 };
 
   addOns?: {
   dashboard?: NonCustomizableAddonConfig;
+
+  headlamp?: NonCustomizableAddonConfig;
 
   azureWorkloadIdentity?: AzureAddonConfig;
 
@@ -76,6 +81,8 @@ export interface Mk8sSpec {
 
   sysbox?: NonCustomizableAddonConfig;
 
+  byok?: ByokAddonConfig;
+
 };
 
 }
@@ -89,6 +96,8 @@ export interface Mk8sStatus {
 
   addOns?: {
   dashboard?: DashboardAddonStatus;
+
+  headlamp?: DashboardAddonStatus;
 
   awsWorkloadIdentity?: AwsWorkloadIdentityAddonStatus;
 
@@ -126,7 +135,7 @@ export interface Mk8sCluster {
   links?: Links;
 
   spec: {
-  version: '1.26.0' | '1.26.4' | '1.27.3' | '1.28.2' | '1.28.4' | '1.29.7' | '1.30.3' | '1.31.5' | '1.32.1';
+  version: '1.26.0' | '1.26.4' | '1.27.3' | '1.28.2' | '1.28.4' | '1.29.7' | '1.30.3' | '1.31.5' | '1.31.13' | '1.32.1' | '1.32.9' | '1.33.5' | '1.34.2';
 
   firewall?: {
   sourceCIDR: string;
@@ -158,10 +167,14 @@ export interface Mk8sCluster {
 
   digitalocean?: DigitalOceanProvider;
 
+  gcp?: GcpProvider;
+
 };
 
   addOns?: {
   dashboard?: NonCustomizableAddonConfig;
+
+  headlamp?: NonCustomizableAddonConfig;
 
   azureWorkloadIdentity?: AzureAddonConfig;
 
@@ -186,6 +199,8 @@ export interface Mk8sCluster {
   azureACR?: AzureACRAddonConfig;
 
   sysbox?: NonCustomizableAddonConfig;
+
+  byok?: ByokAddonConfig;
 
 };
 

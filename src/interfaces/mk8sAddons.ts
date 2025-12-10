@@ -1,5 +1,6 @@
 /* auto-generated */
 
+import { Cpu, Memory } from './workload';
 
 export type RegularExpression = string;
 
@@ -134,6 +135,193 @@ export interface AwsELBAddonConfig {
 
 export interface AzureACRAddonConfig {
   clientId: string;
+
+}
+
+export interface ByokAddonConfig {
+  ignoreUpdates?: boolean;
+
+  location: string;
+
+  config?: {
+  actuator?: {
+  minCpu?: Cpu;
+
+  maxCpu?: Cpu;
+
+  minMemory?: Memory;
+
+  maxMemory?: Memory;
+
+  logLevel?: 'trace' | 'info' | 'error';
+
+  env?: {
+  [x: string]: string;
+
+};
+
+};
+
+  middlebox?: {
+  enabled?: boolean;
+
+  bandwidthAlertMbps?: number;
+
+};
+
+  common?: {
+  deploymentReplicas?: number;
+
+  pdb?: {
+  maxUnavailable?: number;
+
+};
+
+};
+
+  longhorn?: {
+  replicas?: number;
+
+};
+
+  ingress?: {
+  cpu?: Cpu;
+
+  memory?: Memory;
+
+  targetPercent?: number;
+
+};
+
+  istio?: {
+  istiod?: {
+  replicas?: number;
+
+  minCpu?: Cpu;
+
+  maxCpu?: Cpu;
+
+  minMemory?: Memory;
+
+  maxMemory?: Memory;
+
+  pdb?: number;
+
+};
+
+  ingressgateway?: {
+  replicas?: number;
+
+  maxCpu?: Cpu;
+
+  maxMemory?: Memory;
+
+};
+
+  sidecar?: {
+  minCpu?: Cpu;
+
+  minMemory?: Memory;
+
+};
+
+};
+
+  logSplitter?: {
+  minCpu?: Cpu;
+
+  maxCpu?: Cpu;
+
+  minMemory?: Memory;
+
+  maxMemory?: Memory;
+
+  memBufferSize?: string;
+
+  perPodRate?: number;
+
+};
+
+  monitoring?: {
+  minMemory?: Memory;
+
+  maxMemory?: Memory;
+
+  kubeStateMetrics?: {
+  minMemory?: Memory;
+
+};
+
+  prometheus?: {
+  main?: {
+  storage?: Memory;
+
+};
+
+};
+
+};
+
+  redis?: {
+  minCpu?: Cpu;
+
+  maxCpu?: Cpu;
+
+  minMemory?: Memory;
+
+  maxMemory?: Memory;
+
+  storage?: Memory;
+
+};
+
+  redisHa?: {
+  minCpu?: Cpu;
+
+  maxCpu?: Cpu;
+
+  minMemory?: Memory;
+
+  maxMemory?: Memory;
+
+  storage?: number;
+
+};
+
+  redisSentinel?: {
+  minCpu?: Cpu;
+
+  maxCpu?: Cpu;
+
+  minMemory?: Memory;
+
+  maxMemory?: Memory;
+
+  storage?: number;
+
+};
+
+  tempoAgent?: {
+  minCpu?: Cpu;
+
+  minMemory?: Memory;
+
+};
+
+  internalDns?: {
+  minCpu?: Cpu;
+
+  maxCpu?: Cpu;
+
+  minMemory?: Memory;
+
+  maxMemory?: Memory;
+
+};
+
+  [x: string]: any;
+
+};
 
 }
 

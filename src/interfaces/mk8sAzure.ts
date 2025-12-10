@@ -42,7 +42,7 @@ export interface AzurePool {
 }
 
 export interface AzureProvider {
-  location: 'centralus' | 'eastus2' | 'eastus' | 'southcentralus';
+  location: string;
 
   subscriptionId: string;
 

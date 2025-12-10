@@ -120,6 +120,11 @@ export interface MountResources {
 
 }
 
+export interface CustomEncryptionRegion {
+  keyId?: string;
+
+}
+
 export interface VolumeSetSpec {
   initialCapacity: number;
 
@@ -128,6 +133,14 @@ export interface VolumeSetSpec {
   storageClassSuffix?: string;
 
   fileSystemType?: FileSystemType;
+
+  customEncryption?: {
+  regions?: {
+  [x: string]: CustomEncryptionRegion;
+
+};
+
+};
 
   snapshots?: SnapshotSpec;
 
