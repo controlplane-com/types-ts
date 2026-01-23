@@ -138,6 +138,15 @@ export interface AzureACRAddonConfig {
 
 }
 
+export interface HttpHeaderValue {
+  values?: string[];
+
+  secrets?: string[];
+
+  files?: string[];
+
+}
+
 export interface ByokAddonConfig {
   ignoreUpdates?: boolean;
 
@@ -167,6 +176,10 @@ export interface ByokAddonConfig {
 
   bandwidthAlertMbps?: number;
 
+  port?: number;
+
+  ip?: string;
+
 };
 
   common?: {
@@ -180,7 +193,16 @@ export interface ByokAddonConfig {
 };
 
   longhorn?: {
+  numberOfReplicas?: number;
+
   replicas?: number;
+
+  isDefault?: boolean;
+
+};
+
+  byok?: {
+  noDefaultStorageClasses?: boolean;
 
 };
 
@@ -260,6 +282,104 @@ export interface ByokAddonConfig {
 
 };
 
+  remoteWrite?: {
+  basic_auth?: {
+  username?: string;
+
+  username_file?: string;
+
+  password?: string;
+
+  password_file?: string;
+
+};
+
+  authorization?: {
+  type?: string;
+
+  credentials?: string;
+
+  credentials_file?: string;
+
+};
+
+  oauth2?: {
+  [x: string]: any;
+
+};
+
+  follow_redirects?: boolean;
+
+  enable_http2?: boolean;
+
+  tls_config?: {
+  [x: string]: any;
+
+};
+
+  proxy_url?: string;
+
+  no_proxy?: string;
+
+  proxy_from_environment?: boolean;
+
+  proxy_connect_header?: {
+  [x: string]: string[];
+
+};
+
+  http_headers?: {
+  [x: string]: HttpHeaderValue;
+
+};
+
+  url?: string;
+
+  remote_timeout?: string;
+
+  headers?: {
+  [x: string]: string;
+
+};
+
+  write_relabel_configs?: {
+  [x: string]: any;
+
+}[];
+
+  name?: string;
+
+  send_exemplars?: boolean;
+
+  send_native_histograms?: boolean;
+
+  sigv4?: {
+  [x: string]: any;
+
+};
+
+  azuread?: {
+  [x: string]: any;
+
+};
+
+  google_iam?: {
+  [x: string]: any;
+
+};
+
+  queue_config?: {
+  [x: string]: any;
+
+};
+
+}[];
+
+  externalLabels?: {
+  [x: string]: string;
+
+};
+
 };
 
   redis?: {
@@ -318,8 +438,6 @@ export interface ByokAddonConfig {
   maxMemory?: Memory;
 
 };
-
-  [x: string]: any;
 
 };
 

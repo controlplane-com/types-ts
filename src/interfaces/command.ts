@@ -67,6 +67,11 @@ export interface RunCronWorkloadSpec {
 export interface RunCronWorkloadStatus {
   replica?: string;
 
+  clusterIdByLocation?: {
+  [x: string]: string;
+
+};
+
   minimumWorkloadVersion?: number;
 
 }
@@ -80,6 +85,11 @@ export interface StopReplicaSpec {
 
 export interface StopReplicaStatus {
   clusterId?: string;
+
+  clusterIdByLocation?: {
+  [x: string]: string;
+
+};
 
   podCreatedByCommandLink?: string;
 
@@ -95,11 +105,13 @@ export interface ReplaceVolumeSpec {
 }
 
 export interface RestoreVolumeSpec {
-  location: string;
-
   volumeIndex: number;
 
+  location: string;
+
   snapshotName: string;
+
+  zone?: string;
 
 }
 
@@ -109,6 +121,11 @@ export interface ReplaceVolumeStatus {
   messages?: string[];
 
   clusterId?: string;
+
+  clusterIdByLocation?: {
+  [x: string]: string;
+
+};
 
   inUseByWorkloadId?: string;
 
@@ -150,6 +167,11 @@ export interface CreateVolumeSnapshotStatus {
 
   clusterId?: string;
 
+  clusterIdByLocation?: {
+  [x: string]: string;
+
+};
+
   newSnapshotId?: string;
 
   newSnapshotSize?: number;
@@ -171,6 +193,11 @@ export interface ExpandVolumeSpec {
 
 export interface ExpandVolumeStatus {
   clusterId?: string;
+
+  clusterIdByLocation?: {
+  [x: string]: string;
+
+};
 
   messages?: string[];
 
@@ -205,6 +232,11 @@ export interface DeleteVolumeStatus {
 
   clusterId?: string;
 
+  clusterIdByLocation?: {
+  [x: string]: string;
+
+};
+
   messages?: string[];
 
   inUseByWorkloadId?: string;
@@ -217,6 +249,11 @@ export interface DeleteOrphanedVolumeStatus {
   stage: 'delete-storage-resources' | 'cleanup-k8s' | 'update-volume-set' | 'fail';
 
   clusterId?: string;
+
+  clusterIdByLocation?: {
+  [x: string]: string;
+
+};
 
   messages?: string[];
 
@@ -236,6 +273,11 @@ export interface DeleteOrphanedVolumeSnapshotStatus {
 
   clusterId?: string;
 
+  clusterIdByLocation?: {
+  [x: string]: string;
+
+};
+
   messages?: string[];
 
 }
@@ -249,6 +291,11 @@ export interface SnapshotDeletionStatus {
 
 export interface DeleteCloudDevicesStatus {
   clusterId?: string;
+
+  clusterIdByLocation?: {
+  [x: string]: string;
+
+};
 
   volume: {
   lifecycle?: 'creating' | 'unused' | 'unbound' | 'bound' | 'deleted' | 'repairing';
@@ -311,6 +358,11 @@ export interface DeleteVolumeSnapshotSpec {
 
 export interface DeleteVolumeSnapshotStatus {
   clusterId?: string;
+
+  clusterIdByLocation?: {
+  [x: string]: string;
+
+};
 
   snapshot: {
   name: string;
@@ -377,6 +429,8 @@ export interface DeleteVolumeSetSpec {
   gvc?: any;
 
 };
+
+  locations?: string[];
 
 }
 
