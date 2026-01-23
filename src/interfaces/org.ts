@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { S3Logging, CoralogixLogging, DatadogLogging, LogzioLogging, ElasticLogging, CloudWatchLogging, FluentdLogging, StackdriverLogging, SyslogLogging } from './orgLogging';
+import { S3Logging, CoralogixLogging, DatadogLogging, LogzioLogging, ElasticLogging, CloudWatchLogging, FluentdLogging, StackdriverLogging, SyslogLogging, OpenTelemetryLogging } from './orgLogging';
 import { Tracing } from './tracing';
 import { Kind, Tags, Links } from './base';
 
@@ -67,6 +67,8 @@ export interface OrgSpec {
 
   syslog?: SyslogLogging;
 
+  opentelemetry?: OpenTelemetryLogging;
+
 };
 
   extraLogging?: {
@@ -87,6 +89,8 @@ export interface OrgSpec {
   stackdriver?: StackdriverLogging;
 
   syslog?: SyslogLogging;
+
+  opentelemetry?: OpenTelemetryLogging;
 
 }[];
 

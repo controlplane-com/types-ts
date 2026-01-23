@@ -32,6 +32,18 @@ export interface DatadogLogging {
 
 }
 
+export interface OpenTelemetryLogging {
+  endpoint: string;
+
+  headers?: {
+  [x: string]: string;
+
+};
+
+  credentials?: string;
+
+}
+
 export interface LogzioLogging {
   listenerHost: 'listener.logz.io' | 'listener-nl.logz.io';
 

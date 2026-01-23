@@ -1,11 +1,13 @@
 /* auto-generated */
 
-import { Port } from './port';
 import { Regex, Kind, Tags, Links } from './base';
 import { EnvVar } from './env';
 import { VolumeSpec } from './volumeSpec';
 import { DefaultOptions, LocalOptions } from './workloadOptions';
-import { EnvoyFilters } from './envoy';
+import { AccessLog } from './envoyAccessLog';
+import { Cluster } from './envoyCluster';
+import { ExcExtAuth, ExcludedRateLimit } from './envoyExcExtAuth';
+import { HttpFilter } from './envoyHttp';
 
 export type Memory = string;
 
@@ -18,7 +20,7 @@ export interface HealthCheckSpec {
 };
 
   grpc?: {
-  port?: Port;
+  port?: number;
 
 };
 
@@ -84,6 +86,8 @@ export interface RolloutOptionsStateful {
 export interface SecurityOptions {
   filesystemGroupId?: number;
 
+  runAsUser?: number;
+
 }
 
 export interface GpuResource {
@@ -139,7 +143,7 @@ export interface ContainerSpec {
 };
 
   grpc?: {
-  port?: Port;
+  port?: number;
 
 };
 
@@ -183,7 +187,7 @@ export interface ContainerSpec {
 };
 
   grpc?: {
-  port?: Port;
+  port?: number;
 
 };
 
@@ -343,11 +347,37 @@ export interface WorkloadStatus {
 
   replicaInternalNames?: string[];
 
-  healthCheck?: HealthCheckStatus;
+  healthCheck?: {
+  active: boolean;
+
+  success?: boolean;
+
+  code?: number;
+
+  message?: string;
+
+  failures?: number;
+
+  successes?: number;
+
+  lastChecked?: Date;
+
+};
 
   currentReplicaCount?: number;
 
-  resolvedImages?: ResolvedImages;
+  resolvedImages?: {
+  resolvedForVersion?: number;
+
+  resolvedAt?: Date;
+
+  errorMessages?: string[];
+
+  nextRetryAt?: Date;
+
+  images?: ResolvedImage[];
+
+};
 
   loadBalancer?: LoadBalancerStatus[];
 
@@ -533,7 +563,22 @@ export interface WorkloadSpec {
 };
 
   sidecar?: {
-  envoy?: EnvoyFilters;
+  envoy?: {
+  accessLog?: AccessLog[];
+
+  clusters?: Cluster[];
+
+  excludedExternalAuth?: ExcExtAuth[];
+
+  excludedRateLimit?: ExcludedRateLimit[];
+
+  http?: HttpFilter[];
+
+  network?: any[];
+
+  volumes?: VolumeSpec[];
+
+};
 
 };
 
@@ -543,6 +588,8 @@ export interface WorkloadSpec {
 
   securityOptions?: {
   filesystemGroupId?: number;
+
+  runAsUser?: number;
 
 };
 
@@ -675,7 +722,22 @@ export interface Workload {
 };
 
   sidecar?: {
-  envoy?: EnvoyFilters;
+  envoy?: {
+  accessLog?: AccessLog[];
+
+  clusters?: Cluster[];
+
+  excludedExternalAuth?: ExcExtAuth[];
+
+  excludedRateLimit?: ExcludedRateLimit[];
+
+  http?: HttpFilter[];
+
+  network?: any[];
+
+  volumes?: VolumeSpec[];
+
+};
 
 };
 
@@ -685,6 +747,8 @@ export interface Workload {
 
   securityOptions?: {
   filesystemGroupId?: number;
+
+  runAsUser?: number;
 
 };
 
@@ -736,7 +800,54 @@ export interface Workload {
 
 };
 
-  status?: WorkloadStatus;
+  status?: {
+  parentId?: string;
+
+  canonicalEndpoint?: string;
+
+  endpoint?: string;
+
+  internalName?: string;
+
+  replicaInternalNames?: string[];
+
+  healthCheck?: {
+  active: boolean;
+
+  success?: boolean;
+
+  code?: number;
+
+  message?: string;
+
+  failures?: number;
+
+  successes?: number;
+
+  lastChecked?: Date;
+
+};
+
+  currentReplicaCount?: number;
+
+  resolvedImages?: {
+  resolvedForVersion?: number;
+
+  resolvedAt?: Date;
+
+  errorMessages?: string[];
+
+  nextRetryAt?: Date;
+
+  images?: ResolvedImage[];
+
+};
+
+  loadBalancer?: LoadBalancerStatus[];
+
+  [x: string]: any;
+
+};
 
 }
 
