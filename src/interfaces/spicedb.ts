@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Name, Kind, Tags, Links } from './base';
+import { Name, Kind, Tags, Links } from './base.js';
 
 export interface ClusterSpec {
   version?: '1.14.1';

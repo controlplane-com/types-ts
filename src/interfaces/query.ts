@@ -1,17 +1,43 @@
 /* auto-generated */
 
-import { Kind, Link } from './base';
+import { Kind, Link } from './base.js';
 
-export interface Term {
-  op?: '=' | '>' | '>=' | '<' | '<=' | '!=' | '~' | 'exists' | '!exists';
+export interface Query {
+  kind?: Kind;
 
-  property?: string;
+  context?: {
+  [x: string]: any;
 
-  rel?: string;
+};
 
-  tag?: string;
+  fetch?: 'links' | 'items';
 
-  value?: string | number | boolean | Date;
+  spec?: {
+  match?: 'all' | 'any' | 'none';
+
+  terms?: Term[];
+
+  sort?: {
+  by: string;
+
+  order?: 'asc' | 'desc';
+
+};
+
+};
+
+}
+
+export interface QueryResult {
+  kind?: 'queryresult';
+
+  itemKind?: Kind;
+
+  items: any[];
+
+  links: Link[];
+
+  query?: Query;
 
 }
 
@@ -29,30 +55,16 @@ export interface Spec {
 
 }
 
-export interface Query {
-  kind?: Kind;
+export interface Term {
+  op?: '=' | '>' | '>=' | '<' | '<=' | '!=' | '~' | 'exists' | '!exists';
 
-  context?: {
-  [x: string]: any;
+  property?: string;
 
-};
+  rel?: string;
 
-  fetch?: 'links' | 'items';
+  tag?: string;
 
-  spec?: Spec;
-
-}
-
-export interface QueryResult {
-  kind?: 'queryresult';
-
-  itemKind?: Kind;
-
-  items: any[];
-
-  links: Link[];
-
-  query?: Query;
+  value?: string | number | boolean | Date;
 
 }
 

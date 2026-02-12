@@ -1,8 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints, PreInstallScript, SshPublicKey, AutoscalerConfig } from './mk8sCommon';
-
-export type ValidTag = string;
+import { Labels, Taints, PreInstallScript, SshPublicKey, AutoscalerConfig } from './mk8sCommon.js';
 
 export interface DigitalOceanPool {
   name: string;
@@ -59,4 +57,6 @@ export interface DigitalOceanProviderStatus {
   [x: string]: any;
 
 }
+
+export type ValidTag = string;
 

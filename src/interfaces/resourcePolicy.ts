@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Kind, Links } from './base';
+import { Kind, Links } from './base.js';
 
 export interface ResourcePolicy {
   id?: string;

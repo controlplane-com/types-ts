@@ -1,11 +1,6 @@
 /* auto-generated */
 
-import { Name, Kind, Tags, Links } from './base';
-
-export interface AuditContextStatus {
-  [x: string]: any;
-
-}
+import { Name, Kind, Tags, Links } from './base.js';
 
 export interface AuditContext {
   id?: string;
@@ -29,6 +24,11 @@ export interface AuditContext {
   status?: AuditContextStatus;
 
   origin?: 'default' | 'builtin';
+
+}
+
+export interface AuditContextStatus {
+  [x: string]: any;
 
 }
 

@@ -1,29 +1,18 @@
 /* auto-generated */
 
 
-export type LocalLink = string;
+export interface ApiError {
+  status?: number;
 
-export type ImageLink = string;
+  message?: string;
 
-export type Kind = 'org' | 'cloudaccount' | 'policy' | 'user' | 'group' | 'resource' | 'task' | 'permissions' | 'serviceaccount' | 'secret' | 'location' | 'gvc' | 'workload' | 'quota' | 'identity' | 'deployment' | 'event' | 'domain' | 'image' | 'ipset' | 'resourcepolicy' | 'agent' | 'accessreport' | 'policymembership' | 'dbcluster' | 'auditctx' | 'memcachecluster' | 'spicedbcluster' | 'tenant' | 'mk8s' | 'command' | 'imagesummary' | 'volumeset';
+  code?: string;
 
-export type CloudProvider = 'aws' | 'gcp' | 'azure' | 'ngs';
+  details?: any;
 
-export type Name = string;
-
-export interface Tags {
-  [x: string]: any;
+  id?: string;
 
 }
-
-export interface Link {
-  rel: string;
-
-  href: string;
-
-}
-
-export type Links = Link[];
 
 export interface Base {
   id?: string;
@@ -46,6 +35,21 @@ export interface Base {
 
 }
 
+export type CloudProvider = 'aws' | 'gcp' | 'azure' | 'ngs';
+
+export type ImageLink = string;
+
+export type Kind = 'org' | 'cloudaccount' | 'policy' | 'user' | 'group' | 'resource' | 'task' | 'permissions' | 'serviceaccount' | 'secret' | 'location' | 'gvc' | 'workload' | 'quota' | 'identity' | 'deployment' | 'event' | 'domain' | 'image' | 'ipset' | 'resourcepolicy' | 'agent' | 'accessreport' | 'policymembership' | 'dbcluster' | 'auditctx' | 'memcachecluster' | 'spicedbcluster' | 'tenant' | 'mk8s' | 'command' | 'imagesummary' | 'volumeset';
+
+export interface Link {
+  rel: string;
+
+  href: string;
+
+}
+
+export type Links = Link[];
+
 export interface List {
   kind?: 'list';
 
@@ -57,23 +61,19 @@ export interface List {
 
 }
 
-export type Regex = string;
-
-export interface ApiError {
-  status?: number;
-
-  message?: string;
-
-  code?: string;
-
-  details?: any;
-
-  id?: string;
-
-}
+export type LocalLink = string;
 
 export interface MultiZoneOptions {
   enabled?: boolean;
+
+}
+
+export type Name = string;
+
+export type Regex = string;
+
+export interface Tags {
+  [x: string]: any;
 
 }
 

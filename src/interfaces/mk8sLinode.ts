@@ -1,6 +1,15 @@
 /* auto-generated */
 
-import { Labels, Taints, PreInstallScript, AutoscalerConfig } from './mk8sCommon';
+import { Labels, Taints, PreInstallScript, AutoscalerConfig } from './mk8sCommon.js';
+
+export interface LinodeJoinParams {
+  ipAddress?: string;
+
+  nodePoolName: string;
+
+  [x: string]: any;
+
+}
 
 export interface LinodePool {
   name: string;
@@ -54,15 +63,6 @@ export interface LinodeProvider {
 }
 
 export interface LinodeProviderStatus {
-  [x: string]: any;
-
-}
-
-export interface LinodeJoinParams {
-  ipAddress?: string;
-
-  nodePoolName: string;
-
   [x: string]: any;
 
 }

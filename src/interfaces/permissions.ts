@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Links } from './base';
+import { Links } from './base.js';
 
 export interface Permission {
   name: string;

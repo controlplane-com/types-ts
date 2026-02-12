@@ -1,6 +1,8 @@
 /* auto-generated */
 
 
+export type EnvCollection = EnvVar[];
+
 export type EnvName = string;
 
 export interface EnvVar {
@@ -9,6 +11,4 @@ export interface EnvVar {
   value?: string;
 
 }
-
-export type EnvCollection = EnvVar[];
 

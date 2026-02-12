@@ -1,6 +1,13 @@
 /* auto-generated */
 
-import { Labels, Taints, UnmanagedPool, AutoscalerConfig, PreInstallScript } from './mk8sCommon';
+import { Labels, Taints, UnmanagedPool, AutoscalerConfig, PreInstallScript } from './mk8sCommon.js';
+
+export interface LambdalabsJoinParams {
+  nodePoolName: string;
+
+  [x: string]: any;
+
+}
 
 export interface LambdalabsPool {
   name: string;
@@ -37,13 +44,6 @@ export interface LambdalabsProvider {
 }
 
 export interface LambdalabsProviderStatus {
-  [x: string]: any;
-
-}
-
-export interface LambdalabsJoinParams {
-  nodePoolName: string;
-
   [x: string]: any;
 
 }

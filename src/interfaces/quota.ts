@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Kind, Name, Links } from './base';
+import { Kind, Name, Links } from './base.js';
 
 export interface Quota {
   id?: string;

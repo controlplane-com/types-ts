@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Link } from './base';
+import { Link } from './base.js';
 
 export interface Task {
   id?: string;

@@ -1,7 +1,7 @@
 /* auto-generated */
 
-import { RouteMatch } from './envoyCommon';
-import { Port } from './port';
+import { RouteMatch } from './envoyCommon.js';
+import { Port } from './port.js';
 
 export interface ExcExtAuth {
   match?: RouteMatch;

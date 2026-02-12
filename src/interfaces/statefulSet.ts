@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { VolumeSetStatus } from './volumeSet';
+import { VolumeSetStatus } from './volumeSet.js';
 
 export interface StatefulSetStatus {
   replicaCount?: number;

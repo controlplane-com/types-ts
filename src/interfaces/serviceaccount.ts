@@ -1,17 +1,6 @@
 /* auto-generated */
 
-import { Name, Kind, Tags, Links } from './base';
-
-export interface ServiceAccountKey {
-  name?: string;
-
-  created?: Date;
-
-  key?: string;
-
-  description: string;
-
-}
+import { Name, Kind, Tags, Links } from './base.js';
 
 export interface ServiceAccount {
   id?: string;
@@ -35,6 +24,17 @@ export interface ServiceAccount {
   keys?: ServiceAccountKey[];
 
   origin?: 'default' | 'builtin';
+
+}
+
+export interface ServiceAccountKey {
+  name?: string;
+
+  created?: Date;
+
+  key?: string;
+
+  description: string;
 
 }
 

@@ -1,6 +1,13 @@
 /* auto-generated */
 
-import { Labels, Taints, AutoscalerConfig, UnmanagedPool, PreInstallScript } from './mk8sCommon';
+import { Labels, Taints, AutoscalerConfig, UnmanagedPool, PreInstallScript } from './mk8sCommon.js';
+
+export interface PaperspaceJoinParams {
+  nodePoolName: string;
+
+  [x: string]: any;
+
+}
 
 export interface PaperspacePool {
   name: string;
@@ -43,13 +50,6 @@ export interface PaperspaceProvider {
 }
 
 export interface PaperspaceProviderStatus {
-  [x: string]: any;
-
-}
-
-export interface PaperspaceJoinParams {
-  nodePoolName: string;
-
   [x: string]: any;
 
 }

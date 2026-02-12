@@ -1,6 +1,13 @@
 /* auto-generated */
 
-import { Labels, Taints } from './mk8sCommon';
+import { Labels, Taints } from './mk8sCommon.js';
+
+export interface GenericJoinParams {
+  nodePoolName: string;
+
+  [x: string]: any;
+
+}
 
 export interface GenericPool {
   name: string;
@@ -28,13 +35,6 @@ export interface GenericProvider {
 }
 
 export interface GenericProviderStatus {
-  [x: string]: any;
-
-}
-
-export interface GenericJoinParams {
-  nodePoolName: string;
-
   [x: string]: any;
 
 }

@@ -1,13 +1,6 @@
 /* auto-generated */
 
-import { Name, Kind, Tags, Links } from './base';
-
-export interface TenantSpec {
-  orgs?: Name[];
-
-  clusters?: Name[];
-
-}
+import { Name, Kind, Tags, Links } from './base.js';
 
 export interface Tenant {
   id?: string;
@@ -34,6 +27,13 @@ export interface Tenant {
   clusters?: Name[];
 
 };
+
+}
+
+export interface TenantSpec {
+  orgs?: Name[];
+
+  clusters?: Name[];
 
 }
 

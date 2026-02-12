@@ -1,13 +1,6 @@
 /* auto-generated */
 
-import { Name, Kind, Tags, Links } from './base';
-
-export interface Opaque {
-  payload?: string | string;
-
-  encoding?: 'plain' | 'base64';
-
-}
+import { Name, Kind, Tags, Links } from './base.js';
 
 export interface AwsKey {
   accessKey: string;
@@ -17,6 +10,18 @@ export interface AwsKey {
   roleArn?: string;
 
   externalId?: string;
+
+}
+
+export interface AzureConnector {
+  url: string;
+
+  code: string;
+
+}
+
+export interface Dictionary {
+  [x: string]: string;
 
 }
 
@@ -33,42 +38,12 @@ export interface EcrPull {
 
 }
 
-export interface UsernamePassword {
-  username: string;
-
-  password: string;
-
-  encoding?: 'plain' | 'base64';
-
-}
-
-export interface AzureConnector {
-  url: string;
-
-  code: string;
-
-}
-
-export interface Tls {
-  key?: string;
-
-  cert: string;
-
-  chain?: string;
-
-}
-
 export interface KeyPair {
   secretKey: string;
 
   publicKey?: string;
 
   passphrase?: string;
-
-}
-
-export interface Dictionary {
-  [x: string]: string;
 
 }
 
@@ -79,7 +54,12 @@ export interface NatsAccount {
 
 }
 
-export type SecretData = Opaque | Tls | string | AwsKey | EcrPull | string | UsernamePassword | KeyPair | Dictionary | string | AzureConnector | NatsAccount;
+export interface Opaque {
+  payload?: string | string;
+
+  encoding?: 'plain' | 'base64';
+
+}
 
 export interface Secret {
   id?: string;
@@ -103,6 +83,26 @@ export interface Secret {
   type?: 'opaque' | 'tls' | 'gcp' | 'aws' | 'ecr' | 'userpass' | 'keypair' | 'azure-sdk' | 'azure-connector' | 'docker' | 'dictionary' | 'nats-account';
 
   data?: SecretData;
+
+}
+
+export type SecretData = Opaque | Tls | string | AwsKey | EcrPull | string | UsernamePassword | KeyPair | Dictionary | string | AzureConnector | NatsAccount;
+
+export interface Tls {
+  key?: string;
+
+  cert: string;
+
+  chain?: string;
+
+}
+
+export interface UsernamePassword {
+  username: string;
+
+  password: string;
+
+  encoding?: 'plain' | 'base64';
 
 }
 

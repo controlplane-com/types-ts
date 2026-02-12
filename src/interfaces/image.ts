@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Kind, Tags, Links } from './base';
+import { Kind, Tags, Links } from './base.js';
 
 export interface Image {
   id?: string;

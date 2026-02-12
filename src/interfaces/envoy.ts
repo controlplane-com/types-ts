@@ -1,10 +1,10 @@
 /* auto-generated */
 
-import { AccessLog } from './envoyAccessLog';
-import { Cluster } from './envoyCluster';
-import { ExcExtAuth, ExcludedRateLimit } from './envoyExcExtAuth';
-import { HttpFilter } from './envoyHttp';
-import { VolumeSpec } from './volumeSpec';
+import { AccessLog } from './envoyAccessLog.js';
+import { Cluster } from './envoyCluster.js';
+import { ExcExtAuth, ExcludedRateLimit } from './envoyExcExtAuth.js';
+import { HttpFilter } from './envoyHttp.js';
+import { VolumeSpec } from './volumeSpec.js';
 
 export interface EnvoyFilters {
   accessLog?: AccessLog[];

@@ -1,17 +1,6 @@
 /* auto-generated */
 
-import { Name, Kind, Tags, Links } from './base';
-
-export interface MemcacheOptions {
-  evictionsDisabled?: boolean;
-
-  idleTimeoutSeconds?: number;
-
-  maxItemSizeKiB?: number;
-
-  maxConnections?: number;
-
-}
+import { Name, Kind, Tags, Links } from './base.js';
 
 export interface ClusterSpec {
   nodeCount: number;
@@ -82,6 +71,17 @@ export interface MemcacheCluster {
 };
 
   status?: ClusterStatus;
+
+}
+
+export interface MemcacheOptions {
+  evictionsDisabled?: boolean;
+
+  idleTimeoutSeconds?: number;
+
+  maxItemSizeKiB?: number;
+
+  maxConnections?: number;
 
 }
 

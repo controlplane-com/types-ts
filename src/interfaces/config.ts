@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Links } from './base';
+import { Links } from './base.js';
 
 export interface Config {
   kind?: 'config';
@@ -11,10 +11,7 @@ export interface Config {
 
   version?: number;
 
-  data?: {
-  [x: string]: any;
-
-};
+  data?: any;
 
   links?: Links;
 

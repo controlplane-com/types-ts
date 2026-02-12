@@ -1,7 +1,7 @@
 /* auto-generated */
 
-import { Name, Kind, Tags, Links } from './base';
-import { Query } from './query';
+import { Name, Kind, Tags, Links } from './base.js';
+import { Query } from './query.js';
 
 export interface Binding {
   permissions: string[];

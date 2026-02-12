@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Priority, GrpcService, ApiVersion, Duration, UInt32, RetryPolicy } from './envoyCommon';
+import { Priority, GrpcService, ApiVersion, Duration, UInt32, RetryPolicy } from './envoyCommon.js';
 
 export interface AccessLog {
   priority?: Priority;

@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints, PreInstallScript, AutoscalerConfig } from './mk8sCommon';
+import { Labels, Taints, PreInstallScript, AutoscalerConfig } from './mk8sCommon.js';
 
 export interface DedicatedServerHetznerPool {
   name: string;
@@ -8,6 +8,15 @@ export interface DedicatedServerHetznerPool {
   labels?: Labels;
 
   taints?: Taints;
+
+}
+
+export interface HetznerJoinParams {
+  ipAddress?: string;
+
+  nodePoolName: string;
+
+  [x: string]: any;
 
 }
 
@@ -25,15 +34,6 @@ export interface HetznerPool {
   minSize: number;
 
   maxSize: number;
-
-}
-
-export interface NetworkingConfig {
-  serviceNetwork?: '10.43.0.0/16' | '192.168.0.0/16';
-
-  podNetwork?: '10.42.0.0/16' | '172.16.0.0/15' | '172.18.0.0/15' | '172.20.0.0/15' | '172.22.0.0/15' | '172.24.0.0/15' | '172.26.0.0/15' | '172.28.0.0/15' | '172.30.0.0/15';
-
-  dnsForwarder?: string;
 
 }
 
@@ -77,12 +77,12 @@ export interface HetznerProviderStatus {
 
 }
 
-export interface HetznerJoinParams {
-  ipAddress?: string;
+export interface NetworkingConfig {
+  serviceNetwork?: '10.43.0.0/16' | '192.168.0.0/16';
 
-  nodePoolName: string;
+  podNetwork?: '10.42.0.0/16' | '172.16.0.0/15' | '172.18.0.0/15' | '172.20.0.0/15' | '172.22.0.0/15' | '172.24.0.0/15' | '172.26.0.0/15' | '172.28.0.0/15' | '172.30.0.0/15';
 
-  [x: string]: any;
+  dnsForwarder?: string;
 
 }
 

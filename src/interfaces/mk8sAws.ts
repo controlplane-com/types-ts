@@ -1,8 +1,13 @@
 /* auto-generated */
 
-import { Labels, Taints, AutoscalerConfig } from './mk8sCommon';
+import { Labels, Taints, AutoscalerConfig } from './mk8sCommon.js';
 
-export type PolicyArn = string;
+export interface Ami {
+  recommended?: 'ubuntu/jammy-22.04' | 'ubuntu/jammy-22.04+nvidia' | 'ubuntu/focal-20.04' | 'ubuntu/focal-20.04+nvidia' | 'ubuntu/noble-24.04' | 'ubuntu/noble-24.04+nvidia' | 'ubuntu/bionic-18.04' | 'amazon/amzn2' | 'amazon/al2023';
+
+  exact?: string;
+
+}
 
 export interface AssumeRoleLink {
   roleArn: string;
@@ -10,13 +15,6 @@ export interface AssumeRoleLink {
   externalId?: string;
 
   sessionNamePrefix?: string;
-
-}
-
-export interface Ami {
-  recommended?: 'ubuntu/jammy-22.04' | 'ubuntu/jammy-22.04+nvidia' | 'ubuntu/focal-20.04' | 'ubuntu/focal-20.04+nvidia' | 'ubuntu/noble-24.04' | 'ubuntu/noble-24.04+nvidia' | 'ubuntu/bionic-18.04' | 'amazon/amzn2' | 'amazon/al2023';
-
-  exact?: string;
 
 }
 
@@ -101,4 +99,6 @@ export interface AwsProviderStatus {
   [x: string]: any;
 
 }
+
+export type PolicyArn = string;
 

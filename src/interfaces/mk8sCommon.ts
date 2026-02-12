@@ -1,28 +1,6 @@
 /* auto-generated */
 
 
-export type GoDuration = string;
-
-export interface Labels {
-  [x: string]: string;
-
-}
-
-export interface Taint {
-  key?: string;
-
-  value?: string;
-
-  effect?: 'NoSchedule' | 'PreferNoSchedule' | 'NoExecute';
-
-}
-
-export type Taints = Taint[];
-
-export type NodePoolName = string;
-
-export type SshPublicKey = string;
-
 export interface AutoscalerConfig {
   expander?: ('random' | 'most-pods' | 'least-waste' | 'price')[];
 
@@ -34,26 +12,20 @@ export interface AutoscalerConfig {
 
 }
 
-export interface UnmanagedPool {
-  name: string;
-
-  labels?: Labels;
-
-  taints?: Taints;
-
-}
-
-export type PreInstallScript = string;
-
 export interface CacertsRes {
   cacerts?: string;
 
 }
 
-export interface ReadyRes {
-  ready?: boolean;
+export type GoDuration = string;
 
-  message?: string;
+export interface InitBody {
+  [x: string]: any;
+
+}
+
+export interface InitRes {
+  script?: string;
 
 }
 
@@ -67,16 +39,6 @@ export interface JoinRes {
 
 }
 
-export interface InitBody {
-  [x: string]: any;
-
-}
-
-export interface InitRes {
-  script?: string;
-
-}
-
 export interface KubeConfigBody {
   [x: string]: any;
 
@@ -86,6 +48,44 @@ export interface KubeConfigRes {
   kubeconfig?: string;
 
   fileName?: string;
+
+}
+
+export interface Labels {
+  [x: string]: string;
+
+}
+
+export type NodePoolName = string;
+
+export type PreInstallScript = string;
+
+export interface ReadyRes {
+  ready?: boolean;
+
+  message?: string;
+
+}
+
+export type SshPublicKey = string;
+
+export interface Taint {
+  key?: string;
+
+  value?: string;
+
+  effect?: 'NoSchedule' | 'PreferNoSchedule' | 'NoExecute';
+
+}
+
+export type Taints = Taint[];
+
+export interface UnmanagedPool {
+  name: string;
+
+  labels?: Labels;
+
+  taints?: Taints;
 
 }
 

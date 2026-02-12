@@ -1,12 +1,17 @@
 /* auto-generated */
 
-import { Name, Kind, Tags, Links } from './base';
+import { Name, Kind, Tags, Links } from './base.js';
 
-export type AwsRoleName = string;
+export interface AwsIdentity {
+  cloudAccountLink: string;
 
-export type PolicyRef = string;
+  policyRefs?: PolicyRef[];
 
-export type GcpRoleName = string;
+  trustPolicy?: AwsPolicyDocument;
+
+  roleName?: AwsRoleName;
+
+}
 
 export interface AwsPolicyDocument {
   Version?: string;
@@ -18,14 +23,19 @@ export interface AwsPolicyDocument {
 
 }
 
-export interface AwsIdentity {
+export type AwsRoleName = string;
+
+export interface AzureIdentity {
   cloudAccountLink: string;
 
-  policyRefs?: PolicyRef[];
+  roleAssignments?: AzureRoleAssignment[];
 
-  trustPolicy?: AwsPolicyDocument;
+}
 
-  roleName?: AwsRoleName;
+export interface AzureRoleAssignment {
+  scope?: string;
+
+  roles?: string[];
 
 }
 
@@ -42,6 +52,148 @@ export interface GcpIdentity {
   roles?: GcpRoleName[];
 
 }[];
+
+}
+
+export type GcpRoleName = string;
+
+export interface Identity {
+  id?: string;
+
+  name?: Name;
+
+  kind?: Kind;
+
+  version?: number;
+
+  description?: string;
+
+  tags?: Tags;
+
+  created?: Date;
+
+  lastModified?: Date;
+
+  links?: Links;
+
+  aws?: {
+  cloudAccountLink: string;
+
+  policyRefs?: PolicyRef[];
+
+  trustPolicy?: AwsPolicyDocument;
+
+  roleName?: AwsRoleName;
+
+};
+
+  gcp?: {
+  cloudAccountLink: string;
+
+  scopes?: string[];
+
+  serviceAccount?: string;
+
+  bindings?: {
+  resource?: string;
+
+  roles?: GcpRoleName[];
+
+}[];
+
+};
+
+  azure?: {
+  cloudAccountLink: string;
+
+  roleAssignments?: AzureRoleAssignment[];
+
+};
+
+  ngs?: {
+  cloudAccountLink: string;
+
+  pub?: {
+  allow?: string[];
+
+  deny?: string[];
+
+};
+
+  sub?: {
+  allow?: string[];
+
+  deny?: string[];
+
+};
+
+  resp?: {
+  max?: number;
+
+  ttl?: string;
+
+};
+
+  subs?: number;
+
+  data?: number;
+
+  payload?: number;
+
+};
+
+  networkResources?: NetworkResource[];
+
+  nativeNetworkResources?: NativeNetworkResource[];
+
+  memcacheAccess?: MemcacheAccess[];
+
+  spicedbAccess?: SpicedbAccess[];
+
+  status?: Status;
+
+  gvc?: string;
+
+}
+
+export interface MemcacheAccess {
+  clusterLink: string;
+
+  role: 'readWrite';
+
+}
+
+export interface NativeNetworkResource {
+  name: Name | string;
+
+  FQDN?: string;
+
+  ports: number[];
+
+  awsPrivateLink?: {
+  endpointServiceName: string;
+
+};
+
+  gcpServiceConnect?: {
+  targetService: string;
+
+};
+
+}
+
+export interface NetworkResource {
+  name: Name | string;
+
+  agentLink?: string;
+
+  IPs?: string[];
+
+  FQDN?: string;
+
+  resolverIP?: string;
+
+  ports: number[];
 
 }
 
@@ -77,17 +229,12 @@ export interface NgsIdentity {
 
 }
 
-export interface AzureRoleAssignment {
-  scope?: string;
+export type PolicyRef = string;
 
-  roles?: string[];
+export interface SpicedbAccess {
+  clusterLink: string;
 
-}
-
-export interface AzureIdentity {
-  cloudAccountLink: string;
-
-  roleAssignments?: AzureRoleAssignment[];
+  role: 'checkPermission' | 'read' | 'write';
 
 }
 
@@ -114,95 +261,6 @@ export interface Status {
   usable?: boolean;
 
 };
-
-}
-
-export interface NetworkResource {
-  name: Name | string;
-
-  agentLink?: string;
-
-  IPs?: string[];
-
-  FQDN?: string;
-
-  resolverIP?: string;
-
-  ports: number[];
-
-}
-
-export interface NativeNetworkResource {
-  name: Name | string;
-
-  FQDN?: string;
-
-  ports: number[];
-
-  awsPrivateLink?: {
-  endpointServiceName: string;
-
-};
-
-  gcpServiceConnect?: {
-  targetService: string;
-
-};
-
-}
-
-export interface SpicedbAccess {
-  clusterLink: string;
-
-  role: 'checkPermission' | 'read' | 'write';
-
-}
-
-export interface MemcacheAccess {
-  clusterLink: string;
-
-  role: 'readWrite';
-
-}
-
-export interface Identity {
-  id?: string;
-
-  name?: Name;
-
-  kind?: Kind;
-
-  version?: number;
-
-  description?: string;
-
-  tags?: Tags;
-
-  created?: Date;
-
-  lastModified?: Date;
-
-  links?: Links;
-
-  aws?: AwsIdentity;
-
-  gcp?: GcpIdentity;
-
-  azure?: AzureIdentity;
-
-  ngs?: NgsIdentity;
-
-  networkResources?: NetworkResource[];
-
-  nativeNetworkResources?: NativeNetworkResource[];
-
-  memcacheAccess?: MemcacheAccess[];
-
-  spicedbAccess?: SpicedbAccess[];
-
-  status?: Status;
-
-  gvc?: string;
 
 }
 

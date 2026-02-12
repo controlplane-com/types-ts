@@ -1,28 +1,19 @@
 /* auto-generated */
 
-import { ContainerStatus } from './containerstatus';
-import { JobExecutionStatus } from './cronjob';
-import { Kind, Links } from './base';
+import { Kind, Links } from './base.js';
+import { JobExecutionStatus } from './cronjob.js';
+import { ContainerStatus } from './containerstatus.js';
 
-export interface DeploymentVersion {
-  name?: string;
+export interface Deployment {
+  name: string;
 
-  created?: Date;
+  kind?: Kind;
 
-  workload?: number;
+  links?: Links;
 
-  gvc?: number;
+  lastModified?: Date;
 
-  containers?: {
-  [x: string]: ContainerStatus;
-
-};
-
-  ready?: boolean;
-
-  message?: string;
-
-  zone?: string;
+  status?: DeploymentStatus;
 
 }
 
@@ -49,16 +40,25 @@ export interface DeploymentStatus {
 
 }
 
-export interface Deployment {
-  name: string;
+export interface DeploymentVersion {
+  name?: string;
 
-  kind?: Kind;
+  created?: Date;
 
-  links?: Links;
+  workload?: number;
 
-  lastModified?: Date;
+  gvc?: number;
 
-  status?: DeploymentStatus;
+  containers?: {
+  [x: string]: ContainerStatus;
+
+};
+
+  ready?: boolean;
+
+  message?: string;
+
+  zone?: string;
 
 }
 

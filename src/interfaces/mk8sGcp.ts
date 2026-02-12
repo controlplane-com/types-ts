@@ -1,20 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints, PreInstallScript, AutoscalerConfig } from './mk8sCommon';
-
-export interface Image {
-  recommended?: 'ubuntu/jammy-22.04' | 'ubuntu/noble-24.04' | 'debian/bookworm-12' | 'debian/trixie-13' | 'google/cos-stable';
-
-  family?: {
-  project: string;
-
-  family: string;
-
-};
-
-  exact?: string;
-
-}
+import { Labels, Taints, PreInstallScript, AutoscalerConfig } from './mk8sCommon.js';
 
 export interface GcpPool {
   name: string;
@@ -99,6 +85,20 @@ export interface GcpProvider {
 
 export interface GcpProviderStatus {
   [x: string]: any;
+
+}
+
+export interface Image {
+  recommended?: 'ubuntu/jammy-22.04' | 'ubuntu/noble-24.04' | 'debian/bookworm-12' | 'debian/trixie-13' | 'google/cos-stable';
+
+  family?: {
+  project: string;
+
+  family: string;
+
+};
+
+  exact?: string;
 
 }
 

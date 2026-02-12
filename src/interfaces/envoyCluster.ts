@@ -1,19 +1,6 @@
 /* auto-generated */
 
-import { Struct } from './envoyCommon';
-
-export interface Metadata {
-  filter_metadata?: {
-  [x: string]: Struct;
-
-};
-
-  typed_filter_metadata?: {
-  [x: string]: any;
-
-};
-
-}
+import { Struct } from './envoyCommon.js';
 
 export interface Cluster {
   name: string;
@@ -120,6 +107,19 @@ export interface Cluster {
   preconnect_policy?: any;
 
   connection_pool_per_downstream_connection?: any;
+
+}
+
+export interface Metadata {
+  filter_metadata?: {
+  [x: string]: Struct;
+
+};
+
+  typed_filter_metadata?: {
+  [x: string]: any;
+
+};
 
 }
 

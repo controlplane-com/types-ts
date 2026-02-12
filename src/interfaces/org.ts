@@ -1,17 +1,8 @@
 /* auto-generated */
 
-import { S3Logging, CoralogixLogging, DatadogLogging, LogzioLogging, ElasticLogging, CloudWatchLogging, FluentdLogging, StackdriverLogging, SyslogLogging, OpenTelemetryLogging } from './orgLogging';
-import { Tracing } from './tracing';
-import { Kind, Tags, Links } from './base';
-
-export interface OrgStatus {
-  accountLink?: string;
-
-  active?: boolean;
-
-  endpointPrefix?: string;
-
-}
+import { Kind, Tags, Links } from './base.js';
+import { S3Logging, CoralogixLogging, DatadogLogging, LogzioLogging, ElasticLogging, CloudWatchLogging, FluentdLogging, StackdriverLogging, SyslogLogging, OpenTelemetryLogging } from './orgLogging.js';
+import { Tracing } from './tracing.js';
 
 export interface AuthConfig {
   domainAutoMembers?: string[];
@@ -31,19 +22,37 @@ export interface ObservabilityConfig {
 
 }
 
-export interface ThreatDetection {
-  enabled: boolean;
+export interface Org {
+  id?: string;
 
-  minimumSeverity?: 'warning' | 'error' | 'critical';
+  kind?: Kind;
 
-  syslog?: {
-  transport?: 'tcp' | 'udp';
+  version?: number;
 
-  host: string;
+  description?: string;
 
-  port: number;
+  tags?: Tags;
 
-};
+  created?: Date;
+
+  lastModified?: Date;
+
+  links?: Links;
+
+  name?: string;
+
+  spec?: OrgSpec;
+
+  status?: OrgStatus;
+
+}
+
+export interface OrgConfig {
+  awsPrivateLinks?: string[];
+
+  gcpServiceConnects?: string[];
+
+  quotaOverrides?: QuotaOverride[];
 
 }
 
@@ -118,28 +127,12 @@ export interface OrgSpec {
 
 }
 
-export interface Org {
-  id?: string;
+export interface OrgStatus {
+  accountLink?: string;
 
-  kind?: Kind;
+  active?: boolean;
 
-  version?: number;
-
-  description?: string;
-
-  tags?: Tags;
-
-  created?: Date;
-
-  lastModified?: Date;
-
-  links?: Links;
-
-  name?: string;
-
-  spec?: OrgSpec;
-
-  status?: OrgStatus;
+  endpointPrefix?: string;
 
 }
 
@@ -150,12 +143,19 @@ export interface QuotaOverride {
 
 }
 
-export interface OrgConfig {
-  awsPrivateLinks?: string[];
+export interface ThreatDetection {
+  enabled: boolean;
 
-  gcpServiceConnects?: string[];
+  minimumSeverity?: 'warning' | 'error' | 'critical';
 
-  quotaOverrides?: QuotaOverride[];
+  syslog?: {
+  transport?: 'tcp' | 'udp';
+
+  host: string;
+
+  port: number;
+
+};
 
 }
 

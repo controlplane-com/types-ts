@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { RetryPolicy, DataSource, Empty, GoogleCallCredentials, Struct, ApiVersion, Duration, HttpStatus, HeaderValueOption } from './envoyCommon';
+import { RetryPolicy, DataSource, Empty, GoogleCallCredentials, Struct, ApiVersion, Duration, HttpStatus, HeaderValueOption } from './envoyCommon.js';
 
 export interface RateLimitService {
   grpc_service: {

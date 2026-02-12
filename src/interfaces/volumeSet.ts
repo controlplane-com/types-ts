@@ -1,6 +1,11 @@
 /* auto-generated */
 
-import { Name, Kind, Tags, Links } from './base';
+import { Name, Kind, Tags, Links } from './base.js';
+
+export interface CustomEncryptionRegion {
+  keyId?: string;
+
+}
 
 export interface FileSystem {
   name: string;
@@ -8,6 +13,19 @@ export interface FileSystem {
   accessMode: string;
 
   commandsSupported?: string[];
+
+}
+
+export type FileSystemType = 'ext4' | 'xfs' | 'shared';
+
+export interface MountResources {
+  maxCpu?: string;
+
+  minCpu?: string;
+
+  minMemory?: string;
+
+  maxMemory?: string;
 
 }
 
@@ -22,23 +40,7 @@ export interface PerformanceClass {
 
 }
 
-export interface VolumeSnapshot {
-  name: string;
-
-  id?: string;
-
-  created: Date;
-
-  expires?: Date;
-
-  size?: number;
-
-  tags?: {
-  [x: string]: string;
-
-}[];
-
-}
+export type PerformanceClassName = 'general-purpose-ssd' | 'high-throughput-ssd' | 'shared';
 
 export interface PersistentVolumeStatus {
   lifecycle?: 'creating' | 'unused' | 'unbound' | 'bound' | 'deleted' | 'repairing';
@@ -72,30 +74,6 @@ export interface PersistentVolumeStatus {
 
 }
 
-export interface VolumeSetStatusLocation {
-  name: string;
-
-  volumes?: PersistentVolumeStatus[];
-
-  desiredVolumeCount?: number;
-
-  clusterId?: string;
-
-}
-
-export interface VolumeSetStatus {
-  parentId?: string;
-
-  usedByWorkload?: string;
-
-  workloadLinks?: string[];
-
-  bindingId?: string;
-
-  locations?: VolumeSetStatusLocation[];
-
-}
-
 export interface SnapshotSpec {
   createFinalSnapshot?: boolean;
 
@@ -105,23 +83,30 @@ export interface SnapshotSpec {
 
 }
 
-export type PerformanceClassName = 'general-purpose-ssd' | 'high-throughput-ssd' | 'shared';
+export interface VolumeSet {
+  id?: string;
 
-export type FileSystemType = 'ext4' | 'xfs' | 'shared';
+  name?: Name;
 
-export interface MountResources {
-  maxCpu?: string;
+  kind?: Kind;
 
-  minCpu?: string;
+  version?: number;
 
-  minMemory?: string;
+  description?: string;
 
-  maxMemory?: string;
+  tags?: Tags;
 
-}
+  created?: Date;
 
-export interface CustomEncryptionRegion {
-  keyId?: string;
+  lastModified?: Date;
+
+  links?: Links;
+
+  spec: VolumeSetSpec;
+
+  status?: VolumeSetStatus;
+
+  gvc?: any;
 
 }
 
@@ -151,6 +136,21 @@ export interface VolumeSetSpec {
 
   scalingFactor?: number;
 
+  predictive?: {
+  enabled?: boolean;
+
+  lookbackHours?: number;
+
+  projectionHours?: number;
+
+  minDataPoints?: number;
+
+  minGrowthRateGBPerHour?: number;
+
+  scalingFactor?: number;
+
+};
+
 };
 
   mountOptions?: {
@@ -169,30 +169,45 @@ export interface VolumeSetSpec {
 
 }
 
-export interface VolumeSet {
+export interface VolumeSetStatus {
+  parentId?: string;
+
+  usedByWorkload?: string;
+
+  workloadLinks?: string[];
+
+  bindingId?: string;
+
+  locations?: VolumeSetStatusLocation[];
+
+}
+
+export interface VolumeSetStatusLocation {
+  name: string;
+
+  volumes?: PersistentVolumeStatus[];
+
+  desiredVolumeCount?: number;
+
+  clusterId?: string;
+
+}
+
+export interface VolumeSnapshot {
+  name: string;
+
   id?: string;
 
-  name?: Name;
+  created: Date;
 
-  kind?: Kind;
+  expires?: Date;
 
-  version?: number;
+  size?: number;
 
-  description?: string;
+  tags?: {
+  [x: string]: string;
 
-  tags?: Tags;
-
-  created?: Date;
-
-  lastModified?: Date;
-
-  links?: Links;
-
-  spec: VolumeSetSpec;
-
-  status?: VolumeSetStatus;
-
-  gvc?: any;
+}[];
 
 }
 

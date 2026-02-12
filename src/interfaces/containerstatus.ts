@@ -1,17 +1,6 @@
 /* auto-generated */
 
 
-export interface DeploymentResources {
-  replicas?: number;
-
-  replicasReady?: number;
-
-  cpu?: number;
-
-  memory?: number;
-
-}
-
 export interface ContainerStatus {
   name?: string;
 
@@ -33,6 +22,17 @@ export interface ContainerStatus {
   count?: number;
 
 };
+
+}
+
+export interface DeploymentResources {
+  replicas?: number;
+
+  replicasReady?: number;
+
+  cpu?: number;
+
+  memory?: number;
 
 }
 

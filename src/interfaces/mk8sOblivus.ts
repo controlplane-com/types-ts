@@ -1,6 +1,13 @@
 /* auto-generated */
 
-import { Labels, Taints, UnmanagedPool, AutoscalerConfig, PreInstallScript } from './mk8sCommon';
+import { Labels, Taints, UnmanagedPool, AutoscalerConfig, PreInstallScript } from './mk8sCommon.js';
+
+export interface OblivusJoinParams {
+  nodePoolName: string;
+
+  [x: string]: any;
+
+}
 
 export interface OblivusPool {
   name: string;
@@ -35,13 +42,6 @@ export interface OblivusProvider {
 }
 
 export interface OblivusProviderStatus {
-  [x: string]: any;
-
-}
-
-export interface OblivusJoinParams {
-  nodePoolName: string;
-
   [x: string]: any;
 
 }

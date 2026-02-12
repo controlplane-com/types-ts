@@ -13,18 +13,15 @@ export interface OpenTelemetry {
 
 }
 
-export interface TracingCustomTag {
-  literal?: {
-  value?: string;
-
-};
-
-}
-
 export interface Tracing {
   sampling: number;
 
-  lightstep?: LightstepTracing;
+  lightstep?: {
+  endpoint: string;
+
+  credentials?: string;
+
+};
 
   customTags?: {
   [x: string]: TracingCustomTag;
@@ -32,12 +29,28 @@ export interface Tracing {
 };
 
   provider?: {
-  otel?: OpenTelemetry;
+  otel?: {
+  endpoint: string;
 
-  lightstep?: LightstepTracing;
+};
+
+  lightstep?: {
+  endpoint: string;
+
+  credentials?: string;
+
+};
 
   controlplane?: {
 };
+
+};
+
+}
+
+export interface TracingCustomTag {
+  literal?: {
+  value?: string;
 
 };
 

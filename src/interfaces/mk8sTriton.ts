@@ -1,30 +1,15 @@
 /* auto-generated */
 
-import { Labels, Taints, PreInstallScript, SshPublicKey, AutoscalerConfig } from './mk8sCommon';
+import { Labels, Taints, PreInstallScript, SshPublicKey, AutoscalerConfig } from './mk8sCommon.js';
 
-export interface TritonPool {
-  name: string;
+export interface LoadBalancerConfig {
+  manual?: Manual;
 
-  labels?: Labels;
-
-  taints?: Taints;
-
-  packageId: string;
-
-  overrideImageId?: string;
-
-  publicNetworkId?: string;
-
-  privateNetworkIds?: string[];
-
-  tritonTags?: {
-  [x: string]: string;
-
+  none?: {
 };
 
-  minSize: number;
-
-  maxSize: number;
+  gateway?: {
+};
 
 }
 
@@ -62,17 +47,6 @@ export interface Manual {
 
 }
 
-export interface LoadBalancerConfig {
-  manual?: Manual;
-
-  none?: {
-};
-
-  gateway?: {
-};
-
-}
-
 export interface SdcConnection {
   url: string;
 
@@ -81,6 +55,39 @@ export interface SdcConnection {
   user?: string;
 
   privateKeySecretLink: string;
+
+}
+
+export interface TritonJoinParams {
+  nodePoolName: string;
+
+  [x: string]: any;
+
+}
+
+export interface TritonPool {
+  name: string;
+
+  labels?: Labels;
+
+  taints?: Taints;
+
+  packageId: string;
+
+  overrideImageId?: string;
+
+  publicNetworkId?: string;
+
+  privateNetworkIds?: string[];
+
+  tritonTags?: {
+  [x: string]: string;
+
+};
+
+  minSize: number;
+
+  maxSize: number;
 
 }
 
@@ -126,13 +133,6 @@ export interface TritonProvider {
 }
 
 export interface TritonProviderStatus {
-  [x: string]: any;
-
-}
-
-export interface TritonJoinParams {
-  nodePoolName: string;
-
   [x: string]: any;
 
 }

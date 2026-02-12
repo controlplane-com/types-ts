@@ -1,15 +1,6 @@
 /* auto-generated */
 
-import { Kind, Links } from './base';
-
-export interface PolicySummary {
-  link?: string;
-
-  description?: string;
-
-  targetKind?: Kind;
-
-}
+import { Kind, Links } from './base.js';
 
 export interface PolicyMembership {
   kind?: Kind;
@@ -17,6 +8,15 @@ export interface PolicyMembership {
   policies?: PolicySummary[];
 
   links?: Links;
+
+}
+
+export interface PolicySummary {
+  link?: string;
+
+  description?: string;
+
+  targetKind?: Kind;
 
 }
 

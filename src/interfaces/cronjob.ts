@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { ContainerStatus } from './containerstatus';
+import { ContainerStatus } from './containerstatus.js';
 
 export interface JobExecutionCondition {
   status?: string;

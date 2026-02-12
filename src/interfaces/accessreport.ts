@@ -1,15 +1,15 @@
 /* auto-generated */
 
-import { Links } from './base';
+import { Links } from './base.js';
 
-export interface PrincipalBinding {
-  principalLink?: string;
+export interface AccessReport {
+  kind?: 'accessreport';
 
-  grantingPolicyLink?: string;
+  permissions?: GrantedPermission[];
 
-  grantedPermissions?: string[];
+  created?: Date;
 
-  match?: 'link' | 'query' | 'all';
+  links?: Links;
 
 }
 
@@ -22,14 +22,14 @@ export interface GrantedPermission {
 
 }
 
-export interface AccessReport {
-  kind?: 'accessreport';
+export interface PrincipalBinding {
+  principalLink?: string;
 
-  permissions?: GrantedPermission[];
+  grantingPolicyLink?: string;
 
-  created?: Date;
+  grantedPermissions?: string[];
 
-  links?: Links;
+  match?: 'link' | 'query' | 'all';
 
 }
 

@@ -1,22 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints, SshPublicKey, AutoscalerConfig } from './mk8sCommon';
-
-export interface Image {
-  recommended?: 'ubuntu/noble-24.04' | 'ubuntu/jammy-22.04' | 'ubuntu/focal-20.04' | 'debian/bookworm-12' | 'debian/bullseye-11';
-
-  reference?: {
-  publisher: string;
-
-  offer: string;
-
-  sku: string;
-
-  version: string;
-
-};
-
-}
+import { Labels, Taints, SshPublicKey, AutoscalerConfig } from './mk8sCommon.js';
 
 export interface AzurePool {
   name: string;
@@ -94,6 +78,22 @@ export interface AzureProvider {
 
 export interface AzureProviderStatus {
   [x: string]: any;
+
+}
+
+export interface Image {
+  recommended?: 'ubuntu/noble-24.04' | 'ubuntu/jammy-22.04' | 'ubuntu/focal-20.04' | 'debian/bookworm-12' | 'debian/bullseye-11';
+
+  reference?: {
+  publisher: string;
+
+  offer: string;
+
+  sku: string;
+
+  version: string;
+
+};
 
 }
 

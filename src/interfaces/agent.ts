@@ -1,22 +1,6 @@
 /* auto-generated */
 
-import { Name, Kind, Tags, Links } from './base';
-
-export interface BootstrapConfig {
-  registrationToken: string;
-
-  agentId: string;
-
-  agentLink: string;
-
-  hubEndpoint: string;
-
-}
-
-export interface AgentStatus {
-  bootstrapConfig?: BootstrapConfig;
-
-}
+import { Name, Kind, Tags, Links } from './base.js';
 
 export interface Agent {
   id?: string;
@@ -42,6 +26,10 @@ export interface Agent {
 }
 
 export interface AgentInfo {
+  protocolVersion?: 'v1' | 'v2';
+
+  instanceId?: string;
+
   lastActive?: Date;
 
   env?: {
@@ -52,6 +40,26 @@ export interface AgentInfo {
   peerCount?: number;
 
   serviceCount?: number;
+
+}
+
+export interface AgentStatus {
+  bootstrapConfig?: BootstrapConfig;
+
+  protocolVersion?: 'v1' | 'v2';
+
+}
+
+export interface BootstrapConfig {
+  registrationToken: string;
+
+  agentId: string;
+
+  agentLink: string;
+
+  hubEndpoint: string;
+
+  protocolVersion?: 'v1' | 'v2';
 
 }
 

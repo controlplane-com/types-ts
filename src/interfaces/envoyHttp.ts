@@ -1,29 +1,6 @@
 /* auto-generated */
 
-import { DurationRestricted, Duration, RetryPolicy, Empty, RouteMatch, RouteMatchRestricted, DataSource, GoogleCallCredentials, Struct, HeaderValue, ApiVersion, UInt32, Priority, GrpcService, ListStringMatcher, HttpStatus, FractionalPercent, RuntimeFeatureFlag, StringMatcher, RuntimeFractionalPercent, HeaderValueOption } from './envoyCommon';
-
-export interface HttpUri {
-  uri: string;
-
-  cluster: string;
-
-  timeout: string | {
-  seconds?: number;
-
-  nanos?: number;
-
-};
-
-}
-
-export interface HttpUriRestricted {
-  uri: string;
-
-  cluster: string;
-
-  timeout?: DurationRestricted;
-
-}
+import { Priority, StringMatcher, RuntimeFractionalPercent, UInt32, GrpcService, ListStringMatcher, HeaderValue, HttpStatus, FractionalPercent, RuntimeFeatureFlag, ApiVersion, DurationRestricted, Duration, RetryPolicy, Empty, RouteMatch, RouteMatchRestricted, HeaderValueOption, DataSource, GoogleCallCredentials, Struct } from './envoyCommon.js';
 
 export interface BufferSettings {
   max_request_bytes?: number;
@@ -34,159 +11,49 @@ export interface BufferSettings {
 
 }
 
-export interface JwtProvider {
-  issuer?: string;
+export interface ConnectRpc {
+  priority?: Priority;
 
-  audiences?: string[];
+  excludedWorkloads?: string[];
 
-  claim_to_headers?: {
-  header_name: string;
+  name: 'envoy.filters.http.connect_grpc_bridge';
 
-  claim_name: string;
-
-}[];
-
-  remote_jwks?: {
-  http_uri?: HttpUri;
-
-  cache_duration?: Duration;
-
-  async_fetch?: {
-  fast_listener?: boolean;
-
-  failed_refetch_duration?: Duration;
-
-};
-
-  retry_policy?: RetryPolicy;
+  typed_config?: {
+  "@type": 'type.googleapis.com/envoy.extensions.filters.http.connect_grpc_bridge.v3.FilterConfig';
 
 };
 
 }
 
-export interface JwtProviderUIRestricted {
-  issuer?: string;
+export interface Cors {
+  priority?: Priority;
 
-  audiences?: string[];
+  excludedWorkloads?: string[];
 
-  claim_to_headers?: {
-  header_name: string;
+  name: 'envoy.filters.http.cors';
 
-  claim_name: string;
+  typed_config?: {
+  allow_origin_string_match?: StringMatcher[];
 
-}[];
+  allow_methods?: string;
 
-  remote_jwks?: {
-  http_uri?: HttpUriRestricted;
+  allow_headers?: string;
 
-  cache_duration?: DurationRestricted;
+  expose_headers?: string;
 
-};
+  max_age?: string;
 
-}
+  allow_credentials?: boolean;
 
-export interface JwtRequirement {
-  provider_name?: string;
+  filter_enabled?: RuntimeFractionalPercent;
 
-  provider_and_audiences?: {
-  provider_name?: string;
+  shadow_enabled?: RuntimeFractionalPercent;
 
-  audiences?: string[];
+  allow_private_network_access?: boolean;
 
-};
-
-  requires_any?: {
-  requirements?: any[];
+  "@type": 'type.googleapis.com/envoy.extensions.filters.http.cors.v3.Cors';
 
 };
-
-  requires_all?: {
-  requirements?: any[];
-
-};
-
-  allow_missing_or_failed?: Empty;
-
-  allow_missing?: Empty;
-
-}
-
-export interface JwtRequirementRestricted {
-  provider_name?: string;
-
-}
-
-export interface JwtRequirementRule {
-  match?: RouteMatch;
-
-  requires?: JwtRequirement;
-
-  requirement_name?: string;
-
-}
-
-export interface JwtRequirementRuleRestricted {
-  match?: RouteMatchRestricted;
-
-  requires?: JwtRequirementRestricted;
-
-}
-
-export interface JwtRequirementMap {
-  [x: string]: JwtRequirement;
-
-}
-
-export interface RateLimitService {
-  grpc_service: {
-  envoy_grpc?: {
-  cluster_name: string;
-
-  authority?: string;
-
-  retry_policy?: RetryPolicy;
-
-};
-
-  google_grpc?: {
-  target_uri: string;
-
-  channel_credentials?: {
-  ssl_credentials?: {
-  root_certs?: DataSource;
-
-  private_key?: DataSource;
-
-  cert_chain?: DataSource;
-
-};
-
-  google_default?: Empty;
-
-};
-
-  call_credentials?: GoogleCallCredentials[];
-
-  stat_prefix: string;
-
-  credentials_factory_name?: string;
-
-  config?: Struct;
-
-};
-
-  timeout?: string | {
-  seconds?: number;
-
-  nanos?: number;
-
-};
-
-  initial_metadata?: HeaderValue[];
-
-};
-
-  transport_api_version?: ApiVersion;
 
 }
 
@@ -294,55 +161,6 @@ export interface ExtAuthz {
 
 }
 
-export interface JwtAuthn {
-  priority?: Priority;
-
-  excludedWorkloads?: string[];
-
-  name: 'envoy.filters.http.jwt_authn';
-
-  typed_config?: {
-  providers?: {
-  [x: string]: JwtProvider;
-
-};
-
-  rules?: JwtRequirementRuleRestricted[];
-
-  filter_state_rules?: {
-  name: string;
-
-  requires?: JwtRequirementMap;
-
-};
-
-  bypass_cors_preflight?: boolean;
-
-  requirement_map?: {
-  [x: string]: JwtRequirement;
-
-};
-
-  "@type": 'type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3.JwtAuthentication';
-
-};
-
-}
-
-export interface GrpcWeb {
-  priority?: Priority;
-
-  excludedWorkloads?: string[];
-
-  name: 'envoy.filters.http.grpc_web';
-
-  typed_config?: {
-  "@type": 'type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb';
-
-};
-
-}
-
 export interface GrpcJsonTranscoder {
   priority?: Priority;
 
@@ -407,35 +225,180 @@ export interface GrpcJsonTranscoder {
 
 }
 
-export interface Cors {
+export interface GrpcWeb {
   priority?: Priority;
 
   excludedWorkloads?: string[];
 
-  name: 'envoy.filters.http.cors';
+  name: 'envoy.filters.http.grpc_web';
 
   typed_config?: {
-  allow_origin_string_match?: StringMatcher[];
-
-  allow_methods?: string;
-
-  allow_headers?: string;
-
-  expose_headers?: string;
-
-  max_age?: string;
-
-  allow_credentials?: boolean;
-
-  filter_enabled?: RuntimeFractionalPercent;
-
-  shadow_enabled?: RuntimeFractionalPercent;
-
-  allow_private_network_access?: boolean;
-
-  "@type": 'type.googleapis.com/envoy.extensions.filters.http.cors.v3.Cors';
+  "@type": 'type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb';
 
 };
+
+}
+
+export type HttpFilter = ExtAuthz | JwtAuthn | GrpcWeb | ConnectRpc | GrpcJsonTranscoder | Cors | RateLimit;
+
+export interface HttpUri {
+  uri: string;
+
+  cluster: string;
+
+  timeout: string | {
+  seconds?: number;
+
+  nanos?: number;
+
+};
+
+}
+
+export interface HttpUriRestricted {
+  uri: string;
+
+  cluster: string;
+
+  timeout?: DurationRestricted;
+
+}
+
+export interface JwtAuthn {
+  priority?: Priority;
+
+  excludedWorkloads?: string[];
+
+  name: 'envoy.filters.http.jwt_authn';
+
+  typed_config?: {
+  providers?: {
+  [x: string]: JwtProvider;
+
+};
+
+  rules?: JwtRequirementRuleRestricted[];
+
+  filter_state_rules?: {
+  name: string;
+
+  requires?: JwtRequirementMap;
+
+};
+
+  bypass_cors_preflight?: boolean;
+
+  requirement_map?: {
+  [x: string]: JwtRequirement;
+
+};
+
+  "@type": 'type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3.JwtAuthentication';
+
+};
+
+}
+
+export interface JwtProvider {
+  issuer?: string;
+
+  audiences?: string[];
+
+  claim_to_headers?: {
+  header_name: string;
+
+  claim_name: string;
+
+}[];
+
+  remote_jwks?: {
+  http_uri?: HttpUri;
+
+  cache_duration?: Duration;
+
+  async_fetch?: {
+  fast_listener?: boolean;
+
+  failed_refetch_duration?: Duration;
+
+};
+
+  retry_policy?: RetryPolicy;
+
+};
+
+}
+
+export interface JwtProviderUIRestricted {
+  issuer?: string;
+
+  audiences?: string[];
+
+  claim_to_headers?: {
+  header_name: string;
+
+  claim_name: string;
+
+}[];
+
+  remote_jwks?: {
+  http_uri?: HttpUriRestricted;
+
+  cache_duration?: DurationRestricted;
+
+};
+
+}
+
+export interface JwtRequirement {
+  provider_name?: string;
+
+  provider_and_audiences?: {
+  provider_name?: string;
+
+  audiences?: string[];
+
+};
+
+  requires_any?: {
+  requirements?: any[];
+
+};
+
+  requires_all?: {
+  requirements?: any[];
+
+};
+
+  allow_missing_or_failed?: Empty;
+
+  allow_missing?: Empty;
+
+}
+
+export interface JwtRequirementMap {
+  [x: string]: JwtRequirement;
+
+}
+
+export interface JwtRequirementRestricted {
+  provider_name?: string;
+
+}
+
+export interface JwtRequirementRule {
+  match?: RouteMatch;
+
+  requires?: JwtRequirement;
+
+  requirement_name?: string;
+
+}
+
+export interface JwtRequirementRuleRestricted {
+  match?: RouteMatchRestricted;
+
+  requires?: JwtRequirementRestricted;
 
 }
 
@@ -479,19 +442,56 @@ export interface RateLimit {
 
 }
 
-export interface ConnectRpc {
-  priority?: Priority;
+export interface RateLimitService {
+  grpc_service: {
+  envoy_grpc?: {
+  cluster_name: string;
 
-  excludedWorkloads?: string[];
+  authority?: string;
 
-  name: 'envoy.filters.http.connect_grpc_bridge';
-
-  typed_config?: {
-  "@type": 'type.googleapis.com/envoy.extensions.filters.http.connect_grpc_bridge.v3.FilterConfig';
+  retry_policy?: RetryPolicy;
 
 };
 
-}
+  google_grpc?: {
+  target_uri: string;
 
-export type HttpFilter = ExtAuthz | JwtAuthn | GrpcWeb | ConnectRpc | GrpcJsonTranscoder | Cors | RateLimit;
+  channel_credentials?: {
+  ssl_credentials?: {
+  root_certs?: DataSource;
+
+  private_key?: DataSource;
+
+  cert_chain?: DataSource;
+
+};
+
+  google_default?: Empty;
+
+};
+
+  call_credentials?: GoogleCallCredentials[];
+
+  stat_prefix: string;
+
+  credentials_factory_name?: string;
+
+  config?: Struct;
+
+};
+
+  timeout?: string | {
+  seconds?: number;
+
+  nanos?: number;
+
+};
+
+  initial_metadata?: HeaderValue[];
+
+};
+
+  transport_api_version?: ApiVersion;
+
+}
 

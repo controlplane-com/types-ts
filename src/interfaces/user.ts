@@ -1,6 +1,24 @@
 /* auto-generated */
 
-import { Tags, Links, ApiError } from './base';
+import { ApiError, Tags, Links } from './base.js';
+
+export interface InviteRequest {
+  emails?: string[];
+
+}
+
+export interface InviteResponse {
+  errors?: {
+  [x: string]: ApiError;
+
+};
+
+  invitations?: {
+  [x: string]: string;
+
+};
+
+}
 
 export interface User {
   id?: string;
@@ -22,24 +40,6 @@ export interface User {
   idp?: string;
 
   email?: string;
-
-}
-
-export interface InviteRequest {
-  emails?: string[];
-
-}
-
-export interface InviteResponse {
-  errors?: {
-  [x: string]: ApiError;
-
-};
-
-  invitations?: {
-  [x: string]: string;
-
-};
 
 }
 

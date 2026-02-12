@@ -1,19 +1,9 @@
 /* auto-generated */
 
-import { Name, Kind, Tags, Links, CloudProvider } from './base';
+import { Name, Kind, Tags, Links, CloudProvider } from './base.js';
 
 export interface AwsConfig {
   roleArn: string;
-
-}
-
-export interface GcpConfig {
-  projectId: string;
-
-}
-
-export interface NgsConfig {
-  secretLink: string;
 
 }
 
@@ -56,6 +46,11 @@ export interface CloudAccount {
 
 }
 
+export interface GcpConfig {
+  projectId: string;
+
+}
+
 export interface Instructions {
   message?: string;
 
@@ -63,6 +58,11 @@ export interface Instructions {
   [x: string]: any;
 
 };
+
+}
+
+export interface NgsConfig {
+  secretLink: string;
 
 }
 

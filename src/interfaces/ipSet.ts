@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Name, Kind, Tags, Links } from './base';
+import { Name, Kind, Tags, Links } from './base.js';
 
 export interface IpAddress {
   name: string;
@@ -12,29 +12,6 @@ export interface IpAddress {
   state: 'bound' | 'unbound';
 
   created: Date;
-
-}
-
-export interface IpSetStatus {
-  ipAddresses?: IpAddress[];
-
-  error?: string;
-
-  warning?: string;
-
-}
-
-export interface IpSetLocation {
-  name: string;
-
-  retentionPolicy: 'keep' | 'free';
-
-}
-
-export interface IpSetSpec {
-  link?: string;
-
-  locations?: IpSetLocation[];
 
 }
 
@@ -65,6 +42,29 @@ export interface IpSet {
 };
 
   status?: IpSetStatus;
+
+}
+
+export interface IpSetLocation {
+  name: string;
+
+  retentionPolicy: 'keep' | 'free';
+
+}
+
+export interface IpSetSpec {
+  link?: string;
+
+  locations?: IpSetLocation[];
+
+}
+
+export interface IpSetStatus {
+  ipAddresses?: IpAddress[];
+
+  error?: string;
+
+  warning?: string;
 
 }
 

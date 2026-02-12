@@ -1,113 +1,13 @@
 /* auto-generated */
 
-import { Regex, Kind, Tags, Links } from './base';
-import { EnvVar } from './env';
-import { VolumeSpec } from './volumeSpec';
-import { DefaultOptions, LocalOptions } from './workloadOptions';
-import { AccessLog } from './envoyAccessLog';
-import { Cluster } from './envoyCluster';
-import { ExcExtAuth, ExcludedRateLimit } from './envoyExcExtAuth';
-import { HttpFilter } from './envoyHttp';
-
-export type Memory = string;
-
-export type Cpu = string;
-
-export interface HealthCheckSpec {
-  exec?: {
-  command?: string[];
-
-};
-
-  grpc?: {
-  port?: number;
-
-};
-
-  tcpSocket?: {
-  port?: number;
-
-};
-
-  httpGet?: {
-  path?: string;
-
-  port?: number;
-
-  httpHeaders?: {
-  name: string;
-
-  value: string;
-
-}[];
-
-  scheme?: 'HTTP' | 'HTTPS';
-
-};
-
-  initialDelaySeconds?: number;
-
-  periodSeconds?: number;
-
-  timeoutSeconds?: number;
-
-  successThreshold?: number;
-
-  failureThreshold?: number;
-
-}
-
-export interface RolloutOptions {
-  minReadySeconds?: number;
-
-  maxUnavailableReplicas?: string;
-
-  maxSurgeReplicas?: string;
-
-  scalingPolicy?: 'OrderedReady' | 'Parallel';
-
-  terminationGracePeriodSeconds?: number;
-
-}
-
-export interface RolloutOptionsStateful {
-  minReadySeconds?: number;
-
-  maxSurgeReplicas?: string;
-
-  scalingPolicy?: 'OrderedReady' | 'Parallel';
-
-  terminationGracePeriodSeconds?: number;
-
-  maxUnavailableReplicas?: string;
-
-}
-
-export interface SecurityOptions {
-  filesystemGroupId?: number;
-
-  runAsUser?: number;
-
-}
-
-export interface GpuResource {
-  nvidia?: {
-  model?: any;
-
-  quantity?: number;
-
-};
-
-  custom?: {
-  resource: string;
-
-  runtimeClass?: string;
-
-  quantity?: number;
-
-};
-
-}
+import { Regex, Kind, Tags, Links } from './base.js';
+import { EnvVar } from './env.js';
+import { VolumeSpec } from './volumeSpec.js';
+import { DefaultOptions, LocalOptions } from './workloadOptions.js';
+import { AccessLog } from './envoyAccessLog.js';
+import { Cluster } from './envoyCluster.js';
+import { ExcExtAuth, ExcludedRateLimit } from './envoyExcExtAuth.js';
+import { HttpFilter } from './envoyHttp.js';
 
 export interface ContainerSpec {
   name?: string;
@@ -280,117 +180,14 @@ export interface ContainerSpec {
 
 }
 
-export interface HealthCheckStatus {
-  active: boolean;
+export type Cpu = string;
 
-  success?: boolean;
+export interface Extras {
+  affinity?: any;
 
-  code?: number;
+  tolerations?: any[];
 
-  message?: string;
-
-  failures?: number;
-
-  successes?: number;
-
-  lastChecked?: Date;
-
-}
-
-export interface LoadBalancerStatus {
-  origin?: string;
-
-  url?: string;
-
-}
-
-export interface ResolvedImage {
-  digest?: string;
-
-  manifests?: {
-  image: string;
-
-  mediaType: string;
-
-  digest: string;
-
-  platform?: {
-  [x: string]: string;
-
-};
-
-}[];
-
-}
-
-export interface ResolvedImages {
-  resolvedForVersion?: number;
-
-  resolvedAt?: Date;
-
-  errorMessages?: string[];
-
-  nextRetryAt?: Date;
-
-  images?: ResolvedImage[];
-
-}
-
-export interface WorkloadStatus {
-  parentId?: string;
-
-  canonicalEndpoint?: string;
-
-  endpoint?: string;
-
-  internalName?: string;
-
-  replicaInternalNames?: string[];
-
-  healthCheck?: {
-  active: boolean;
-
-  success?: boolean;
-
-  code?: number;
-
-  message?: string;
-
-  failures?: number;
-
-  successes?: number;
-
-  lastChecked?: Date;
-
-};
-
-  currentReplicaCount?: number;
-
-  resolvedImages?: {
-  resolvedForVersion?: number;
-
-  resolvedAt?: Date;
-
-  errorMessages?: string[];
-
-  nextRetryAt?: Date;
-
-  images?: ResolvedImage[];
-
-};
-
-  loadBalancer?: LoadBalancerStatus[];
-
-  [x: string]: any;
-
-}
-
-export interface HeaderFilter {
-  key: string;
-
-  allowedValues?: Regex[];
-
-  blockedValues?: Regex[];
+  topologySpreadConstraints?: any[];
 
 }
 
@@ -429,7 +226,94 @@ export interface FirewallSpec {
 
 }
 
-export type ScheduleType = string;
+export interface GpuResource {
+  nvidia?: {
+  model?: any;
+
+  quantity?: number;
+
+};
+
+  custom?: {
+  resource: string;
+
+  runtimeClass?: string;
+
+  quantity?: number;
+
+};
+
+}
+
+export interface HeaderFilter {
+  key: string;
+
+  allowedValues?: Regex[];
+
+  blockedValues?: Regex[];
+
+}
+
+export interface HealthCheckSpec {
+  exec?: {
+  command?: string[];
+
+};
+
+  grpc?: {
+  port?: number;
+
+};
+
+  tcpSocket?: {
+  port?: number;
+
+};
+
+  httpGet?: {
+  path?: string;
+
+  port?: number;
+
+  httpHeaders?: {
+  name: string;
+
+  value: string;
+
+}[];
+
+  scheme?: 'HTTP' | 'HTTPS';
+
+};
+
+  initialDelaySeconds?: number;
+
+  periodSeconds?: number;
+
+  timeoutSeconds?: number;
+
+  successThreshold?: number;
+
+  failureThreshold?: number;
+
+}
+
+export interface HealthCheckStatus {
+  active: boolean;
+
+  success?: boolean;
+
+  code?: number;
+
+  message?: string;
+
+  failures?: number;
+
+  successes?: number;
+
+  lastChecked?: Date;
+
+}
 
 export interface JobSpec {
   schedule: ScheduleType;
@@ -485,12 +369,17 @@ export interface LoadBalancerSpec {
 
 }
 
-export interface Extras {
-  affinity?: any;
+export interface LoadBalancerStatus {
+  origin?: string;
 
-  tolerations?: any[];
+  url?: string;
 
-  topologySpreadConstraints?: any[];
+}
+
+export type Memory = string;
+
+export interface PodZoneMap {
+  [x: string]: string;
 
 }
 
@@ -501,143 +390,70 @@ export interface RequestRetryPolicy {
 
 }
 
-export type WorkloadType = 'serverless' | 'standard' | 'cron' | 'stateful';
+export interface ResolvedImage {
+  digest?: string;
 
-export interface WorkloadSpec {
-  type?: WorkloadType;
+  manifests?: {
+  image: string;
 
-  identityLink?: string;
+  mediaType: string;
 
-  containers: ContainerSpec[];
+  digest: string;
 
-  firewallConfig?: {
-  external?: {
-  inboundAllowCIDR?: string[];
-
-  inboundBlockedCIDR?: string[];
-
-  outboundAllowHostname?: string[];
-
-  outboundAllowPort?: ({
-  protocol: 'http' | 'https' | 'tcp';
-
-  number: number;
-
-})[];
-
-  outboundAllowCIDR?: string[];
-
-  outboundBlockedCIDR?: string[];
-
-  http?: {
-  inboundHeaderFilter?: HeaderFilter[];
+  platform?: {
+  [x: string]: string;
 
 };
 
-};
+}[];
 
-  internal?: {
-  inboundAllowType?: 'none' | 'same-gvc' | 'same-org' | 'workload-list';
+}
 
-  inboundAllowWorkload?: string[];
+export interface ResolvedImages {
+  resolvedForVersion?: number;
 
-};
+  resolvedAt?: Date;
 
-};
+  errorMessages?: string[];
 
-  defaultOptions?: DefaultOptions;
+  nextRetryAt?: Date;
 
-  localOptions?: LocalOptions;
+  images?: ResolvedImage[];
 
-  job?: {
-  schedule: ScheduleType;
+}
 
-  concurrencyPolicy?: 'Forbid' | 'Replace' | 'Allow';
+export interface RolloutOptions {
+  minReadySeconds?: number;
 
-  historyLimit?: number;
+  maxUnavailableReplicas?: string;
 
-  restartPolicy?: 'OnFailure' | 'Never';
+  maxSurgeReplicas?: string;
 
-  activeDeadlineSeconds?: number;
+  scalingPolicy?: 'OrderedReady' | 'Parallel';
 
-};
+  terminationGracePeriodSeconds?: number;
 
-  sidecar?: {
-  envoy?: {
-  accessLog?: AccessLog[];
+}
 
-  clusters?: Cluster[];
+export interface RolloutOptionsStateful {
+  minReadySeconds?: number;
 
-  excludedExternalAuth?: ExcExtAuth[];
+  maxSurgeReplicas?: string;
 
-  excludedRateLimit?: ExcludedRateLimit[];
+  scalingPolicy?: 'OrderedReady' | 'Parallel';
 
-  http?: HttpFilter[];
+  terminationGracePeriodSeconds?: number;
 
-  network?: any[];
+  maxUnavailableReplicas?: string;
 
-  volumes?: VolumeSpec[];
+}
 
-};
+export type ScheduleType = string;
 
-};
-
-  supportDynamicTags?: boolean;
-
-  rolloutOptions?: any;
-
-  securityOptions?: {
+export interface SecurityOptions {
   filesystemGroupId?: number;
 
   runAsUser?: number;
-
-};
-
-  loadBalancer?: {
-  direct?: {
-  enabled: boolean;
-
-  ports?: LoadBalancerPort[];
-
-  ipSet?: string;
-
-};
-
-  geoLocation?: {
-  enabled?: boolean;
-
-  headers?: {
-  asn?: string;
-
-  city?: string;
-
-  country?: string;
-
-  region?: string;
-
-};
-
-};
-
-  replicaDirect?: boolean;
-
-};
-
-  extras?: {
-  affinity?: any;
-
-  tolerations?: any[];
-
-  topologySpreadConstraints?: any[];
-
-};
-
-  requestRetryPolicy?: {
-  attempts?: number;
-
-  retryOn?: string[];
-
-};
 
 }
 
@@ -850,4 +666,193 @@ export interface Workload {
 };
 
 }
+
+export interface WorkloadSpec {
+  type?: WorkloadType;
+
+  identityLink?: string;
+
+  containers: ContainerSpec[];
+
+  firewallConfig?: {
+  external?: {
+  inboundAllowCIDR?: string[];
+
+  inboundBlockedCIDR?: string[];
+
+  outboundAllowHostname?: string[];
+
+  outboundAllowPort?: ({
+  protocol: 'http' | 'https' | 'tcp';
+
+  number: number;
+
+})[];
+
+  outboundAllowCIDR?: string[];
+
+  outboundBlockedCIDR?: string[];
+
+  http?: {
+  inboundHeaderFilter?: HeaderFilter[];
+
+};
+
+};
+
+  internal?: {
+  inboundAllowType?: 'none' | 'same-gvc' | 'same-org' | 'workload-list';
+
+  inboundAllowWorkload?: string[];
+
+};
+
+};
+
+  defaultOptions?: DefaultOptions;
+
+  localOptions?: LocalOptions;
+
+  job?: {
+  schedule: ScheduleType;
+
+  concurrencyPolicy?: 'Forbid' | 'Replace' | 'Allow';
+
+  historyLimit?: number;
+
+  restartPolicy?: 'OnFailure' | 'Never';
+
+  activeDeadlineSeconds?: number;
+
+};
+
+  sidecar?: {
+  envoy?: {
+  accessLog?: AccessLog[];
+
+  clusters?: Cluster[];
+
+  excludedExternalAuth?: ExcExtAuth[];
+
+  excludedRateLimit?: ExcludedRateLimit[];
+
+  http?: HttpFilter[];
+
+  network?: any[];
+
+  volumes?: VolumeSpec[];
+
+};
+
+};
+
+  supportDynamicTags?: boolean;
+
+  rolloutOptions?: any;
+
+  securityOptions?: {
+  filesystemGroupId?: number;
+
+  runAsUser?: number;
+
+};
+
+  loadBalancer?: {
+  direct?: {
+  enabled: boolean;
+
+  ports?: LoadBalancerPort[];
+
+  ipSet?: string;
+
+};
+
+  geoLocation?: {
+  enabled?: boolean;
+
+  headers?: {
+  asn?: string;
+
+  city?: string;
+
+  country?: string;
+
+  region?: string;
+
+};
+
+};
+
+  replicaDirect?: boolean;
+
+};
+
+  extras?: {
+  affinity?: any;
+
+  tolerations?: any[];
+
+  topologySpreadConstraints?: any[];
+
+};
+
+  requestRetryPolicy?: {
+  attempts?: number;
+
+  retryOn?: string[];
+
+};
+
+}
+
+export interface WorkloadStatus {
+  parentId?: string;
+
+  canonicalEndpoint?: string;
+
+  endpoint?: string;
+
+  internalName?: string;
+
+  replicaInternalNames?: string[];
+
+  healthCheck?: {
+  active: boolean;
+
+  success?: boolean;
+
+  code?: number;
+
+  message?: string;
+
+  failures?: number;
+
+  successes?: number;
+
+  lastChecked?: Date;
+
+};
+
+  currentReplicaCount?: number;
+
+  resolvedImages?: {
+  resolvedForVersion?: number;
+
+  resolvedAt?: Date;
+
+  errorMessages?: string[];
+
+  nextRetryAt?: Date;
+
+  images?: ResolvedImage[];
+
+};
+
+  loadBalancer?: LoadBalancerStatus[];
+
+  [x: string]: any;
+
+}
+
+export type WorkloadType = 'serverless' | 'standard' | 'cron' | 'stateful';
 

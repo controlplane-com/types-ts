@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints } from './mk8sCommon';
+import { Labels, Taints } from './mk8sCommon.js';
 
 export interface EphemeralPool {
   name: string;
