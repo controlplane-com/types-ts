@@ -45,6 +45,11 @@ export interface AwsPool {
 
   extraSecurityGroupIds?: string[];
 
+  cpuOptions?: {
+  nestedVirtualization?: boolean;
+
+};
+
 }
 
 export interface AwsProvider {
