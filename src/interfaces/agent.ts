@@ -44,7 +44,18 @@ export interface AgentInfo {
 }
 
 export interface AgentStatus {
-  bootstrapConfig?: BootstrapConfig;
+  bootstrapConfig?: {
+  registrationToken: string;
+
+  agentId: string;
+
+  agentLink: string;
+
+  hubEndpoint: string;
+
+  protocolVersion?: 'v1' | 'v2';
+
+};
 
   protocolVersion?: 'v1' | 'v2';
 

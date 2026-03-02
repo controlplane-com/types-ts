@@ -56,7 +56,7 @@ export interface Spec {
 }
 
 export interface Term {
-  op?: '=' | '>' | '>=' | '<' | '<=' | '!=' | '~' | 'exists' | '!exists';
+  op?: '=' | '>' | '>=' | '<' | '<=' | '!=' | '~' | 'exists' | '!exists' | 'contains';
 
   property?: string;
 

@@ -1,9 +1,9 @@
 /* auto-generated */
 
-import { Kind, Links, Tags, ImageLink, Name } from './base.js';
-import { EnvVar } from './env.js';
-import { Memory, Cpu } from './workload.js';
+import { Kind, Links, Tags, Name } from './base.js';
+import { Term } from './query.js';
 import { VolumeSnapshot, VolumeSetSpec, VolumeSetStatus } from './volumeSet.js';
+import { ContainerOverride } from './workload.js';
 
 export interface Cluster {
   clusterId?: string;
@@ -48,6 +48,32 @@ export interface Command {
 
 };
 
+  conflictQuery?: {
+  kind?: Kind;
+
+  context?: {
+  [x: string]: any;
+
+};
+
+  fetch?: 'links' | 'items';
+
+  spec?: {
+  match?: 'all' | 'any' | 'none';
+
+  terms?: Term[];
+
+  sort?: {
+  by: string;
+
+  order?: 'asc' | 'desc';
+
+};
+
+};
+
+};
+
 }
 
 export type CommandLifecycleStage = 'pending' | 'running' | 'cancelled' | 'completed' | 'failed';
@@ -85,23 +111,6 @@ export interface CreateVolumeSnapshotStatus {
   newSnapshotSize?: number;
 
   creationStartTime?: Date;
-
-}
-
-export interface CronWorkloadContainerOverrides {
-  name: string;
-
-  env?: EnvVar[];
-
-  command?: string;
-
-  args?: string[];
-
-  memory?: Memory;
-
-  cpu?: Cpu;
-
-  image?: ImageLink;
 
 }
 
@@ -407,7 +416,9 @@ export interface RestoreVolumeSpec {
 export interface RunCronWorkloadSpec {
   location: string;
 
-  containerOverrides?: CronWorkloadContainerOverrides[];
+  scheduleName?: string;
+
+  containerOverrides?: ContainerOverride[];
 
 }
 

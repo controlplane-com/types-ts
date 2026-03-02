@@ -1,13 +1,30 @@
 /* auto-generated */
 
-import { Regex, Kind, Tags, Links } from './base.js';
 import { EnvVar } from './env.js';
+import { Regex, Kind, Tags, Links } from './base.js';
 import { VolumeSpec } from './volumeSpec.js';
 import { DefaultOptions, LocalOptions } from './workloadOptions.js';
 import { AccessLog } from './envoyAccessLog.js';
 import { Cluster } from './envoyCluster.js';
 import { ExcExtAuth, ExcludedRateLimit } from './envoyExcExtAuth.js';
 import { HttpFilter } from './envoyHttp.js';
+
+export interface ContainerOverride {
+  name: string;
+
+  env?: EnvVar[];
+
+  command?: string;
+
+  args?: string[];
+
+  memory?: string;
+
+  cpu?: string;
+
+  image?: string;
+
+}
 
 export interface ContainerSpec {
   name?: string;
@@ -316,7 +333,9 @@ export interface HealthCheckStatus {
 }
 
 export interface JobSpec {
-  schedule: ScheduleType;
+  schedule?: string;
+
+  schedules?: ScheduleEntry[];
 
   concurrencyPolicy?: 'Forbid' | 'Replace' | 'Allow';
 
@@ -448,6 +467,15 @@ export interface RolloutOptionsStateful {
 
 }
 
+export interface ScheduleEntry {
+  name: string;
+
+  schedule: string;
+
+  containerOverrides?: ContainerOverride[];
+
+}
+
 export type ScheduleType = string;
 
 export interface SecurityOptions {
@@ -525,7 +553,9 @@ export interface Workload {
   localOptions?: LocalOptions;
 
   job?: {
-  schedule: ScheduleType;
+  schedule?: string;
+
+  schedules?: ScheduleEntry[];
 
   concurrencyPolicy?: 'Forbid' | 'Replace' | 'Allow';
 
@@ -661,6 +691,8 @@ export interface Workload {
 
   loadBalancer?: LoadBalancerStatus[];
 
+  suspendedStatus?: string;
+
   [x: string]: any;
 
 };
@@ -714,7 +746,9 @@ export interface WorkloadSpec {
   localOptions?: LocalOptions;
 
   job?: {
-  schedule: ScheduleType;
+  schedule?: string;
+
+  schedules?: ScheduleEntry[];
 
   concurrencyPolicy?: 'Forbid' | 'Replace' | 'Allow';
 
@@ -849,6 +883,8 @@ export interface WorkloadStatus {
 };
 
   loadBalancer?: LoadBalancerStatus[];
+
+  suspendedStatus?: string;
 
   [x: string]: any;
 

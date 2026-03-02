@@ -177,5 +177,12 @@ export interface Route {
 
   replica?: number;
 
+  mirror?: {
+  workloadLink: string;
+
+  percent: number;
+
+}[];
+
 }
 

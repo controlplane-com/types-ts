@@ -25,7 +25,7 @@ export interface DefaultOptions {
   maxConcurrency?: number;
 
   keda?: {
-  triggers?: KedaTrigger[];
+  triggers: KedaTrigger[];
 
   advanced?: {
   scalingModifiers?: {
@@ -126,7 +126,7 @@ export interface LocalOptionsItem {
   maxConcurrency?: number;
 
   keda?: {
-  triggers?: KedaTrigger[];
+  triggers: KedaTrigger[];
 
   advanced?: {
   scalingModifiers?: {
@@ -205,7 +205,7 @@ export interface OptionsAutoscaling {
   maxConcurrency?: number;
 
   keda?: {
-  triggers?: KedaTrigger[];
+  triggers: KedaTrigger[];
 
   advanced?: {
   scalingModifiers?: {
