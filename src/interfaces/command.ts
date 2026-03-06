@@ -400,6 +400,8 @@ export interface ReplaceVolumeStatus {
 
   nextVolumeSize?: number;
 
+  tempStorageClassName?: string;
+
 }
 
 export interface RestoreVolumeSpec {
@@ -419,6 +421,8 @@ export interface RunCronWorkloadSpec {
   scheduleName?: string;
 
   containerOverrides?: ContainerOverride[];
+
+  activeDeadlineSeconds?: number;
 
 }
 
@@ -442,6 +446,24 @@ export interface ShrinkVolumeSpec {
   newStorageCapacity: number;
 
   timeoutSeconds?: number;
+
+}
+
+export interface ShrinkVolumeStatus {
+  stage: 'update-volume-set' | 'delete-storage-resources' | 'shutdown-replica' | 'await-replica-termination' | 'fail' | 'cleanup-k8s';
+
+  clusterId?: string;
+
+  clusterIdByLocation?: {
+  [x: string]: string;
+
+};
+
+  messages?: string[];
+
+  inUseByWorkloadId?: string;
+
+  storageDeviceIdToRemove?: string;
 
 }
 
