@@ -506,6 +506,8 @@ export interface Workload {
 
   gvc?: string;
 
+  health?: WorkloadHealth;
+
   spec: {
   type?: WorkloadType;
 
@@ -696,6 +698,13 @@ export interface Workload {
   [x: string]: any;
 
 };
+
+}
+
+export interface WorkloadHealth {
+  readiness?: string;
+
+  syncFailed?: boolean;
 
 }
 

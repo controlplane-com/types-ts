@@ -76,7 +76,7 @@ export interface Command {
 
 }
 
-export type CommandLifecycleStage = 'pending' | 'running' | 'cancelled' | 'completed' | 'failed';
+export type CommandLifecycleStage = 'pending' | 'running' | 'cancellation-requested' | 'cancelled' | 'completed' | 'failed';
 
 export interface CreateVolumeSnapshotSpec {
   location: string;

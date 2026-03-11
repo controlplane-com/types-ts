@@ -186,3 +186,10 @@ export interface Route {
 
 }
 
+export interface RouteMirror {
+  workloadLink: string;
+
+  percent: number;
+
+}
+
