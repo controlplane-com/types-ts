@@ -364,6 +364,8 @@ export interface ExpandVolumeStatus {
 
   lockNames?: string[];
 
+  storageDeviceId?: string;
+
 }
 
 export interface ReplaceVolumeSpec {

@@ -21,7 +21,7 @@ export interface Event {
 
   component?: 'actuator' | 'dns-updater' | 'scheduler' | 'iam-broker' | 'metadata-proxy' | 'data-service';
 
-  cloudProvider?: 'aws' | 'gcp' | 'azure' | 'linode' | 'byok';
+  cloudProvider?: string;
 
   cluster?: string;
 
@@ -40,7 +40,7 @@ export interface EventContext {
 
   component?: 'actuator' | 'dns-updater' | 'scheduler' | 'iam-broker' | 'metadata-proxy' | 'data-service';
 
-  cloudProvider?: 'aws' | 'gcp' | 'azure' | 'linode' | 'byok';
+  cloudProvider?: string;
 
   cluster?: string;
 

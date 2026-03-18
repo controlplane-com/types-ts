@@ -333,9 +333,7 @@ export interface HealthCheckStatus {
 }
 
 export interface JobSpec {
-  schedule?: string;
-
-  schedules?: ScheduleEntry[];
+  schedule: string;
 
   concurrencyPolicy?: 'Forbid' | 'Replace' | 'Allow';
 
@@ -467,15 +465,6 @@ export interface RolloutOptionsStateful {
 
 }
 
-export interface ScheduleEntry {
-  name: string;
-
-  schedule: string;
-
-  containerOverrides?: ContainerOverride[];
-
-}
-
 export type ScheduleType = string;
 
 export interface SecurityOptions {
@@ -555,9 +544,7 @@ export interface Workload {
   localOptions?: LocalOptions;
 
   job?: {
-  schedule?: string;
-
-  schedules?: ScheduleEntry[];
+  schedule: string;
 
   concurrencyPolicy?: 'Forbid' | 'Replace' | 'Allow';
 
@@ -706,6 +693,14 @@ export interface WorkloadHealth {
 
   syncFailed?: boolean;
 
+  readyLocations?: number;
+
+  totalLocations?: number;
+
+  readyReplicas?: number;
+
+  totalReplicas?: number;
+
 }
 
 export interface WorkloadSpec {
@@ -755,9 +750,7 @@ export interface WorkloadSpec {
   localOptions?: LocalOptions;
 
   job?: {
-  schedule?: string;
-
-  schedules?: ScheduleEntry[];
+  schedule: string;
 
   concurrencyPolicy?: 'Forbid' | 'Replace' | 'Allow';
 
