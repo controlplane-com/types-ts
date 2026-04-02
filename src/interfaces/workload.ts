@@ -452,19 +452,6 @@ export interface RolloutOptions {
 
 }
 
-export interface RolloutOptionsStateful {
-  minReadySeconds?: number;
-
-  maxSurgeReplicas?: string;
-
-  scalingPolicy?: 'OrderedReady' | 'Parallel';
-
-  terminationGracePeriodSeconds?: number;
-
-  maxUnavailableReplicas?: string;
-
-}
-
 export type ScheduleType = string;
 
 export interface SecurityOptions {
@@ -578,7 +565,18 @@ export interface Workload {
 
   supportDynamicTags?: boolean;
 
-  rolloutOptions?: any;
+  rolloutOptions?: {
+  minReadySeconds?: number;
+
+  maxUnavailableReplicas?: string;
+
+  maxSurgeReplicas?: string;
+
+  scalingPolicy?: 'OrderedReady' | 'Parallel';
+
+  terminationGracePeriodSeconds?: number;
+
+};
 
   securityOptions?: {
   filesystemGroupId?: number;
@@ -784,7 +782,18 @@ export interface WorkloadSpec {
 
   supportDynamicTags?: boolean;
 
-  rolloutOptions?: any;
+  rolloutOptions?: {
+  minReadySeconds?: number;
+
+  maxUnavailableReplicas?: string;
+
+  maxSurgeReplicas?: string;
+
+  scalingPolicy?: 'OrderedReady' | 'Parallel';
+
+  terminationGracePeriodSeconds?: number;
+
+};
 
   securityOptions?: {
   filesystemGroupId?: number;

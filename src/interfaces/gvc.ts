@@ -58,6 +58,8 @@ export interface Gvc {
 
 };
 
+  locationOptions?: LocationOptionsItem[];
+
 };
 
   pullSecretLinks?: string[];
@@ -277,6 +279,8 @@ export interface GvcSpec {
 
 };
 
+  locationOptions?: LocationOptionsItem[];
+
 };
 
   pullSecretLinks?: string[];
@@ -367,6 +371,19 @@ export interface GvcStatus {
 
 }
 
+export type LocationOptions = LocationOptionsItem[];
+
+export interface LocationOptionsItem {
+  locationLink: string;
+
+  routingTier?: number;
+
+  latencyOffsetMs?: number;
+
+  latencyToleranceMs?: number;
+
+}
+
 export interface StaticPlacement {
   locationLinks?: string[];
 
@@ -395,6 +412,8 @@ export interface StaticPlacement {
 };
 
 };
+
+  locationOptions?: LocationOptionsItem[];
 
 }
 

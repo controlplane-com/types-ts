@@ -180,6 +180,8 @@ export interface Route {
   mirror?: {
   workloadLink: string;
 
+  port?: number;
+
   percent: number;
 
 }[];
@@ -188,6 +190,8 @@ export interface Route {
 
 export interface RouteMirror {
   workloadLink: string;
+
+  port?: number;
 
   percent: number;
 

@@ -404,6 +404,8 @@ export interface ReplaceVolumeStatus {
 
   tempStorageClassName?: string;
 
+  lockNames?: string[];
+
 }
 
 export interface RestoreVolumeSpec {

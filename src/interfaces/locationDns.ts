@@ -20,5 +20,11 @@ export interface LocationDnsMessage {
 
   availabilityZone?: string;
 
+  routingTier?: number;
+
+  latencyOffsetMs?: number;
+
+  latencyToleranceMs?: number;
+
 }
 
