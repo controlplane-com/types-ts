@@ -440,6 +440,8 @@ export interface RunCronWorkloadStatus {
 
   minimumWorkloadVersion?: number;
 
+  messages?: string[];
+
 }
 
 export interface ShrinkVolumeSpec {

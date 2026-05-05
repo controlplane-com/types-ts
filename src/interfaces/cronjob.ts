@@ -37,5 +37,7 @@ export interface JobExecutionStatus {
 
 };
 
+  message?: string;
+
 }
 

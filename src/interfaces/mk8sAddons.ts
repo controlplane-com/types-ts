@@ -74,6 +74,11 @@ export interface ByokAddonConfig {
 
 };
 
+  juicefs?: {
+  enabled?: boolean;
+
+};
+
   middlebox?: {
   enabled?: boolean;
 
