@@ -38,6 +38,8 @@ export interface DeploymentStatus {
 
   message?: string;
 
+  desiredScale?: number;
+
 }
 
 export interface DeploymentVersion {
@@ -59,6 +61,8 @@ export interface DeploymentVersion {
   message?: string;
 
   zone?: string;
+
+  desiredScale?: number;
 
 }
 

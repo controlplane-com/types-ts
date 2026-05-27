@@ -68,6 +68,8 @@ export interface Gvc {
 
   endpointNamingFormat?: 'default' | 'legacy' | 'org';
 
+  aliasWorkloadLink?: string;
+
   tracing?: {
   sampling: number;
 
@@ -288,6 +290,8 @@ export interface GvcSpec {
   domain?: string;
 
   endpointNamingFormat?: 'default' | 'legacy' | 'org';
+
+  aliasWorkloadLink?: string;
 
   tracing?: {
   sampling: number;
