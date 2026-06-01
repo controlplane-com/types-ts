@@ -84,9 +84,11 @@ export interface ByokAddonConfig {
 
   bandwidthAlertMbps?: number;
 
-  port?: number;
-
   ip?: string;
+
+  ingressReplicas?: number;
+
+  port?: number;
 
 };
 

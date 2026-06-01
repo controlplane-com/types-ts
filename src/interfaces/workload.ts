@@ -129,8 +129,6 @@ export interface ContainerSpec {
 
 };
 
-  initialDelaySeconds?: number;
-
   periodSeconds?: number;
 
   timeoutSeconds?: number;
@@ -138,6 +136,8 @@ export interface ContainerSpec {
   successThreshold?: number;
 
   failureThreshold?: number;
+
+  initialDelaySeconds?: number;
 
 };
 
@@ -345,6 +345,50 @@ export interface JobSpec {
 
 }
 
+export interface LivenessProbe {
+  exec?: {
+  command?: string[];
+
+};
+
+  grpc?: {
+  port?: number;
+
+};
+
+  tcpSocket?: {
+  port?: number;
+
+};
+
+  httpGet?: {
+  path?: string;
+
+  port?: number;
+
+  httpHeaders?: {
+  name: string;
+
+  value: string;
+
+}[];
+
+  scheme?: 'HTTP' | 'HTTPS';
+
+};
+
+  periodSeconds?: number;
+
+  timeoutSeconds?: number;
+
+  successThreshold?: number;
+
+  failureThreshold?: number;
+
+  initialDelaySeconds?: number;
+
+}
+
 export interface LoadBalancerPort {
   externalPort: number;
 
@@ -397,6 +441,50 @@ export type Memory = string;
 
 export interface PodZoneMap {
   [x: string]: string;
+
+}
+
+export interface ReadinessProbe {
+  exec?: {
+  command?: string[];
+
+};
+
+  grpc?: {
+  port?: number;
+
+};
+
+  tcpSocket?: {
+  port?: number;
+
+};
+
+  httpGet?: {
+  path?: string;
+
+  port?: number;
+
+  httpHeaders?: {
+  name: string;
+
+  value: string;
+
+}[];
+
+  scheme?: 'HTTP' | 'HTTPS';
+
+};
+
+  initialDelaySeconds?: number;
+
+  periodSeconds?: number;
+
+  timeoutSeconds?: number;
+
+  successThreshold?: number;
+
+  failureThreshold?: number;
 
 }
 
