@@ -57,6 +57,8 @@ export interface PersistentVolumeStatus {
 
   currentBytesUsed?: number;
 
+  currentBytesFree?: number;
+
   iops?: number;
 
   throughput?: number;

@@ -13,7 +13,7 @@ import { TritonProvider } from './mk8sTriton.js';
 import { AzureProvider } from './mk8sAzure.js';
 import { DigitalOceanProvider } from './mk8sDigitalOcean.js';
 import { GcpProvider } from './mk8sGcp.js';
-import { NonCustomizableAddonConfig, AzureAddonConfig, MetricsAddonConfig, LogsAddonConfig, RegistryMirrorConfig, NvidiaAddonConfig, AwsEFSAddonConfig, AwsECRAddonConfig, AwsELBAddonConfig, AzureACRAddonConfig, ByokAddonConfig, DashboardAddonStatus, AwsWorkloadIdentityAddonStatus, MetricsAddonStatus, LogsAddonStatus, AwsTrustPolicyConfig } from './mk8sAddons.js';
+import { NonCustomizableAddonConfig, AzureAddonConfig, MetricsAddonConfig, LogsAddonConfig, RegistryMirrorConfig, NvidiaAddonConfig, AwsEFSAddonConfig, AwsECRAddonConfig, AwsELBAddonConfig, AzureACRAddonConfig, ByokAddonConfig, KubevirtAddonConfig, NodeLocalDnsAddonConfig, DashboardAddonStatus, AwsWorkloadIdentityAddonStatus, MetricsAddonStatus, LogsAddonStatus, AwsTrustPolicyConfig } from './mk8sAddons.js';
 
 export interface Mk8sCluster {
   id?: string;
@@ -102,6 +102,10 @@ export interface Mk8sCluster {
 
   byok?: ByokAddonConfig;
 
+  kubevirt?: KubevirtAddonConfig;
+
+  nodeLocalDns?: NodeLocalDnsAddonConfig;
+
 };
 
 };
@@ -179,6 +183,10 @@ export interface Mk8sSpec {
   sysbox?: NonCustomizableAddonConfig;
 
   byok?: ByokAddonConfig;
+
+  kubevirt?: KubevirtAddonConfig;
+
+  nodeLocalDns?: NodeLocalDnsAddonConfig;
 
 };
 

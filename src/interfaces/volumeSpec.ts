@@ -6,7 +6,17 @@ export interface VolumeSpec {
 
   recoveryPolicy?: 'retain' | 'recycle';
 
-  path: string;
+  path?: string;
+
+  name?: string;
+
+  bus?: 'virtio' | 'sata' | 'scsi';
+
+  bootOrder?: number;
+
+  cdrom?: boolean;
+
+  serial?: string;
 
 }
 

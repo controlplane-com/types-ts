@@ -372,6 +372,11 @@ export interface HttpHeaderValue {
 
 }
 
+export interface KubevirtAddonConfig {
+  scratchSpaceStorageClass?: string;
+
+}
+
 export interface LogsAddonConfig {
   auditEnabled?: boolean;
 
@@ -428,6 +433,9 @@ export interface MetricsAddonStatus {
 
 };
 
+}
+
+export interface NodeLocalDnsAddonConfig {
 }
 
 export interface NonCustomizableAddonConfig {

@@ -69,6 +69,8 @@ export interface DomainStatus {
 
   warning?: string;
 
+  statusUpdated?: Date;
+
   locations?: ({
   name: string;
 

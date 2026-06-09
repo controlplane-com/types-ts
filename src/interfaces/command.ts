@@ -137,6 +137,8 @@ export interface DeleteCloudDevicesStatus {
 
   currentBytesUsed?: number;
 
+  currentBytesFree?: number;
+
   iops?: number;
 
   throughput?: number;
@@ -376,7 +378,7 @@ export interface ReplaceVolumeSpec {
 }
 
 export interface ReplaceVolumeStatus {
-  stage: 'create-volume' | 'cleanup-after-volume-creation' | 'update-volume-set' | 'configure-storage-resources' | 'remove-finalizer' | 'shutdown-replica' | 'await-replica-termination' | 'cleanup-k8s' | 'fail' | 'revert' | 'cleanup-old-storage-device' | 'restart-replica';
+  stage: 'create-volume' | 'initialize-volume-data' | 'cleanup-after-volume-creation' | 'update-volume-set' | 'configure-storage-resources' | 'remove-finalizer' | 'shutdown-replica' | 'await-replica-termination' | 'await-data-ready' | 'cleanup-k8s' | 'fail' | 'revert' | 'cleanup-old-storage-device' | 'restart-replica';
 
   messages?: string[];
 
@@ -405,6 +407,16 @@ export interface ReplaceVolumeStatus {
   tempStorageClassName?: string;
 
   lockNames?: string[];
+
+  presyncTargetPodUid?: string;
+
+  presyncAttempt?: number;
+
+  presyncReceiverName?: string;
+
+  deltaSourcePodName?: string;
+
+  finalSyncCompletedAt?: Date;
 
 }
 
