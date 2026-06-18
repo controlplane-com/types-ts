@@ -14,9 +14,5 @@ export interface VolumeSpec {
 
   bootOrder?: number;
 
-  cdrom?: boolean;
-
-  serial?: string;
-
 }
 

@@ -378,7 +378,7 @@ export interface ReplaceVolumeSpec {
 }
 
 export interface ReplaceVolumeStatus {
-  stage: 'create-volume' | 'initialize-volume-data' | 'cleanup-after-volume-creation' | 'update-volume-set' | 'configure-storage-resources' | 'remove-finalizer' | 'shutdown-replica' | 'await-replica-termination' | 'await-data-ready' | 'cleanup-k8s' | 'fail' | 'revert' | 'cleanup-old-storage-device' | 'restart-replica';
+  stage: 'create-volume' | 'cleanup-after-volume-creation' | 'update-volume-set' | 'configure-storage-resources' | 'remove-finalizer' | 'shutdown-replica' | 'await-replica-termination' | 'cleanup-k8s' | 'fail' | 'revert' | 'cleanup-old-storage-device' | 'restart-replica';
 
   messages?: string[];
 
@@ -407,16 +407,6 @@ export interface ReplaceVolumeStatus {
   tempStorageClassName?: string;
 
   lockNames?: string[];
-
-  presyncTargetPodUid?: string;
-
-  presyncAttempt?: number;
-
-  presyncReceiverName?: string;
-
-  deltaSourcePodName?: string;
-
-  finalSyncCompletedAt?: Date;
 
 }
 
@@ -468,7 +458,9 @@ export interface ShrinkVolumeSpec {
 }
 
 export interface ShrinkVolumeStatus {
-  stage: 'update-volume-set' | 'delete-storage-resources' | 'shutdown-replica' | 'await-replica-termination' | 'fail' | 'cleanup-k8s';
+  stage: 'create-volume' | 'apply-presync-resources' | 'inject-and-await-presync' | 'apply-delta-source' | 'commit-and-prepare-swap' | 'shutdown-replica' | 'await-replica-termination' | 'await-data-ready' | 'cleanup-k8s' | 'fail';
+
+  messages?: string[];
 
   clusterId?: string;
 
@@ -477,11 +469,30 @@ export interface ShrinkVolumeStatus {
 
 };
 
-  messages?: string[];
-
   inUseByWorkloadId?: string;
 
   storageDeviceIdToRemove?: string;
+
+  newStorageDeviceId?: string;
+
+  newVolumeAttributes?: {
+  [x: string]: string;
+
+};
+
+  newResourceName?: string;
+
+  nextVolumeSize?: number;
+
+  tempStorageClassName?: string;
+
+  lockNames?: string[];
+
+  presyncTargetPodUid?: string;
+
+  presyncAttempt?: number;
+
+  finalSyncCompletedAt?: Date;
 
 }
 

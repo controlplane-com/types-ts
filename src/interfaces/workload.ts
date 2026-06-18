@@ -807,24 +807,6 @@ export interface Workload {
 
   runStrategy?: 'Always' | 'RerunOnFailure' | 'Manual' | 'Halted';
 
-  features?: {
-  acpi?: boolean;
-
-  apic?: boolean;
-
-  smm?: boolean;
-
-  rng?: boolean;
-
-  tpm?: {
-  enabled?: boolean;
-
-  persistent?: boolean;
-
-};
-
-};
-
   clock?: {
   timezone?: string;
 
@@ -1140,24 +1122,6 @@ export interface WorkloadSpec {
 })[];
 
   runStrategy?: 'Always' | 'RerunOnFailure' | 'Manual' | 'Halted';
-
-  features?: {
-  acpi?: boolean;
-
-  apic?: boolean;
-
-  smm?: boolean;
-
-  rng?: boolean;
-
-  tpm?: {
-  enabled?: boolean;
-
-  persistent?: boolean;
-
-};
-
-};
 
   clock?: {
   timezone?: string;
