@@ -444,6 +444,14 @@ export interface RunCronWorkloadStatus {
 
   messages?: string[];
 
+  admissionRetries?: number;
+
+  firstAdmissionRejectionTime?: string;
+
+  lastRejectedReplica?: string;
+
+  admissionRetryRequested?: boolean;
+
 }
 
 export interface ShrinkVolumeSpec {
