@@ -1,6 +1,6 @@
 {
   "name": "@controlplane/schema",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "TypeScript type definitions for the Control Plane API schema",
   "license": "MIT",
   "author": "Control Plane Corporation",
@@ -8,6 +8,7 @@
     "type": "git",
     "url": "git+https://github.com/controlplane-com/types-ts.git"
   },
+  "homepage": "https://controlplane.com",
   "scripts": {
     "build": "tsc",
     "build:turbo": "turbo run build --no-daemon",
