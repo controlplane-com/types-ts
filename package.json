@@ -2,6 +2,10 @@
   "name": "@controlplane/schema",
   "version": "1.0.18",
   "description": "Control Plane Corporation Schema",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/controlplane-com/types-ts.git"
+  },
   "scripts": {
     "build": "tsc",
     "build:turbo": "turbo run build --no-daemon",
