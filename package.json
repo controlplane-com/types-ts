@@ -1,7 +1,9 @@
 {
   "name": "@controlplane/schema",
-  "version": "1.0.18",
-  "description": "Control Plane Corporation Schema",
+  "version": "1.0.19",
+  "description": "TypeScript type definitions for the Control Plane API schema",
+  "license": "MIT",
+  "author": "Control Plane Corporation",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/controlplane-com/types-ts.git"
@@ -16,7 +18,11 @@
   "keywords": [
     "Control Plane",
     "Control Plane Corporation",
-    "cpln"
+    "cpln",
+    "typescript",
+    "types",
+    "schema",
+    "api"
   ],
   "dependencies": {},
   "devDependencies": {
@@ -37,5 +43,9 @@
   },
   "engines": {
     "node": ">= 16"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }
