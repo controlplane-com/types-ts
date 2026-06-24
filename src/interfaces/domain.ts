@@ -188,6 +188,17 @@ export interface Route {
 
 }[];
 
+  canaries?: RouteCanary[];
+
+}
+
+export interface RouteCanary {
+  workloadLink: string;
+
+  port?: number;
+
+  weight: number;
+
 }
 
 export interface RouteMirror {

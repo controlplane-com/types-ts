@@ -452,6 +452,8 @@ export interface RunCronWorkloadStatus {
 
   admissionRetryRequested?: boolean;
 
+  pendingTerminalStage?: 'completed' | 'failed';
+
 }
 
 export interface ShrinkVolumeSpec {
