@@ -99,6 +99,15 @@ export interface LogzioLogging {
 
 }
 
+export interface LokiLogging {
+  endpoint: string;
+
+  credentials?: string;
+
+  tenantId?: string;
+
+}
+
 export interface OpenTelemetryLogging {
   endpoint: string;
 

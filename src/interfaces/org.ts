@@ -1,7 +1,7 @@
 /* auto-generated */
 
 import { Kind, Tags, Links } from './base.js';
-import { S3Logging, CoralogixLogging, DatadogLogging, LogzioLogging, ElasticLogging, CloudWatchLogging, FluentdLogging, StackdriverLogging, SyslogLogging, OpenTelemetryLogging } from './orgLogging.js';
+import { S3Logging, CoralogixLogging, DatadogLogging, LogzioLogging, ElasticLogging, CloudWatchLogging, FluentdLogging, StackdriverLogging, SyslogLogging, OpenTelemetryLogging, LokiLogging } from './orgLogging.js';
 import { Tracing } from './tracing.js';
 
 export interface AuthConfig {
@@ -78,6 +78,8 @@ export interface OrgSpec {
 
   opentelemetry?: OpenTelemetryLogging;
 
+  loki?: LokiLogging;
+
 };
 
   extraLogging?: {
@@ -100,6 +102,8 @@ export interface OrgSpec {
   syslog?: SyslogLogging;
 
   opentelemetry?: OpenTelemetryLogging;
+
+  loki?: LokiLogging;
 
 }[];
 
