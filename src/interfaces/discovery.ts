@@ -37,6 +37,8 @@ export interface Discovery {
 
   mcp?: string;
 
+  auth?: string;
+
 };
 
   firebase?: {
