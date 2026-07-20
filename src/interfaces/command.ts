@@ -502,6 +502,8 @@ export interface ShrinkVolumeStatus {
 
   presyncAttempt?: number;
 
+  presyncProgressPercent?: number;
+
   finalSyncCompletedAt?: Date;
 
 }

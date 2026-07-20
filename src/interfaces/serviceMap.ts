@@ -15,6 +15,10 @@ export interface Service {
 
   agentAccessible?: boolean;
 
+  kata?: boolean;
+
+  scaleToZero?: boolean;
+
 };
 
   gvc: {
