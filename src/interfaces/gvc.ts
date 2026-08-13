@@ -171,6 +171,8 @@ export interface GvcConfig {
 };
 
   loadBalancer?: {
+  distributedIngress?: boolean;
+
   minScale?: number;
 
   maxScale?: number;
@@ -223,6 +225,8 @@ export interface GvcConfigPreferredClusterEntry {
 }
 
 export interface GvcLoadBalancerConfig {
+  distributedIngress?: boolean;
+
   minScale?: number;
 
   maxScale?: number;

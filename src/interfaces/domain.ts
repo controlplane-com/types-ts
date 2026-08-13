@@ -74,7 +74,7 @@ export interface DomainStatus {
   locations?: ({
   name: string;
 
-  certificateStatus?: 'initializing' | 'ready' | 'pendingDnsConfig' | 'pendingCertificate' | 'ignored';
+  certificateStatus?: 'initializing' | 'ready' | 'pendingDnsConfig' | 'pendingCertificate' | 'ignored' | 'errored';
 
 })[];
 

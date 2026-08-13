@@ -65,6 +65,8 @@ export interface PersistentVolumeStatus {
 
   driver: string;
 
+  diskType?: 'gp3' | 'pd-balanced' | 'pd-ssd' | 'hyperdisk-balanced' | 'PremiumV2_LRS' | 'do-block-storage' | 'hcloud-volume' | 'linode-block-storage' | 'oci-bv-balanced' | 'juicefs' | 'hostpath';
+
   volumeSnapshots?: VolumeSnapshot[];
 
   attributes?: {
@@ -73,6 +75,8 @@ export interface PersistentVolumeStatus {
 };
 
   zone?: string;
+
+  node?: string;
 
 }
 
