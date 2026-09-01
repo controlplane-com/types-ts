@@ -4,6 +4,8 @@ import { Kind, Links, Tags, Name } from './base.js';
 import { Term } from './query.js';
 import { VolumeSnapshot, VolumeSetSpec, VolumeSetStatus } from './volumeSet.js';
 import { ContainerOverride } from './workload.js';
+import { JobExecutionCondition } from './cronjob.js';
+import { ContainerStatus } from './containerstatus.js';
 
 export interface Cluster {
   clusterId?: string;
@@ -461,6 +463,23 @@ export interface RunCronWorkloadStatus {
   infraRetries?: number;
 
   pendingTerminalStage?: 'completed' | 'failed';
+
+  jobName?: string;
+
+  workloadVersion?: number;
+
+  startTime?: string;
+
+  completionTime?: string;
+
+  conditions?: JobExecutionCondition[];
+
+  containers?: {
+  [x: string]: ContainerStatus;
+
+};
+
+  details?: 'invalid' | 'removed';
 
 }
 

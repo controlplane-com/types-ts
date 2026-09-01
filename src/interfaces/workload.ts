@@ -206,6 +206,16 @@ export interface Extras {
 
   topologySpreadConstraints?: any[];
 
+  schedulerName?: string;
+
+  metadata?: {
+  labels?: {
+  [x: string]: string;
+
+};
+
+};
+
 }
 
 export interface FirewallSpec {
@@ -710,6 +720,16 @@ export interface Workload {
 
   topologySpreadConstraints?: any[];
 
+  schedulerName?: string;
+
+  metadata?: {
+  labels?: {
+  [x: string]: string;
+
+};
+
+};
+
 };
 
   requestRetryPolicy?: {
@@ -1025,6 +1045,16 @@ export interface WorkloadSpec {
   tolerations?: any[];
 
   topologySpreadConstraints?: any[];
+
+  schedulerName?: string;
+
+  metadata?: {
+  labels?: {
+  [x: string]: string;
+
+};
+
+};
 
 };
 
