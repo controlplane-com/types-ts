@@ -80,6 +80,113 @@ export interface Command {
 
 export type CommandLifecycleStage = 'pending' | 'running' | 'cancellation-requested' | 'cancelled' | 'completed' | 'failed';
 
+export interface CopyVolumeSideStatus {
+  stage: 'capture-source' | 'await-receiver' | 'apply-source-egress' | 'run-bulk-sync' | 'prepare-destination' | 'apply-receiver' | 'await-bulk-sync' | 'commit-and-prepare-swap' | 'shutdown-target-replica' | 'await-target-replica-termination' | 'cleanup-k8s' | 'fail';
+
+  messages?: string[];
+
+  lockNames?: string[];
+
+  tempStorageClassName?: string;
+
+  complete?: boolean;
+
+  cleanedUp?: boolean;
+
+}
+
+export interface CopyVolumeSpec {
+  location: string;
+
+  targetLocation: string;
+
+  volumeIndex: number;
+
+  acknowledgeDestinationVolumeDeletion?: boolean;
+
+  timeoutSeconds?: number;
+
+  locations?: string[];
+
+}
+
+export interface CopyVolumeStatus {
+  clusterId?: string;
+
+  clusterIdByLocation?: {
+  [x: string]: string;
+
+};
+
+  messages?: string[];
+
+  source?: {
+  stage: 'capture-source' | 'await-receiver' | 'apply-source-egress' | 'run-bulk-sync' | 'prepare-destination' | 'apply-receiver' | 'await-bulk-sync' | 'commit-and-prepare-swap' | 'shutdown-target-replica' | 'await-target-replica-termination' | 'cleanup-k8s' | 'fail';
+
+  messages?: string[];
+
+  lockNames?: string[];
+
+  tempStorageClassName?: string;
+
+  complete?: boolean;
+
+  cleanedUp?: boolean;
+
+};
+
+  target?: {
+  stage: 'capture-source' | 'await-receiver' | 'apply-source-egress' | 'run-bulk-sync' | 'prepare-destination' | 'apply-receiver' | 'await-bulk-sync' | 'commit-and-prepare-swap' | 'shutdown-target-replica' | 'await-target-replica-termination' | 'cleanup-k8s' | 'fail';
+
+  messages?: string[];
+
+  lockNames?: string[];
+
+  tempStorageClassName?: string;
+
+  complete?: boolean;
+
+  cleanedUp?: boolean;
+
+};
+
+  receiverHost?: string;
+
+  receiverSniService?: string;
+
+  targetGatewayAddress?: string;
+
+  newStorageDeviceId?: string;
+
+  newResourceName?: string;
+
+  newVolumeAttributes?: {
+  [x: string]: string;
+
+};
+
+  newVolumeSize?: number;
+
+  destinationDeviceIdToRemove?: string;
+
+  targetHasWorkloadPod?: boolean;
+
+  sourceDeviceId?: string;
+
+  bulkSyncAttempt?: number;
+
+  bulkSyncCompletedAt?: Date;
+
+  bulkSyncProgressPercent?: number;
+
+  bulkSyncTransferredBytes?: number;
+
+  bulkSyncRate?: string;
+
+  bulkSyncEta?: string;
+
+}
+
 export interface CreateVolumeSnapshotSpec {
   location: string;
 
@@ -462,6 +569,10 @@ export interface RunCronWorkloadStatus {
 
   infraRetries?: number;
 
+  disruptions?: number;
+
+  lastDisruptedReplica?: string;
+
   pendingTerminalStage?: 'completed' | 'failed';
 
   jobName?: string;
@@ -478,6 +589,8 @@ export interface RunCronWorkloadStatus {
   [x: string]: ContainerStatus;
 
 };
+
+  firstImagePullBackOffTime?: string;
 
   details?: 'invalid' | 'removed';
 

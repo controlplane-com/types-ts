@@ -210,6 +210,8 @@ export interface GvcConfig {
 
 };
 
+  spire?: boolean;
+
 }
 
 export interface GvcConfigClusterEntry {
