@@ -1,6 +1,6 @@
 {
   "name": "@controlplane/schema",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "description": "TypeScript type definitions for the Control Plane API schema",
   "license": "MIT",
   "author": "Control Plane Corporation",
