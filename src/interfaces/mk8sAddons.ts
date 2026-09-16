@@ -8,7 +8,7 @@ export interface AwsECRAddonConfig {
 }
 
 export interface AwsEFSAddonConfig {
-  roleArn: string;
+  roleArn?: string;
 
 }
 

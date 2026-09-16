@@ -106,6 +106,12 @@ export interface CopyVolumeSpec {
 
   timeoutSeconds?: number;
 
+  targetVolumeSet?: string;
+
+  targetVolumeSetId?: string;
+
+  targetGvc?: string;
+
   locations?: string[];
 
 }
@@ -172,6 +178,10 @@ export interface CopyVolumeStatus {
   targetHasWorkloadPod?: boolean;
 
   sourceDeviceId?: string;
+
+  sourceInUse?: boolean;
+
+  bulkSyncTargetPodUid?: string;
 
   bulkSyncAttempt?: number;
 

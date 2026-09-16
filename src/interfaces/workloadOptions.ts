@@ -39,6 +39,44 @@ export interface DefaultOptions {
 
 };
 
+  horizontalPodAutoscalerConfig?: {
+  behavior?: {
+  scaleUp?: {
+  stabilizationWindowSeconds?: number;
+
+  selectPolicy?: 'Max' | 'Min' | 'Disabled';
+
+  policies?: ({
+  type: 'Pods' | 'Percent';
+
+  value: number;
+
+  periodSeconds: number;
+
+})[];
+
+};
+
+  scaleDown?: {
+  stabilizationWindowSeconds?: number;
+
+  selectPolicy?: 'Max' | 'Min' | 'Disabled';
+
+  policies?: ({
+  type: 'Pods' | 'Percent';
+
+  value: number;
+
+  periodSeconds: number;
+
+})[];
+
+};
+
+};
+
+};
+
 };
 
   fallback?: {
@@ -140,6 +178,44 @@ export interface LocalOptionsItem {
 
 };
 
+  horizontalPodAutoscalerConfig?: {
+  behavior?: {
+  scaleUp?: {
+  stabilizationWindowSeconds?: number;
+
+  selectPolicy?: 'Max' | 'Min' | 'Disabled';
+
+  policies?: ({
+  type: 'Pods' | 'Percent';
+
+  value: number;
+
+  periodSeconds: number;
+
+})[];
+
+};
+
+  scaleDown?: {
+  stabilizationWindowSeconds?: number;
+
+  selectPolicy?: 'Max' | 'Min' | 'Disabled';
+
+  policies?: ({
+  type: 'Pods' | 'Percent';
+
+  value: number;
+
+  periodSeconds: number;
+
+})[];
+
+};
+
+};
+
+};
+
 };
 
   fallback?: {
@@ -216,6 +292,44 @@ export interface OptionsAutoscaling {
   metricType?: 'AverageValue' | 'Value' | 'Utilization';
 
   formula?: string;
+
+};
+
+  horizontalPodAutoscalerConfig?: {
+  behavior?: {
+  scaleUp?: {
+  stabilizationWindowSeconds?: number;
+
+  selectPolicy?: 'Max' | 'Min' | 'Disabled';
+
+  policies?: ({
+  type: 'Pods' | 'Percent';
+
+  value: number;
+
+  periodSeconds: number;
+
+})[];
+
+};
+
+  scaleDown?: {
+  stabilizationWindowSeconds?: number;
+
+  selectPolicy?: 'Max' | 'Min' | 'Disabled';
+
+  policies?: ({
+  type: 'Pods' | 'Percent';
+
+  value: number;
+
+  periodSeconds: number;
+
+})[];
+
+};
+
+};
 
 };
 
