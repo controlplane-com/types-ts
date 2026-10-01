@@ -74,6 +74,14 @@ export interface ByokAddonConfig {
 
 };
 
+  maintainer?: {
+  env?: {
+  [x: string]: string;
+
+};
+
+};
+
   juicefs?: {
   enabled?: boolean;
 

@@ -47,6 +47,8 @@ export interface DomainSpec {
 
   certChallengeType?: 'http01' | 'dns01';
 
+  certificateGeneratorLink?: string;
+
   workloadLink?: string;
 
   acceptAllHosts?: boolean;

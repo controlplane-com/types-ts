@@ -106,6 +106,8 @@ export interface Mk8sCluster {
 
   nodeLocalDns?: NodeLocalDnsAddonConfig;
 
+  kata?: NonCustomizableAddonConfig;
+
 };
 
 };
@@ -187,6 +189,8 @@ export interface Mk8sSpec {
   kubevirt?: KubevirtAddonConfig;
 
   nodeLocalDns?: NodeLocalDnsAddonConfig;
+
+  kata?: NonCustomizableAddonConfig;
 
 };
 

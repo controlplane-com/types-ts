@@ -39,7 +39,7 @@ export type CloudProvider = 'aws' | 'gcp' | 'azure' | 'ngs';
 
 export type ImageLink = string;
 
-export type Kind = 'org' | 'cloudaccount' | 'policy' | 'user' | 'group' | 'resource' | 'task' | 'permissions' | 'serviceaccount' | 'secret' | 'location' | 'gvc' | 'workload' | 'quota' | 'identity' | 'deployment' | 'event' | 'domain' | 'image' | 'ipset' | 'resourcepolicy' | 'agent' | 'accessreport' | 'policymembership' | 'dbcluster' | 'auditctx' | 'memcachecluster' | 'spicedbcluster' | 'tenant' | 'mk8s' | 'command' | 'imagesummary' | 'volumeset';
+export type Kind = 'org' | 'cloudaccount' | 'policy' | 'user' | 'group' | 'resource' | 'task' | 'permissions' | 'serviceaccount' | 'secret' | 'location' | 'gvc' | 'workload' | 'quota' | 'identity' | 'deployment' | 'event' | 'domain' | 'image' | 'ipset' | 'resourcepolicy' | 'agent' | 'accessreport' | 'policymembership' | 'dbcluster' | 'auditctx' | 'memcachecluster' | 'spicedbcluster' | 'tenant' | 'mk8s' | 'command' | 'imagesummary' | 'volumeset' | 'sandboximage' | 'certificategenerator';
 
 export interface Link {
   rel: string;
@@ -53,7 +53,7 @@ export type Links = Link[];
 export interface List {
   kind?: 'list';
 
-  itemKind?: 'org' | 'cloudaccount' | 'policy' | 'user' | 'group' | 'resource' | 'task' | 'permissions' | 'serviceaccount' | 'secret' | 'location' | 'gvc' | 'workload' | 'quota' | 'identity' | 'deployment' | 'event' | 'account' | 'domain' | 'image' | 'ipset' | 'resourcepolicy' | 'accessreport' | 'agent' | 'auditctx' | 'dbcluster' | 'memcachecluster' | 'spicedbcluster' | 'tenant' | 'mk8s' | 'command' | 'policymembership' | 'primitive' | 'foreign' | 'link' | 'imagesummary' | 'volumeset';
+  itemKind?: 'org' | 'cloudaccount' | 'policy' | 'user' | 'group' | 'resource' | 'task' | 'permissions' | 'serviceaccount' | 'secret' | 'location' | 'gvc' | 'workload' | 'quota' | 'identity' | 'deployment' | 'event' | 'account' | 'domain' | 'image' | 'ipset' | 'resourcepolicy' | 'accessreport' | 'agent' | 'auditctx' | 'dbcluster' | 'memcachecluster' | 'spicedbcluster' | 'tenant' | 'mk8s' | 'command' | 'policymembership' | 'primitive' | 'foreign' | 'link' | 'imagesummary' | 'volumeset' | 'sandboximage' | 'certificategenerator';
 
   items: any[];
 

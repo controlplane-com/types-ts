@@ -633,6 +633,15 @@ export interface ShrinkVolumeStatus {
 
   storageDeviceIdToRemove?: string;
 
+  oldVolumeAttributes?: {
+  [x: string]: string;
+
+};
+
+  oldVolumeSize?: number;
+
+  oldDiskType?: 'gp3' | 'pd-balanced' | 'pd-ssd' | 'hyperdisk-balanced' | 'PremiumV2_LRS' | 'do-block-storage' | 'hcloud-volume' | 'linode-block-storage' | 'oci-bv-balanced' | 'juicefs' | 'hostpath';
+
   newStorageDeviceId?: string;
 
   newVolumeAttributes?: {
@@ -655,6 +664,8 @@ export interface ShrinkVolumeStatus {
   presyncProgressPercent?: number;
 
   finalSyncCompletedAt?: Date;
+
+  awaitDataReadySince?: Date;
 
 }
 

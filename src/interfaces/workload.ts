@@ -8,6 +8,7 @@ import { AccessLog } from './envoyAccessLog.js';
 import { Cluster } from './envoyCluster.js';
 import { ExcExtAuth, ExcludedRateLimit } from './envoyExcExtAuth.js';
 import { HttpFilter } from './envoyHttp.js';
+import { SandboxIde } from './sandbox.js';
 
 export interface ContainerOverride {
   name: string;
@@ -838,6 +839,22 @@ export interface Workload {
 
 };
 
+  sandbox?: {
+  ide?: SandboxIde;
+
+  appPort?: number;
+
+  volume?: {
+  size?: number;
+
+};
+
+  scaleToZeroDelay?: number;
+
+  ttl?: string;
+
+};
+
 };
 
   status?: {
@@ -1161,6 +1178,22 @@ export interface WorkloadSpec {
   hostname?: string;
 
   subdomain?: string;
+
+};
+
+  sandbox?: {
+  ide?: SandboxIde;
+
+  appPort?: number;
+
+  volume?: {
+  size?: number;
+
+};
+
+  scaleToZeroDelay?: number;
+
+  ttl?: string;
 
 };
 
