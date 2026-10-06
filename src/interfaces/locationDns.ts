@@ -10,6 +10,8 @@ export interface LocationDnsMessage {
 
   workload: string;
 
+  workloadId?: string;
+
   operation: 'update' | 'delete';
 
   deleteReason?: string;

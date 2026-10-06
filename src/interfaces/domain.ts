@@ -166,6 +166,8 @@ export interface Route {
 
   prefix?: string;
 
+  caseInsensitive?: boolean;
+
   workloadLink: string;
 
   port?: number;
