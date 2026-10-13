@@ -19,6 +19,8 @@ export interface Service {
 
   scaleToZero?: boolean;
 
+  interGvcFailover?: boolean;
+
 };
 
   gvc: {

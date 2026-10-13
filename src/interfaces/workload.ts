@@ -714,6 +714,11 @@ export interface Workload {
 
 };
 
+  networking?: {
+  interGvcFailover?: boolean;
+
+};
+
   extras?: {
   affinity?: any;
 
@@ -1053,6 +1058,11 @@ export interface WorkloadSpec {
 };
 
   replicaDirect?: boolean;
+
+};
+
+  networking?: {
+  interGvcFailover?: boolean;
 
 };
 
