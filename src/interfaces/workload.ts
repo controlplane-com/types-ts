@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { EnvVar } from './env.js';
+import { EnvVar, EnvFromSource } from './env.js';
 import { Regex, Kind, Tags, Links } from './base.js';
 import { VolumeSpec } from './volumeSpec.js';
 import { DefaultOptions, LocalOptions } from './workloadOptions.js';
@@ -8,12 +8,14 @@ import { AccessLog } from './envoyAccessLog.js';
 import { Cluster } from './envoyCluster.js';
 import { ExcExtAuth, ExcludedRateLimit } from './envoyExcExtAuth.js';
 import { HttpFilter } from './envoyHttp.js';
-import { SandboxIde } from './sandbox.js';
+import { SandboxIde, SandboxType } from './sandbox.js';
 
 export interface ContainerOverride {
   name: string;
 
   env?: EnvVar[];
+
+  envFrom?: EnvFromSource[];
 
   command?: string;
 
@@ -149,6 +151,8 @@ export interface ContainerSpec {
   minMemory?: string;
 
   env?: EnvVar[];
+
+  envFrom?: EnvFromSource[];
 
   gpu?: {
   nvidia?: {
@@ -549,6 +553,8 @@ export interface RolloutOptions {
 
   terminationGracePeriodSeconds?: number;
 
+  rolloutOnReferenceChange?: boolean;
+
 }
 
 export type ScheduleType = string;
@@ -675,6 +681,15 @@ export interface Workload {
 
   terminationGracePeriodSeconds?: number;
 
+  rolloutOnReferenceChange?: boolean;
+
+};
+
+  disruptionBudget?: {
+  minAvailable?: string;
+
+  maxUnavailable?: string;
+
 };
 
   securityOptions?: {
@@ -715,7 +730,10 @@ export interface Workload {
 };
 
   networking?: {
-  interGvcFailover?: boolean;
+  internal?: {
+  routing?: 'locationEndpoint' | 'gvcEndpoint';
+
+};
 
 };
 
@@ -847,12 +865,18 @@ export interface Workload {
   sandbox?: {
   ide?: SandboxIde;
 
-  appPort?: number;
+  type?: SandboxType;
+
+  password?: string;
+
+  token?: string;
 
   volume?: {
-  size?: number;
+  initialCapacity?: number;
 
 };
+
+  appPort?: number;
 
   scaleToZeroDelay?: number;
 
@@ -1022,6 +1046,15 @@ export interface WorkloadSpec {
 
   terminationGracePeriodSeconds?: number;
 
+  rolloutOnReferenceChange?: boolean;
+
+};
+
+  disruptionBudget?: {
+  minAvailable?: string;
+
+  maxUnavailable?: string;
+
 };
 
   securityOptions?: {
@@ -1062,7 +1095,10 @@ export interface WorkloadSpec {
 };
 
   networking?: {
-  interGvcFailover?: boolean;
+  internal?: {
+  routing?: 'locationEndpoint' | 'gvcEndpoint';
+
+};
 
 };
 
@@ -1194,12 +1230,18 @@ export interface WorkloadSpec {
   sandbox?: {
   ide?: SandboxIde;
 
-  appPort?: number;
+  type?: SandboxType;
+
+  password?: string;
+
+  token?: string;
 
   volume?: {
-  size?: number;
+  initialCapacity?: number;
 
 };
+
+  appPort?: number;
 
   scaleToZeroDelay?: number;
 

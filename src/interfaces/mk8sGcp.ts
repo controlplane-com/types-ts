@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints, PreInstallScript, AutoscalerConfig } from './mk8sCommon.js';
+import { Labels, Taints, MaxPods, PreInstallScript, AutoscalerConfig } from './mk8sCommon.js';
 
 export interface GcpPool {
   name: string;
@@ -8,6 +8,8 @@ export interface GcpPool {
   labels?: Labels;
 
   taints?: Taints;
+
+  maxPods?: MaxPods;
 
   machineType: string;
 

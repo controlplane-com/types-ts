@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints, PreInstallScript, AutoscalerConfig } from './mk8sCommon.js';
+import { Labels, Taints, MaxPods, PreInstallScript, AutoscalerConfig } from './mk8sCommon.js';
 
 export interface DedicatedServerHetznerPool {
   name: string;
@@ -8,6 +8,8 @@ export interface DedicatedServerHetznerPool {
   labels?: Labels;
 
   taints?: Taints;
+
+  maxPods?: MaxPods;
 
 }
 
@@ -26,6 +28,8 @@ export interface HetznerPool {
   labels?: Labels;
 
   taints?: Taints;
+
+  maxPods?: MaxPods;
 
   serverType: string;
 

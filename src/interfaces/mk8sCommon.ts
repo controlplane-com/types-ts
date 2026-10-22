@@ -56,6 +56,8 @@ export interface Labels {
 
 }
 
+export type MaxPods = number;
+
 export type NodePoolName = string;
 
 export type PreInstallScript = string;

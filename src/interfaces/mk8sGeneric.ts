@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints } from './mk8sCommon.js';
+import { Labels, Taints, MaxPods } from './mk8sCommon.js';
 
 export interface GenericJoinParams {
   nodePoolName: string;
@@ -15,6 +15,8 @@ export interface GenericPool {
   labels?: Labels;
 
   taints?: Taints;
+
+  maxPods?: MaxPods;
 
 }
 

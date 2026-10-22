@@ -17,6 +17,15 @@ export interface Deployment {
 
 }
 
+export interface DeploymentIdentity {
+  link?: string;
+
+  version?: number;
+
+  appliedAt?: Date;
+
+}
+
 export interface DeploymentStatus {
   endpoint?: string;
 
@@ -25,6 +34,8 @@ export interface DeploymentStatus {
   lastProcessedVersion?: number;
 
   expectedDeploymentVersion?: number;
+
+  identity?: DeploymentIdentity;
 
   internal?: any;
 

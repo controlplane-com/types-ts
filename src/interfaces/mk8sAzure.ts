@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints, SshPublicKey, AutoscalerConfig } from './mk8sCommon.js';
+import { Labels, Taints, MaxPods, SshPublicKey, AutoscalerConfig } from './mk8sCommon.js';
 
 export interface AzurePool {
   name: string;
@@ -8,6 +8,8 @@ export interface AzurePool {
   labels?: Labels;
 
   taints?: Taints;
+
+  maxPods?: MaxPods;
 
   size: string;
 

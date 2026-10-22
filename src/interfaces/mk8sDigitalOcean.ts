@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints, PreInstallScript, SshPublicKey, AutoscalerConfig } from './mk8sCommon.js';
+import { Labels, Taints, MaxPods, PreInstallScript, SshPublicKey, AutoscalerConfig } from './mk8sCommon.js';
 
 export interface DigitalOceanPool {
   name: string;
@@ -8,6 +8,8 @@ export interface DigitalOceanPool {
   labels?: Labels;
 
   taints?: Taints;
+
+  maxPods?: MaxPods;
 
   dropletSize: string;
 

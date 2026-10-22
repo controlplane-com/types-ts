@@ -6,12 +6,18 @@ export type SandboxIde = 'vscode' | 'cursor' | 'ssh' | 'browser';
 export interface SandboxSpec {
   ide?: SandboxIde;
 
-  appPort?: number;
+  type?: SandboxType;
+
+  password?: string;
+
+  token?: string;
 
   volume?: {
-  size?: number;
+  initialCapacity?: number;
 
 };
+
+  appPort?: number;
 
   scaleToZeroDelay?: number;
 
@@ -19,8 +25,5 @@ export interface SandboxSpec {
 
 }
 
-export interface SandboxVolume {
-  size?: number;
-
-}
+export type SandboxType = 'dev' | 'worker';
 

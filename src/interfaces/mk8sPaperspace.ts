@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints, AutoscalerConfig, UnmanagedPool, PreInstallScript } from './mk8sCommon.js';
+import { Labels, Taints, MaxPods, AutoscalerConfig, UnmanagedPool, PreInstallScript } from './mk8sCommon.js';
 
 export interface PaperspaceJoinParams {
   nodePoolName: string;
@@ -15,6 +15,8 @@ export interface PaperspacePool {
   labels?: Labels;
 
   taints?: Taints;
+
+  maxPods?: MaxPods;
 
   minSize: number;
 

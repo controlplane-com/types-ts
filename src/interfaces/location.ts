@@ -23,7 +23,7 @@ export interface Location {
 
   origin?: 'builtin' | 'default' | 'custom';
 
-  provider?: 'aws' | 'gcp' | 'azure' | 'byok' | 'linode' | 'vultr' | 'equinix' | 'oci';
+  provider?: 'aws' | 'gcp' | 'azure' | 'byok' | 'linode' | 'vultr' | 'equinix' | 'oci' | 'cpln';
 
   region?: string;
 

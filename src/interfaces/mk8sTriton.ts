@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints, PreInstallScript, SshPublicKey, AutoscalerConfig } from './mk8sCommon.js';
+import { Labels, Taints, MaxPods, PreInstallScript, SshPublicKey, AutoscalerConfig } from './mk8sCommon.js';
 
 export interface LoadBalancerConfig {
   manual?: Manual;
@@ -71,6 +71,8 @@ export interface TritonPool {
   labels?: Labels;
 
   taints?: Taints;
+
+  maxPods?: MaxPods;
 
   packageId: string;
 

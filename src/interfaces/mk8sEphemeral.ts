@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints } from './mk8sCommon.js';
+import { Labels, Taints, MaxPods } from './mk8sCommon.js';
 
 export interface EphemeralPool {
   name: string;
@@ -8,6 +8,8 @@ export interface EphemeralPool {
   labels?: Labels;
 
   taints?: Taints;
+
+  maxPods?: MaxPods;
 
   count: number;
 

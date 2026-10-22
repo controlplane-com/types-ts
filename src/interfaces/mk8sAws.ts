@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints, AutoscalerConfig } from './mk8sCommon.js';
+import { Labels, Taints, MaxPods, AutoscalerConfig } from './mk8sCommon.js';
 
 export interface Ami {
   recommended?: 'ubuntu/jammy-22.04' | 'ubuntu/jammy-22.04+nvidia' | 'ubuntu/focal-20.04' | 'ubuntu/focal-20.04+nvidia' | 'ubuntu/noble-24.04' | 'ubuntu/noble-24.04+nvidia' | 'ubuntu/bionic-18.04' | 'amazon/amzn2' | 'amazon/al2023';
@@ -24,6 +24,8 @@ export interface AwsPool {
   labels?: Labels;
 
   taints?: Taints;
+
+  maxPods?: MaxPods;
 
   instanceTypes: string[];
 

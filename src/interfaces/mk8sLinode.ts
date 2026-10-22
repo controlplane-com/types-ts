@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints, PreInstallScript, AutoscalerConfig } from './mk8sCommon.js';
+import { Labels, Taints, MaxPods, PreInstallScript, AutoscalerConfig } from './mk8sCommon.js';
 
 export interface LinodeJoinParams {
   ipAddress?: string;
@@ -17,6 +17,8 @@ export interface LinodePool {
   labels?: Labels;
 
   taints?: Taints;
+
+  maxPods?: MaxPods;
 
   serverType: string;
 

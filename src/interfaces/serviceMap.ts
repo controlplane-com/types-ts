@@ -19,7 +19,7 @@ export interface Service {
 
   scaleToZero?: boolean;
 
-  interGvcFailover?: boolean;
+  routing?: 'gvcEndpoint';
 
 };
 

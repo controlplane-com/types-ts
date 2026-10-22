@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Labels, Taints, UnmanagedPool, AutoscalerConfig, PreInstallScript } from './mk8sCommon.js';
+import { Labels, Taints, MaxPods, UnmanagedPool, AutoscalerConfig, PreInstallScript } from './mk8sCommon.js';
 
 export interface LambdalabsJoinParams {
   nodePoolName: string;
@@ -15,6 +15,8 @@ export interface LambdalabsPool {
   labels?: Labels;
 
   taints?: Taints;
+
+  maxPods?: MaxPods;
 
   minSize: number;
 
