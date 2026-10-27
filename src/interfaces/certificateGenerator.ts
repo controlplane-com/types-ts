@@ -138,7 +138,7 @@ export interface CloudflareDns01 {
 }
 
 export interface Dns01Challenge {
-  provider: 'route53' | 'cloudDns' | 'azureDns' | 'cloudflare';
+  provider?: 'cpln' | 'route53' | 'cloudDns' | 'azureDns' | 'cloudflare';
 
   route53?: {
   region: string;
@@ -172,7 +172,7 @@ export interface Dns01Challenge {
 
 }
 
-export type Dns01Provider = 'route53' | 'cloudDns' | 'azureDns' | 'cloudflare';
+export type Dns01Provider = 'cpln' | 'route53' | 'cloudDns' | 'azureDns' | 'cloudflare';
 
 export interface ExternalAccountBinding {
   keyId: string;

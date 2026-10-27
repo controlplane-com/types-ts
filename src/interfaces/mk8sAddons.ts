@@ -1,6 +1,7 @@
 /* auto-generated */
 
 import { Cpu, Memory } from './workload.js';
+import { Regex } from './base.js';
 
 export interface AwsECRAddonConfig {
   roleArn?: string;
@@ -388,9 +389,9 @@ export interface KubevirtAddonConfig {
 export interface LogsAddonConfig {
   auditEnabled?: boolean;
 
-  includeNamespaces?: RegularExpression;
+  includeNamespaces?: Regex;
 
-  excludeNamespaces?: RegularExpression;
+  excludeNamespaces?: Regex;
 
   docker?: boolean;
 
@@ -410,24 +411,36 @@ export interface LogsAddonStatus {
 export interface MetricsAddonConfig {
   kubeState?: boolean;
 
+  kubeStateDrop?: string;
+
   coreDns?: boolean;
+
+  coreDnsDrop?: string;
 
   kubelet?: boolean;
 
+  kubeletDrop?: string;
+
   apiserver?: boolean;
+
+  apiserverDrop?: string;
 
   nodeExporter?: boolean;
 
+  nodeExporterDrop?: string;
+
   cadvisor?: boolean;
+
+  cadvisorDrop?: string;
 
   scrapeAnnotated?: {
   intervalSeconds?: number;
 
-  includeNamespaces?: RegularExpression;
+  includeNamespaces?: Regex;
 
-  excludeNamespaces?: RegularExpression;
+  excludeNamespaces?: Regex;
 
-  retainLabels?: RegularExpression;
+  retainLabels?: Regex;
 
 };
 
@@ -463,6 +476,4 @@ export interface RegistryMirrorConfig {
 })[];
 
 }
-
-export type RegularExpression = string;
 

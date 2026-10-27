@@ -880,6 +880,17 @@ export interface Workload {
 
   scaleToZeroDelay?: number;
 
+  scaling?: {
+  maxSessions?: number;
+
+  minWorkers?: number;
+
+  maxWorkers?: number;
+
+  idleDeleteDelay?: number;
+
+};
+
   ttl?: string;
 
 };
@@ -1244,6 +1255,17 @@ export interface WorkloadSpec {
   appPort?: number;
 
   scaleToZeroDelay?: number;
+
+  scaling?: {
+  maxSessions?: number;
+
+  minWorkers?: number;
+
+  maxWorkers?: number;
+
+  idleDeleteDelay?: number;
+
+};
 
   ttl?: string;
 
