@@ -1,6 +1,6 @@
 /* auto-generated */
 
-import { Priority, StringMatcher, RuntimeFractionalPercent, UInt32, GrpcService, ListStringMatcher, HeaderValue, HttpStatus, FractionalPercent, RuntimeFeatureFlag, ApiVersion, DurationRestricted, Duration, RetryPolicy, Empty, RouteMatch, RouteMatchRestricted, HeaderValueOption, DataSource, GoogleCallCredentials, Struct } from './envoyCommon.js';
+import { Priority, StringMatcher, RuntimeFractionalPercent, UInt32, GrpcService, ListStringMatcher, HeaderValue, HttpStatus, FractionalPercent, RuntimeFeatureFlag, ApiVersion, HeaderAppendAction, DurationRestricted, Duration, RetryPolicy, Empty, RouteMatch, RouteMatchRestricted, HeaderValueOption, DataSource, GoogleCallCredentials, Struct } from './envoyCommon.js';
 
 export interface BufferSettings {
   max_request_bytes?: number;
@@ -239,7 +239,52 @@ export interface GrpcWeb {
 
 }
 
-export type HttpFilter = ExtAuthz | JwtAuthn | GrpcWeb | ConnectRpc | GrpcJsonTranscoder | Cors | RateLimit;
+export interface HeaderMutation {
+  priority?: Priority;
+
+  excludedWorkloads?: string[];
+
+  name: 'envoy.filters.http.header_mutation';
+
+  typed_config?: {
+  mutations?: {
+  request_mutations?: HeaderMutationRule[];
+
+  response_mutations?: HeaderMutationRule[];
+
+};
+
+  "@type": 'type.googleapis.com/envoy.extensions.filters.http.header_mutation.v3.HeaderMutation';
+
+};
+
+}
+
+export type HeaderMutationRule = {
+  remove: string;
+
+} | {
+  append: {
+  append?: boolean;
+
+  append_action?: HeaderAppendAction;
+
+  keep_empty_value?: boolean;
+
+  header: {
+  raw_value?: any /* TODO: binary*/;
+
+  key: string;
+
+  value?: string;
+
+};
+
+};
+
+};
+
+export type HttpFilter = ExtAuthz | JwtAuthn | GrpcWeb | ConnectRpc | GrpcJsonTranscoder | Cors | RateLimit | HeaderMutation;
 
 export interface HttpUri {
   uri: string;

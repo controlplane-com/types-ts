@@ -173,6 +173,8 @@ export interface CopyVolumeStatus {
 
   newVolumeSize?: number;
 
+  newVolumeZone?: string;
+
   destinationDeviceIdToRemove?: string;
 
   targetHasWorkloadPod?: boolean;

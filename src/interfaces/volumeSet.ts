@@ -217,3 +217,8 @@ export interface VolumeSnapshot {
 
 }
 
+export interface VolumeZoneMap {
+  [x: string]: string;
+
+}
+
