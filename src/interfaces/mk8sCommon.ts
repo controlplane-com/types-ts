@@ -2,7 +2,7 @@
 
 
 export interface AutoscalerConfig {
-  expander?: ('random' | 'most-pods' | 'least-waste' | 'price')[];
+  expander?: ('random' | 'most-pods' | 'least-waste')[];
 
   unneededTime?: string;
 

@@ -66,7 +66,7 @@ export interface GcpProvider {
   preInstallScript?: PreInstallScript;
 
   image: {
-  recommended?: 'ubuntu/jammy-22.04' | 'ubuntu/noble-24.04' | 'debian/bookworm-12' | 'debian/trixie-13' | 'google/cos-stable';
+  recommended?: 'ubuntu/jammy-22.04' | 'ubuntu/noble-24.04' | 'debian/bookworm-12' | 'debian/trixie-13';
 
   family?: {
   project: string;
@@ -91,7 +91,7 @@ export interface GcpProviderStatus {
 }
 
 export interface Image {
-  recommended?: 'ubuntu/jammy-22.04' | 'ubuntu/noble-24.04' | 'debian/bookworm-12' | 'debian/trixie-13' | 'google/cos-stable';
+  recommended?: 'ubuntu/jammy-22.04' | 'ubuntu/noble-24.04' | 'debian/bookworm-12' | 'debian/trixie-13';
 
   family?: {
   project: string;
