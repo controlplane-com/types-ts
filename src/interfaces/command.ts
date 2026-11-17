@@ -309,7 +309,7 @@ export interface DeleteOrphanedVolumeSnapshotSpec {
 }
 
 export interface DeleteOrphanedVolumeSnapshotStatus {
-  stage: 'delete-snapshot' | 'update-volume-set' | 'fail';
+  stage: 'delete-snapshot' | 'await-snapshot-deletion' | 'update-volume-set' | 'fail';
 
   clusterId?: string;
 
@@ -429,7 +429,7 @@ export interface DeleteVolumeSnapshotStatus {
 
 };
 
-  stage: 'delete-snapshot' | 'update-volume-set';
+  stage: 'delete-snapshot' | 'await-snapshot-deletion' | 'update-volume-set';
 
   messages?: string[];
 
